@@ -1277,11 +1277,16 @@ WebConsoleFrame.prototype = {
       case "exception":
       case "assert":
       case "debug": {
-        let action = {
-          type: "MESSAGE_ADD",
-          message
+        if (this.SUPER_FRONTEND_EXPERIMENT) {
+          let action = {
+            type: "MESSAGE_ADD",
+            message
+          }
+          store.dispatch(action)
+        } else {
+          let msg = new Messages.ConsoleGeneric(message);
+          node = msg.init(this.output).render().element;
         }
-        store.dispatch(action)
         break;
       }
       case "table": {
