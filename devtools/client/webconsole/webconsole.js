@@ -544,7 +544,7 @@ WebConsoleFrame.prototype = {
       this.experimentalOutputNode = this.outputNode.cloneNode();
       this.outputNode.hidden = true;
       this.outputNode.parentNode.appendChild(this.experimentalOutputNode);
-      this.newConsoleOutput = new this.window.NewConsoleOutput(this.experimentalOutputNode);
+      this.newConsoleOutput = new this.window.NewConsoleOutput(this.experimentalOutputNode, store);
       console.log("Created newConsoleOutput", this.newConsoleOutput);
     }
 
