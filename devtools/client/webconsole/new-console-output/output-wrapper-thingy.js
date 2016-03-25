@@ -26,7 +26,13 @@ OutputWrapperThingy.prototype = {
   dispatchMessageAdd: (message) => {
     let action = {
       type: "MESSAGE_ADD",
-      message
+      message,
+    }
+    store.dispatch(action)
+  },
+  dispatchMessagesClear: () => {
+    let action = {
+      type: "MESSAGES_CLEAR",
     }
     store.dispatch(action)
   }

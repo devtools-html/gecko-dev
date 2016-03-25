@@ -922,6 +922,10 @@ JSTerm.prototype = {
 
     this._sidebarDestroy();
 
+    if (hud.SUPER_FRONTEND_EXPERIMENT) {
+      hud.newConsoleOutput.dispatchMessagesClear();
+    }
+
     this.emit("messages-cleared");
   },
 
