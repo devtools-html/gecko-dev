@@ -17,6 +17,17 @@ Cu.import("resource://devtools/client/shared/browser-loader.js", BrowserLoaderMo
 const promise = require("promise");
 const Services = require("Services");
 
+// React & Redux
+const React = require("devtools/client/shared/vendor/react");
+const ReactDOM = require("devtools/client/shared/vendor/react-dom");
+const { Provider } = require("devtools/client/shared/vendor/react-redux");
+const { combineReducers } = require("devtools/client/shared/vendor/redux");
+
+const createStore = require("devtools/client/shared/redux/create-store")();
+
+const { reducers } = require("./new-console-output/reducers/index");
+const store = createStore(combineReducers(reducers));
+
 loader.lazyServiceGetter(this, "clipboardHelper",
                          "@mozilla.org/widget/clipboardhelper;1",
                          "nsIClipboardHelper");
@@ -1266,8 +1277,11 @@ WebConsoleFrame.prototype = {
       case "exception":
       case "assert":
       case "debug": {
-        let msg = new Messages.ConsoleGeneric(message);
-        node = msg.init(this.output).render().element;
+        let action = {
+          type: "MESSAGE_ADD",
+          message
+        }
+        store.dispatch(action)
         break;
       }
       case "table": {
