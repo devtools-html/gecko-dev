@@ -13,11 +13,11 @@ const constants = require("devtools/client/webconsole/new-console-output/constan
 describe("Message action creator", function() {
   describe("messsageAdd()", function() {
     it("creates expected action", function() {
-      let message = {};
-      let action = actions.messageAdd(message);
+      let packet = {};
+      let action = actions.messageAdd(packet);
       expect(action).toEqual({
         type: constants.MESSAGE_ADD,
-        message: {}
+        packet: {}
       });
     });
   });

@@ -7,13 +7,15 @@ const React = require("devtools/client/shared/vendor/react");
 const { connect } = require("devtools/client/shared/vendor/react-redux");
 const DOM = React.DOM;
 
-var DummyChildComponent = React.createClass({
-  displayName: "DummyChildComponent",
+const MessageWrapper = React.createFactory(require("devtools/client/webconsole/new-console-output/components/message-wrapper").MessageWrapper);
+
+const ConsoleOutput = React.createClass({
+  displayName: "ConsoleOutput",
 
   render() {
-    let messageNodes = this.props.messages.map(function(message) {
+    let messageNodes = this.props.messagePackets.map(function(packet) {
       return (
-        DOM.div({}, message.arguments.join(" "))
+        MessageWrapper({ packet })
       );
     });
     return (
@@ -24,8 +26,8 @@ var DummyChildComponent = React.createClass({
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    messagePackets: state.messages
   };
 };
 
-module.exports = connect(mapStateToProps)(DummyChildComponent);
+module.exports = connect(mapStateToProps)(ConsoleOutput);

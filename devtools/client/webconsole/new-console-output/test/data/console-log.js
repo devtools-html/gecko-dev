@@ -32,7 +32,15 @@ data.set("default", {
       "category": "webdev"
     }
   },
-  consoleOutput: "foobar test"
+  expectedHTML: `
+    <span>
+      <span class="message-flex-body">
+        <span class="message-body devtools-monospace">
+          <span class="console-string">foobar test</span>
+        </span>
+      </span>
+    </span>
+    `
 });
 
 module.exports = data;

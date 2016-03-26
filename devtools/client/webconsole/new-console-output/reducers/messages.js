@@ -5,24 +5,19 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const {
-  MESSAGE_ADD,
-  MESSAGES_CLEAR
-} = require("devtools/client/webconsole/new-console-output/constants");
+const Immutable = require("devtools/client/shared/vendor/immutable");
 
-/**
- * Filter displayed object properties.
- */
+const constants = require("devtools/client/webconsole/new-console-output/constants");
+
 function messages(state = [], action) {
   switch (action.type) {
-    case MESSAGE_ADD:
-      return state.concat([action.message]);
-    case MESSAGES_CLEAR:
+    case constants.MESSAGE_ADD:
+      return state.concat([action.packet]);
+    case constants.MESSAGES_CLEAR:
       return [];
   }
 
   return state;
 }
 
-// Exports from this module
 exports.messages = messages;

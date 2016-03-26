@@ -19,10 +19,10 @@ const actions = require("devtools/client/webconsole/new-console-output/actions/m
 const { reducers } = require("./reducers/index");
 const store = createStore(combineReducers(reducers));
 
-const DummyChildComponent = React.createFactory(require("./dummy-child-component"));
+const ConsoleOutput = React.createFactory(require("devtools/client/webconsole/new-console-output/components/console-output"));
 
 function OutputWrapperThingy(parentNode) {
-  let childComponent = DummyChildComponent({});
+  let childComponent = ConsoleOutput({});
   let provider = React.createElement(Provider, { store: store }, childComponent);
   this.body = ReactDOM.render(provider, parentNode);
 }

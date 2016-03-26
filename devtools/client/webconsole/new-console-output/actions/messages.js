@@ -10,10 +10,10 @@ const {
   MESSAGES_CLEAR
 } = require("../constants");
 
-exports.messageAdd = function messageAdd(message) {
+exports.messageAdd = function messageAdd(packet) {
   return {
     type: MESSAGE_ADD,
-    message: message
+    packet: packet
   };
 };
 
