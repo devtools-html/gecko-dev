@@ -7,6 +7,6 @@
     "expect": "^1.16.0"
   },
   "scripts": {
-    "test": "NODE_PATH=`pwd`/../ mocha client/webconsole/new-console-output/test --compilers js:babel-register"
+    "test": "NODE_PATH=`pwd`/../ mocha client/webconsole/new-console-output/test/**/*.test.js --compilers js:babel-register"
   }
 }
