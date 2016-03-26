@@ -5,15 +5,20 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-// @TODO move this to constants and use in webconsole.js
-const { MESSAGE_ADD } = require("devtools/client/webconsole/new-console-output/constants");
+const {
+  MESSAGE_ADD,
+  MESSAGES_CLEAR
+} = require("devtools/client/webconsole/new-console-output/constants");
 
 /**
  * Filter displayed object properties.
  */
 function messages(state = [], action) {
-  if (action.type == MESSAGE_ADD) {
-    return state.concat([action.message]);
+  switch (action.type) {
+    case MESSAGE_ADD:
+      return state.concat([action.message]);
+    case MESSAGES_CLEAR:
+      return [];
   }
 
   return state;
