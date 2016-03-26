@@ -15,6 +15,7 @@ const {
   MESSAGE_ADD,
   MESSAGES_CLEAR
 } = require("devtools/client/webconsole/new-console-output/constants");
+const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
 const { reducers } = require("./reducers/index");
 const store = createStore(combineReducers(reducers));
 
@@ -28,17 +29,10 @@ function OutputWrapperThingy(parentNode) {
 
 OutputWrapperThingy.prototype = {
   dispatchMessageAdd: (message) => {
-    let action = {
-      type: MESSAGE_ADD,
-      message,
-    }
-    store.dispatch(action)
+    store.dispatch(actions.messageAdd(message));
   },
   dispatchMessagesClear: () => {
-    let action = {
-      type: MESSAGES_CLEAR,
-    }
-    store.dispatch(action)
+    store.dispatch(actions.messagesClear());
   }
 };
 
