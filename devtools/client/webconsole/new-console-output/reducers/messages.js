@@ -6,7 +6,7 @@
 "use strict";
 
 // @TODO move this to constants and use in webconsole.js
-const MESSAGE_ADD = "MESSAGE_ADD";
+const { MESSAGE_ADD } = require("devtools/client/webconsole/new-console-output/constants");
 
 /**
  * Filter displayed object properties.

@@ -8,6 +8,7 @@ DIRS += [
 ]
 
 DevToolsModules(
+    'constants.js',
     'dummy-child-component.js',
     'main.js',
     'output-wrapper-thingy.js',

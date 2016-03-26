@@ -11,6 +11,10 @@ const { combineReducers } = require("devtools/client/shared/vendor/redux");
 
 const createStore = require("devtools/client/shared/redux/create-store")();
 
+const {
+  MESSAGE_ADD,
+  MESSAGES_CLEAR
+} = require("devtools/client/webconsole/new-console-output/constants");
 const { reducers } = require("./reducers/index");
 const store = createStore(combineReducers(reducers));
 
@@ -25,14 +29,14 @@ function OutputWrapperThingy(parentNode) {
 OutputWrapperThingy.prototype = {
   dispatchMessageAdd: (message) => {
     let action = {
-      type: "MESSAGE_ADD",
+      type: MESSAGE_ADD,
       message,
     }
     store.dispatch(action)
   },
   dispatchMessagesClear: () => {
     let action = {
-      type: "MESSAGES_CLEAR",
+      type: MESSAGES_CLEAR,
     }
     store.dispatch(action)
   }
