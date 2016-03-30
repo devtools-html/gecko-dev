@@ -16,7 +16,6 @@ const {Task} = Cu.import("resource://gre/modules/Task.jsm", {});
 var {console} = Cu.import("resource://gre/modules/Console.jsm", {});
 
 var {require} = Cu.import("resource://devtools/shared/Loader.jsm", {});
-var Services = require("Services");
 var WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 
 var ConsoleAPIStorage = Cc["@mozilla.org/consoleAPI-storage;1"]
@@ -26,11 +25,6 @@ var {DebuggerClient, ObjectClient} = require("devtools/shared/client/main");
 
 var {ConsoleServiceListener, ConsoleAPIListener} =
   require("devtools/shared/webconsole/utils");
-
-function initCommon()
-{
-  //Services.prefs.setBoolPref("devtools.debugger.log", true);
-}
 
 function initDebuggerServer()
 {
@@ -43,7 +37,6 @@ function initDebuggerServer()
 
 function connectToDebugger(aCallback)
 {
-  initCommon();
   initDebuggerServer();
 
   let transport = DebuggerServer.connectPipe();

@@ -6,7 +6,7 @@
 DIRS += [
     'actions',
     'components',
-    'reducers'
+    'reducers',
 ]
 
 DevToolsModules(
@@ -14,3 +14,5 @@ DevToolsModules(
     'main.js',
     'output-wrapper-thingy.js',
 )
+
+MOCHITEST_CHROME_MANIFESTS += ['test/components/chrome.ini']

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <title>Test for ConsoleApiCall component</title>
+  <script type="text/javascript" src="chrome://mochikit/content/tests/SimpleTest/SimpleTest.js"></script>
+  <script type="application/javascript;version=1.8" src="head.js"></script>
+  <!-- Any copyright is dedicated to the Public Domain.
+     - http://creativecommons.org/publicdomain/zero/1.0/ -->
+</head>
+<body>
+<p>Test for ConsoleApiCall component</p>
+
+<script type="text/javascript;version=1.8">
+window.onload = Task.async(function* () {
+  var { BrowserLoader } = Components.utils.import(
+    "resource://devtools/client/shared/browser-loader.js", {});
+  var rootUrl = "resource://devtools/client/shared/components/";
+  var require = BrowserLoader({
+    baseURI: rootUrl,
+    window: this}).require;
+
+  var { ConsoleApiCall } = browserRequire("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
+
+  yield testComponentWithRDP({
+    command: {
+      type: "console",
+      string: "console.log('foobar', 'test')"
+    },
+    component: ConsoleApiCall,
+    expectedHTML: `
+    <span>
+      <span class="message-flex-body">
+        <span class="message-body devtools-monospace">
+          <span class="console-string">foobar test</span>
+        </span>
+      </span>
+    </span>
+    `
+  });
+
+  SimpleTest.finish()
+});
+</script>
+</body>
+</html>
