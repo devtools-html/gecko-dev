@@ -13,7 +13,7 @@ const {
   MESSAGES_CLEAR
 } = require("devtools/client/webconsole/new-console-output/constants");
 const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
-const store = require("devtools/client/webconsole/new-console-output/store");
+const store = require("devtools/client/webconsole/new-console-output/store")();
 
 const ConsoleOutput = React.createFactory(require("devtools/client/webconsole/new-console-output/components/console-output"));
 

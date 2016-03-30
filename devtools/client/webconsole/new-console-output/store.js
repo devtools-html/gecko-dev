@@ -6,4 +6,10 @@
 const { combineReducers } = require("devtools/client/shared/vendor/redux");
 const createStore = require("devtools/client/shared/redux/create-store")();
 const { reducers } = require("./reducers/index");
-module.exports = createStore(combineReducers(reducers));
+
+// We export a factory here so that a new store is created for each test.
+// Be careful to only call this once in app code, though. There should only
+// be one store in the app.
+module.exports = function(initialState = {}) {
+  return createStore(combineReducers(reducers), initialState);
+};
