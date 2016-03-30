@@ -12,7 +12,12 @@ DevToolsUtils.testing = true;
 DevToolsUtils.dumpn.wantLogging = true;
 DevToolsUtils.dumpv.wantVerbose = false;
 
-var Store = require("devtools/client/webconsole/new-console-output/store");
+function getStore(initialState = {}) {
+  const { combineReducers } = require("devtools/client/shared/vendor/redux");
+  const createStore = require("devtools/client/shared/redux/create-store")();
+  const { reducers } = require("devtools/client/webconsole/new-console-output/reducers/index");
+  return createStore(combineReducers(reducers), initialState);
+}
 
 const testPackets = new Map();
 testPackets.set("console-log", {
