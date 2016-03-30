@@ -12,7 +12,7 @@ DevToolsUtils.testing = true;
 DevToolsUtils.dumpn.wantLogging = true;
 DevToolsUtils.dumpv.wantVerbose = false;
 
-const Store = require("devtools/client/webconsole/new-console-output/store");
+const { storeFactory } = require("devtools/client/webconsole/new-console-output/store");
 
 const testPackets = new Map();
 testPackets.set("console-log", {

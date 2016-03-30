@@ -10,7 +10,7 @@ function run_test() {
 }
 
 add_task(function*() {
-  const { getState, dispatch } = Store();
+  const { getState, dispatch } = storeFactory();
 
   dispatch(actions.messageAdd(testPacket));
   const expectedPacket = Object.assign({}, testPacket);
