@@ -13,7 +13,12 @@ DevToolsModules(
     'constants.js',
     'main.js',
     'output-wrapper-thingy.js',
+    'store.js',
 )
 
 MOCHITEST_CHROME_MANIFESTS += ['test/components/chrome.ini']
-XPCSHELL_TESTS_MANIFESTS += ['test/actions/xpcshell.ini']
+XPCSHELL_TESTS_MANIFESTS += [
+  'test/actions/xpcshell.ini',
+  'test/reducers/xpcshell.ini'
+]
+
