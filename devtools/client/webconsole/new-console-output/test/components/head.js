@@ -20,32 +20,31 @@ var { require: browserRequire } = BrowserLoader({
   window: this
 });
 
-function* testComponentWithRDP(testValues) {
-  let {command, component, expectedHTML} = testValues
-  try {
-    let ReactDOM = browserRequire("devtools/client/shared/vendor/react-dom");
-    let React = browserRequire("devtools/client/shared/vendor/react");
-    var TestUtils = React.addons.TestUtils;
+let ReactDOM = browserRequire("devtools/client/shared/vendor/react-dom");
+let React = browserRequire("devtools/client/shared/vendor/react");
+var TestUtils = React.addons.TestUtils;
 
+function* getPacket(command, type = "evaluationResult") {
+  try {
     // Attach the console to the tab.
     let state = yield new Promise(function(resolve) {
       attachConsoleToTab(["ConsoleAPI"], (state) => resolve(state));
-    })
+    });
 
     // Run the command and get the packet.
     let packet;
-    switch (command.type) {
-      case "console":
+    switch (type) {
+      case "consoleAPICall":
         packet = yield new Promise((resolve) => {
           function onConsoleApiCall(type, packet) {
             state.dbgClient.removeListener("consoleAPICall", onConsoleApiCall);
             resolve(packet)
           };
           state.dbgClient.addListener("consoleAPICall", onConsoleApiCall)
-          eval(`top.${command.string}`);
+          eval(`top.${command}`);
         });
         break;
-      case "eval":
+      case "evaluate":
         // @TODO support JavaScriptEvalOutput
         // let evaluated =
         //   new Promise(resolve => state.client.evaluateJSAsync("top.console.log(\"bitty\")", resolve));
@@ -53,24 +52,23 @@ function* testComponentWithRDP(testValues) {
         break;
     }
 
-    // Render the component using the packet.
-    const el = React.createElement(component, { packet }, {});
-    const renderedComponent = TestUtils.renderIntoDocument(el);
-
-    // Test the actual and expected HTML.
-    const actual = cleanActual(ReactDOM.findDOMNode(renderedComponent).outerHTML);
-    is(actual, cleanExpected(expectedHTML), "Matched component HTML");
-
     closeDebugger(state);
+    return packet;
   } catch (e) {
     ok(false, "Got an error: " + DevToolsUtils.safeErrorString(e));
   }
 }
 
-function cleanActual(htmlString) {
+function renderComponent(component, props) {
+  const el = React.createElement(component, props, {});
+  const renderedComponent = TestUtils.renderIntoDocument(el);
+  return ReactDOM.findDOMNode(renderedComponent);
+}
+
+function cleanActualHTML(htmlString) {
   return htmlString.replace(/ data-reactid=\".*?\"/g, "");
 }
 
-function cleanExpected(htmlString) {
+function cleanExpectedHTML(htmlString) {
   return htmlString.replace(/(?:\r\n|\r|\n)\s*/g, "");
 }
