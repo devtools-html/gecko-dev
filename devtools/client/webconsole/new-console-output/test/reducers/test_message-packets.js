@@ -3,7 +3,7 @@
 "use strict";
 
 const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
-const testPacket = testPackets.get("console-log");
+const testPacket = testPackets.get("console.log");
 
 function run_test() {
   run_next_test();

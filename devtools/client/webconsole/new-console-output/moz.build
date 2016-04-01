@@ -19,6 +19,7 @@ DevToolsModules(
 MOCHITEST_CHROME_MANIFESTS += ['test/components/chrome.ini']
 XPCSHELL_TESTS_MANIFESTS += [
   'test/actions/xpcshell.ini',
+  'test/components/xpcshell.ini',
   'test/reducers/xpcshell.ini'
 ]
 

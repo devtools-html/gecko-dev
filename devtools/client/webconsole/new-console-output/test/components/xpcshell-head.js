@@ -3,7 +3,7 @@
 
 "use strict";
 
-var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
+var { utils: Cu } = Components;
 var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
 
 var Services = require("Services");
@@ -12,8 +12,7 @@ DevToolsUtils.testing = true;
 DevToolsUtils.dumpn.wantLogging = true;
 DevToolsUtils.dumpv.wantVerbose = false;
 
-const { storeFactory } = require("devtools/client/webconsole/new-console-output/store");
-
+// @TODO consolidate this with others when head is shared. See #16
 const testPackets = new Map();
 testPackets.set("console.log", {
   "from": "server1.conn4.child1/consoleActor2",
