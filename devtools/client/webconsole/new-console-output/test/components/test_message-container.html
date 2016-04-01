@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <title>Test for MessageContainer component</title>
+  <script type="text/javascript" src="chrome://mochikit/content/tests/SimpleTest/SimpleTest.js"></script>
+  <script type="application/javascript;version=1.8" src="head.js"></script>
+  <!-- Any copyright is dedicated to the Public Domain.
+     - http://creativecommons.org/publicdomain/zero/1.0/ -->
+</head>
+<body>
+<p>Test for MessageContainer component</p>
+
+<script type="text/javascript;version=1.8">
+window.onload = Task.async(function* () {
+  const { BrowserLoader } = Components.utils.import(
+    "resource://devtools/client/shared/browser-loader.js", {});
+  const rootUrl = "resource://devtools/client/shared/components/";
+  const require = BrowserLoader({
+    baseURI: rootUrl,
+    window: this}).require;
+  
+  const React = browserRequire("devtools/client/shared/vendor/react");
+  const TestUtils = React.addons.TestUtils;
+  const { MessageContainer } = browserRequire("devtools/client/webconsole/new-console-output/components/message-container");
+  const { ConsoleApiCall } = browserRequire("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
+
+  const packet = yield getPacket("console.log('foobar', 'test')", "consoleAPICall");
+  const el = React.createElement(MessageContainer, { packet });
+  const renderer = TestUtils.createRenderer();
+  renderer.render(el, {});
+  const result = renderer.getRenderOutput();
+
+  is(result.type, ConsoleApiCall,
+    "MessageContainer nests the correct component based on packet");
+
+  SimpleTest.finish()
+});
+</script>
+</body>
+</html>
