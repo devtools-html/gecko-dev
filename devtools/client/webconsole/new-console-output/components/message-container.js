@@ -14,8 +14,8 @@ const {
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 
-const MessageWrapper = createClass({
-  displayName: "MessageWrapper",
+const MessageContainer = createClass({
+  displayName: "MessageContainer",
 
   propTypes: {
     packet: PropTypes.object.isRequired,
@@ -23,9 +23,7 @@ const MessageWrapper = createClass({
 
   render() {
     let MessageComponent = getMessageComponent(this.props.packet);
-    return dom.span({className: "message-body-wrapper"},
-      createElement(MessageComponent, { packet: this.props.packet })
-    );
+    return createElement(MessageComponent, { packet: this.props.packet });
   }
 });
 
@@ -39,6 +37,6 @@ function getMessageComponent(packet) {
   return MessageComponent;
 }
 
-module.exports.MessageWrapper = MessageWrapper;
+module.exports.MessageContainer = MessageContainer;
 // Exported so we can test it with unit tests.
 module.exports.getMessageComponent = getMessageComponent;

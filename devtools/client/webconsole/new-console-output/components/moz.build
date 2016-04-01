@@ -9,5 +9,5 @@ DIRS += [
 
 DevToolsModules(
     'console-output.js',
-    'message-wrapper.js'
+    'message-container.js'
 )

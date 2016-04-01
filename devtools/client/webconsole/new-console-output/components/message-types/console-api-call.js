@@ -22,10 +22,12 @@ const ConsoleApiCall = createClass({
 
   render() {
     const { message } = this.props.packet;
-    return dom.span({},
-      dom.span({className: "message-flex-body"},
-        dom.span({className: "message-body devtools-monospace"},
-          dom.span({className: "console-string"}, message.arguments.join(" "))
+    return dom.span({className: "message-body-wrapper"},
+      dom.span({},
+        dom.span({className: "message-flex-body"},
+          dom.span({className: "message-body devtools-monospace"},
+            dom.span({className: "console-string"}, message.arguments.join(" "))
+          )
         )
       )
     );
