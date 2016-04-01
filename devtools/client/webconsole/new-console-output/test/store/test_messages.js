@@ -3,7 +3,7 @@
 "use strict";
 
 const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
-const testPacket = testPackets.get("console.log");
+const packet = testPackets.get("console.log");
 
 function run_test() {
   run_next_test();
@@ -12,8 +12,8 @@ function run_test() {
 add_task(function*() {
   const { getState, dispatch } = storeFactory();
 
-  dispatch(actions.messageAdd(testPacket));
-  const expectedPacket = Object.assign({}, testPacket);
+  dispatch(actions.messageAdd(packet));
+  const expectedPacket = Object.assign({}, packet);
   deepEqual(getState().messages, [expectedPacket],
     "MESSAGE_ADD action adds a message");
 });
