@@ -10,11 +10,17 @@ function run_test() {
 }
 
 add_task(function*() {
-  const packet = {};
+  const packet = testPackets.get("console.log");
   const action = actions.messageAdd(packet);
   const expected = {
     type: constants.MESSAGE_ADD,
-    packet: {}
+    message: {
+      allowRepeating: true,
+      category: "console",
+      data: packet.message,
+      messageType: "ConsoleApiCall",
+      severity: "log"
+    }
   };
   deepEqual(action, expected,
     "messageAdd action creator returns expected action object");

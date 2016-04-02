@@ -5,20 +5,50 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const {
-  MESSAGE_ADD,
-  MESSAGES_CLEAR
-} = require("../constants");
+const constants = require("../constants");
 
-exports.messageAdd = function messageAdd(packet) {
+function messageAdd(packet) {
+  let message = prepareMessage(packet);
   return {
-    type: MESSAGE_ADD,
-    packet: packet
+    type: constants.MESSAGE_ADD,
+    message
   };
-};
+}
 
-exports.messagesClear = function messagesClear() {
+function messagesClear() {
   return {
-    type: MESSAGES_CLEAR
+    type: constants.MESSAGES_CLEAR
   };
-};
+}
+
+function prepareMessage(packet) {
+  let allowRepeating;
+  let category;
+  let data;
+  let messageType;
+  let severity;
+
+  const level = constants.LEVELS[packet.message.level];
+  switch (packet.type) {
+    case "consoleAPICall":
+      allowRepeating = true;
+      category = "console";
+      data = packet.message;
+      messageType = "ConsoleApiCall";
+      severity = constants.SEVERITY_CLASS_FRAGMENTS[level];
+      break;
+  }
+
+  return {
+    allowRepeating,
+    category,
+    data,
+    messageType,
+    severity
+  };
+}
+
+exports.messageAdd = messageAdd;
+exports.messagesClear = messagesClear;
+// Export for use in testing.
+exports.prepareMessage = prepareMessage;
