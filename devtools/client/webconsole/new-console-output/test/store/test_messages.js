@@ -4,16 +4,22 @@
 
 const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
 const packet = testPackets.get("console.log");
+const { prepareMessage } = require("devtools/client/webconsole/new-console-output/actions/messages");
 
 function run_test() {
   run_next_test();
 }
 
+/**
+ * Test adding a message to the store.
+ */
 add_task(function*() {
   const { getState, dispatch } = storeFactory();
 
   dispatch(actions.messageAdd(packet));
-  const expectedPacket = Object.assign({}, packet);
-  deepEqual(getState().messages, [expectedPacket],
+
+  const expectedMessage = prepareMessage(packet);
+
+  deepEqual(getState().messages, [expectedMessage],
     "MESSAGE_ADD action adds a message");
 });

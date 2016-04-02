@@ -33,7 +33,7 @@ function prepareMessage(packet) {
     case "consoleAPICall":
       allowRepeating = true;
       category = "console";
-      data = packet.message;
+      data = Object.assign({}, packet.message);
       messageType = "ConsoleApiCall";
       severity = constants.SEVERITY_CLASS_FRAGMENTS[level];
       break;

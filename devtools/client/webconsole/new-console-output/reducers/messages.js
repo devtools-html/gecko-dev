@@ -12,7 +12,7 @@ const constants = require("devtools/client/webconsole/new-console-output/constan
 function messages(state = [], action) {
   switch (action.type) {
     case constants.MESSAGE_ADD:
-      return state.concat([action.packet]);
+      return state.concat([action.message]);
     case constants.MESSAGES_CLEAR:
       return [];
   }
