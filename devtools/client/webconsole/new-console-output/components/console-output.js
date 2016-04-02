@@ -7,7 +7,7 @@ const React = require("devtools/client/shared/vendor/react");
 const { connect } = require("devtools/client/shared/vendor/react-redux");
 const DOM = React.DOM;
 
-const MessageWrapper = React.createFactory(require("devtools/client/webconsole/new-console-output/components/message-wrapper").MessageWrapper);
+const MessageContainer = React.createFactory(require("devtools/client/webconsole/new-console-output/components/message-container").MessageContainer);
 
 const ConsoleOutput = React.createClass({
   displayName: "ConsoleOutput",
@@ -15,7 +15,7 @@ const ConsoleOutput = React.createClass({
   render() {
     let messageNodes = this.props.messagePackets.map(function(packet) {
       return (
-        MessageWrapper({ packet })
+        MessageContainer({ packet })
       );
     });
     return (
