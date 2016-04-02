@@ -5,19 +5,24 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const constants = require("../constants");
+const {
+  MESSAGE_ADD,
+  MESSAGES_CLEAR,
+  LEVELS,
+  SEVERITY_CLASS_FRAGMENTS
+} = require("../constants");
 
 function messageAdd(packet) {
   let message = prepareMessage(packet);
   return {
-    type: constants.MESSAGE_ADD,
+    type: MESSAGE_ADD,
     message
   };
 }
 
 function messagesClear() {
   return {
-    type: constants.MESSAGES_CLEAR
+    type: MESSAGES_CLEAR
   };
 }
 
@@ -28,14 +33,13 @@ function prepareMessage(packet) {
   let messageType;
   let severity;
 
-  const level = constants.LEVELS[packet.message.level];
   switch (packet.type) {
     case "consoleAPICall":
       allowRepeating = true;
       category = "console";
       data = Object.assign({}, packet.message);
       messageType = "ConsoleApiCall";
-      severity = constants.SEVERITY_CLASS_FRAGMENTS[level];
+      severity = SEVERITY_CLASS_FRAGMENTS[LEVELS[packet.message.level]];
       break;
   }
 
