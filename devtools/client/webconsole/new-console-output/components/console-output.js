@@ -13,9 +13,9 @@ const ConsoleOutput = React.createClass({
   displayName: "ConsoleOutput",
 
   render() {
-    let messageNodes = this.props.messagePackets.map(function(packet) {
+    let messageNodes = this.props.messages.map(function(message) {
       return (
-        MessageContainer({ packet })
+        MessageContainer({ message })
       );
     });
     return (
@@ -26,7 +26,7 @@ const ConsoleOutput = React.createClass({
 
 const mapStateToProps = (state) => {
   return {
-    messagePackets: state.messages
+    messages: state.messages
   };
 };
 

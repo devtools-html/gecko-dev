@@ -20,11 +20,14 @@ window.onload = Task.async(function* () {
     baseURI: rootUrl,
     window: this}).require;
 
+  const { prepareMessage } = require("devtools/client/webconsole/new-console-output/actions/messages");
+
   const { ConsoleApiCall } = browserRequire("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
 
   const packet = yield getPacket("console.log('foobar', 'test')", "consoleAPICall");
-  const rendered = renderComponent(ConsoleApiCall, {packet});
-  
+  const message = prepareMessage(packet);
+  const rendered = renderComponent(ConsoleApiCall, {message});
+
   const queryPath = "span span.message-flex-body span.message-body.devtools-monospace span.console-string";
   is(1, rendered.querySelectorAll(queryPath).length, "ConsoleApiCall component produces expected DOM")
 

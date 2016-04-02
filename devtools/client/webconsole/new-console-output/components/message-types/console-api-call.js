@@ -17,16 +17,16 @@ const ConsoleApiCall = createClass({
   displayName: "ConsoleApiCall",
 
   propTypes: {
-    packet: PropTypes.object.isRequired,
+    message: PropTypes.object.isRequired,
   },
 
   render() {
-    const { message } = this.props.packet;
+    const { data } = this.props.message;
     return dom.span({className: "message-body-wrapper"},
       dom.span({},
         dom.span({className: "message-flex-body"},
           dom.span({className: "message-body devtools-monospace"},
-            dom.span({className: "console-string"}, message.arguments.join(" "))
+            dom.span({className: "console-string"}, data.arguments.join(" "))
           )
         )
       )

@@ -18,19 +18,20 @@ const MessageContainer = createClass({
   displayName: "MessageContainer",
 
   propTypes: {
-    packet: PropTypes.object.isRequired,
+    message: PropTypes.object.isRequired,
   },
 
   render() {
-    let MessageComponent = getMessageComponent(this.props.packet);
-    return createElement(MessageComponent, { packet: this.props.packet });
+    debugger
+    let MessageComponent = getMessageComponent(this.props.message.messageType);
+    return createElement(MessageComponent, { message: this.props.message });
   }
 });
 
-function getMessageComponent(packet) {
+function getMessageComponent(messageType) {
   let MessageComponent;
-  switch (packet.type) {
-    case "consoleAPICall":
+  switch (messageType) {
+    case "ConsoleApiCall":
       MessageComponent = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call").ConsoleApiCall;
       break;
   }
