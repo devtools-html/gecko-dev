@@ -13,19 +13,12 @@
 
 <script type="text/javascript;version=1.8">
 window.onload = Task.async(function* () {
-  const { BrowserLoader } = Components.utils.import(
-    "resource://devtools/client/shared/browser-loader.js", {});
-  const rootUrl = "resource://devtools/client/shared/components/";
-  const require = BrowserLoader({
-    baseURI: rootUrl,
-    window: this}).require;
-
-  const React = browserRequire("devtools/client/shared/vendor/react");
+  const React = require("devtools/client/shared/vendor/react");
   const TestUtils = React.addons.TestUtils;
   const { prepareMessage } = require("devtools/client/webconsole/new-console-output/actions/messages");
 
-  const { MessageContainer } = browserRequire("devtools/client/webconsole/new-console-output/components/message-container");
-  const { ConsoleApiCall } = browserRequire("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
+  const { MessageContainer } = require("devtools/client/webconsole/new-console-output/components/message-container");
+  const { ConsoleApiCall } = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
 
   const packet = yield getPacket("console.log('foobar', 'test')", "consoleAPICall");
   const message = prepareMessage(packet);

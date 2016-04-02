@@ -13,16 +13,8 @@
 
 <script type="text/javascript;version=1.8">
 window.onload = Task.async(function* () {
-  const { BrowserLoader } = Components.utils.import(
-    "resource://devtools/client/shared/browser-loader.js", {});
-  const rootUrl = "resource://devtools/client/shared/components/";
-  const require = BrowserLoader({
-    baseURI: rootUrl,
-    window: this}).require;
-
   const { prepareMessage } = require("devtools/client/webconsole/new-console-output/actions/messages");
-
-  const { ConsoleApiCall } = browserRequire("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
+  const { ConsoleApiCall } = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
 
   const packet = yield getPacket("console.log('foobar', 'test')", "consoleAPICall");
   const message = prepareMessage(packet);
