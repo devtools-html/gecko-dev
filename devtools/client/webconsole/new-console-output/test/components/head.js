@@ -61,8 +61,12 @@ function* getPacket(command, type = "evaluationResult") {
 
 function renderComponent(component, props) {
   const el = React.createElement(component, props, {});
-  const renderedComponent = TestUtils.renderIntoDocument(el);
-  return ReactDOM.findDOMNode(renderedComponent);
+  // By default, renderIntoDocument() won't work for stateless components, but
+  // it will work if the stateless component is wrapped in a stateful one.
+  // See https://github.com/facebook/react/issues/4839
+  const wrappedEl = React.DOM.span({}, [el]);
+  const renderedComponent = TestUtils.renderIntoDocument(wrappedEl);
+  return ReactDOM.findDOMNode(renderedComponent).children[0];
 }
 
 function cleanActualHTML(htmlString) {

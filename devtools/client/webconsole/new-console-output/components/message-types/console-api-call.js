@@ -8,30 +8,42 @@
 
 // React & Redux
 const {
-  createClass,
+  createElement,
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 
-const ConsoleApiCall = createClass({
-  displayName: "ConsoleApiCall",
+ConsoleApiCall.displayName = "ConsoleApiCall";
 
-  propTypes: {
-    message: PropTypes.object.isRequired,
-  },
+ConsoleApiCall.propTypes = {
+  message: PropTypes.object.isRequired,
+};
 
-  render() {
-    const { data } = this.props.message;
-    return dom.span({className: "message-body-wrapper"},
-      dom.span({},
-        dom.span({className: "message-flex-body"},
-          dom.span({className: "message-body devtools-monospace"},
-            dom.span({className: "console-string"}, data.arguments.join(" "))
-          )
-        )
+function ConsoleApiCall(props) {
+  const messageBody =
+    dom.span({className: "message-body devtools-monospace"},
+      formatTextContent(props.message.data.arguments));
+  const children = [
+    messageBody
+  ];
+
+  return dom.span({className: "message-body-wrapper"},
+    dom.span({},
+      dom.span({className: "message-flex-body"},
+        children
       )
-    );
-  }
-});
+    )
+  );
+}
+
+function formatTextContent(args) {
+  return args.map(function(arg, i, arr) {
+    const str = dom.span({className: "console-string"}, arg);
+    if (i < arr.length - 1) {
+      return [str, " "];
+    }
+    return str;
+  });
+}
 
 module.exports.ConsoleApiCall = ConsoleApiCall;

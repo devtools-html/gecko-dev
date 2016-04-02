@@ -28,8 +28,11 @@ window.onload = Task.async(function* () {
   const message = prepareMessage(packet);
   const rendered = renderComponent(ConsoleApiCall, {message});
 
-  const queryPath = "span span.message-flex-body span.message-body.devtools-monospace span.console-string";
-  is(1, rendered.querySelectorAll(queryPath).length, "ConsoleApiCall component produces expected DOM")
+  const queryPath = "span span.message-flex-body span.message-body.devtools-monospace";
+  const messageBody = rendered.querySelectorAll(queryPath);
+  const consoleStringNodes = messageBody[0].querySelectorAll("span.console-string");
+  is(2, consoleStringNodes.length, "ConsoleApiCall outputs expected HTML structure");
+  is(messageBody[0].textContent, "foobar test", "ConsoleApiCall outputs expected text");
 
   SimpleTest.finish()
 });
