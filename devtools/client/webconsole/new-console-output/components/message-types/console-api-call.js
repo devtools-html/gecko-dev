@@ -12,6 +12,7 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
+const { MessageRepeat } = require("devtools/client/webconsole/new-console-output/components/message-repeat");
 
 ConsoleApiCall.displayName = "ConsoleApiCall";
 
@@ -20,11 +21,14 @@ ConsoleApiCall.propTypes = {
 };
 
 function ConsoleApiCall(props) {
+  const { message } = props;
   const messageBody =
     dom.span({className: "message-body devtools-monospace"},
-      formatTextContent(props.message.data.arguments));
+      formatTextContent(message.data.arguments));
+  const repeat = createElement(MessageRepeat, {repeat: message.repeat});
   const children = [
-    messageBody
+    messageBody,
+    repeat
   ];
 
   return dom.span({className: "message-body-wrapper"},
