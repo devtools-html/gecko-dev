@@ -13,7 +13,15 @@ const constants = require("devtools/client/webconsole/new-console-output/constan
 function messages(state = [], action) {
   switch (action.type) {
     case constants.MESSAGE_ADD:
-      return state.concat([action.message]);
+      let newMessage = action.message;
+      if (newMessage.allowRepeating && state.length > 0) {
+        let lastMessage = state[state.length - 1];
+        if (lastMessage.repeatId === newMessage.repeatId) {
+          newMessage.repeat = lastMessage.repeat + 1;
+          return state.slice(0, state.length-1).concat(newMessage);
+        }
+      }
+      return state.concat([ newMessage ]);
     case constants.MESSAGES_CLEAR:
       return [];
   }
