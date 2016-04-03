@@ -4,7 +4,10 @@
 
 const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
 const packet = testPackets.get("console.log");
-const { prepareMessage } = require("devtools/client/webconsole/new-console-output/actions/messages");
+const {
+  getRepeatId,
+  prepareMessage
+} = require("devtools/client/webconsole/new-console-output/utils/messages");
 
 function run_test() {
   run_next_test();

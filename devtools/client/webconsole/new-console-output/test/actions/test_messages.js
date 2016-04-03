@@ -2,7 +2,14 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 "use strict";
 
-const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
+const {
+  messageAdd,
+  messagesClear
+} = require("devtools/client/webconsole/new-console-output/actions/messages");
+const {
+  prepareMessage,
+  getRepeatId
+} = require("devtools/client/webconsole/new-console-output/utils/messages");
 const constants = require("devtools/client/webconsole/new-console-output/constants");
 
 function run_test() {
@@ -11,7 +18,7 @@ function run_test() {
 
 add_task(function*() {
   const packet = testPackets.get("console.log");
-  const action = actions.messageAdd(packet);
+  const action = messageAdd(packet);
   const expected = {
     type: constants.MESSAGE_ADD,
     message: {
@@ -19,6 +26,8 @@ add_task(function*() {
       category: "console",
       data: packet.message,
       messageType: "ConsoleApiCall",
+      repeat: 1,
+      repeatId: getRepeatId(packet.message),
       severity: "log"
     }
   };
@@ -27,7 +36,7 @@ add_task(function*() {
 });
 
 add_task(function*() {
-  const action = actions.messagesClear();
+  const action = messagesClear();
   const expected = {
     type: constants.MESSAGES_CLEAR,
   };

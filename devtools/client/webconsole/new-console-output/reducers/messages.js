@@ -7,6 +7,7 @@
 
 const Immutable = require("devtools/client/shared/vendor/immutable");
 
+const { getRepeatId } = require("devtools/client/webconsole/new-console-output/utils/messages");
 const constants = require("devtools/client/webconsole/new-console-output/constants");
 
 function messages(state = [], action) {
