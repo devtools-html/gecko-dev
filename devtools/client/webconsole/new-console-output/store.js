@@ -3,8 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { combineReducers } = require("devtools/client/shared/vendor/redux");
-const createStore = require("devtools/client/shared/redux/create-store")();
+const { combineReducers, createStore } = require("devtools/client/shared/vendor/redux");
 const { reducers } = require("./reducers/index");
 
 function storeFactory(initialState = {}) {
