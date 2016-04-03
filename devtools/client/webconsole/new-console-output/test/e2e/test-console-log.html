@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html dir="ltr" xml:lang="en-US" lang="en-US">
+  <head>
+    <meta charset="utf8">
+    <title>Test console.log()</title>
+    <script>
+      function testConsole() {
+        // same line and column number
+        for(var i = 0; i < 2; i++) {
+          console.log("foo repeat");
+        }
+        console.log("foo repeat");
+        console.error("foo repeat");
+      }
+      </script>
+  </head>
+  <body>
+    <p>Hello world!</p>
+  </body>
+</html>

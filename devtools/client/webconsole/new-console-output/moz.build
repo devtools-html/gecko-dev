@@ -17,6 +17,7 @@ DevToolsModules(
     'store.js',
 )
 
+BROWSER_CHROME_MANIFESTS += ['test/e2e/browser.ini']
 MOCHITEST_CHROME_MANIFESTS += [
   'test/components/chrome.ini',
   'test/utils/chrome.ini'
