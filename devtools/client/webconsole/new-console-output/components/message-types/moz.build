@@ -6,4 +6,5 @@
 DevToolsModules(
     'console-api-call.js',
     'date-preview.js',
+    'evaluation-result.js',
 )
