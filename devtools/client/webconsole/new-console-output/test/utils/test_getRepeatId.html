@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <title>Test for getRepeatId()</title>
+  <script type="text/javascript" src="chrome://mochikit/content/tests/SimpleTest/SimpleTest.js"></script>
+  <script type="application/javascript;version=1.8" src="head.js"></script>
+  <!-- Any copyright is dedicated to the Public Domain.
+     - http://creativecommons.org/publicdomain/zero/1.0/ -->
+</head>
+<body>
+<p>Test for getRepeatId()</p>
+
+<script type="text/javascript;version=1.8">
+window.onload = Task.async(function* () {
+  const {
+    prepareMessage,
+    getRepeatId
+  } = require("devtools/client/webconsole/new-console-output/utils/messages");
+
+  const message1 = prepareMessage(yield getPacket("new Date(49000000000)", "consoleAPICall"));
+  const message2 = prepareMessage(yield getPacket("new Date(49000000000)", "consoleAPICall"));
+  is(getRepeatId(message1), getRepeatId(message2),
+    "getRepeatId() returns same repeat id for objects with the same values");
+
+  const message3 = prepareMessage(yield getPacket("new Date()", "consoleAPICall"));
+  isnot(getRepeatId(message1), getRepeatId(message3),
+    "getRepeatId() returns different repeat ids for different values");
+
+  SimpleTest.finish()
+});
+</script>
+</body>
+</html>
