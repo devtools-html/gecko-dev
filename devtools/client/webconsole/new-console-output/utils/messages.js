@@ -7,8 +7,12 @@
 "use strict";
 
 const {
+  CATEGORY_CLASS_FRAGMENTS,
+  CATEGORY_WEBDEV,
+  CATEGORY_OUTPUT,
   LEVELS,
-  SEVERITY_CLASS_FRAGMENTS
+  SEVERITY_CLASS_FRAGMENTS,
+  SEVERITY_LOG,
 } = require("../constants");
 
 function prepareMessage(packet) {
@@ -24,12 +28,22 @@ function prepareMessage(packet) {
   switch (packet.type) {
     case "consoleAPICall":
       allowRepeating = true;
-      category = "console";
+      category = CATEGORY_CLASS_FRAGMENTS[CATEGORY_WEBDEV];
       data = Object.assign({}, packet.message);
       messageType = "ConsoleApiCall";
       repeat = 1;
       repeatId = getRepeatId(packet.message);
       severity = SEVERITY_CLASS_FRAGMENTS[LEVELS[packet.message.level]];
+      break;
+    case "evaluationResult":
+    default:
+      allowRepeating = true;
+      category = CATEGORY_CLASS_FRAGMENTS[CATEGORY_OUTPUT];
+      data = Object.assign({}, packet.result);
+      messageType = "EvaluationResult";
+      repeat = 1;
+      repeatId = getRepeatId(packet.result);
+      severity = SEVERITY_CLASS_FRAGMENTS[SEVERITY_LOG];
       break;
   }
 
