@@ -24,6 +24,18 @@ let ReactDOM = browserRequire("devtools/client/shared/vendor/react-dom");
 let React = browserRequire("devtools/client/shared/vendor/react");
 var TestUtils = React.addons.TestUtils;
 
+let testCommands = new Map();
+testCommands.set("console.log()", {
+  command: "console.log('foobar', 'test')",
+  commandType: "consoleAPICall",
+  expectedText: "foobar test"
+});
+testCommands.set("new Date()", {
+  command: "new Date(448156800000)",
+  commandType: "evaluationResult",
+  expectedText: "Date 1984-03-15T00:00:00.000Z"
+});
+
 function* getPacket(command, type = "evaluationResult") {
   try {
     // Attach the console to the tab.
