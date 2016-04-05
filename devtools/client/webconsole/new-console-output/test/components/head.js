@@ -69,6 +69,13 @@ function renderComponent(component, props) {
   return ReactDOM.findDOMNode(renderedComponent).children[0];
 }
 
+function shallowRenderComponent(component, props) {
+  const el = React.createElement(component, props);
+  const renderer = TestUtils.createRenderer();
+  renderer.render(el, {});
+  return renderer.getRenderOutput();
+}
+
 function cleanActualHTML(htmlString) {
   return htmlString.replace(/ data-reactid=\".*?\"/g, "");
 }

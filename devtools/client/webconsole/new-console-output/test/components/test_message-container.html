@@ -13,8 +13,6 @@
 
 <script type="text/javascript;version=1.8">
 window.onload = Task.async(function* () {
-  const React = require("devtools/client/shared/vendor/react");
-  const TestUtils = React.addons.TestUtils;
   const { prepareMessage } = require("devtools/client/webconsole/new-console-output/utils/messages");
 
   const { MessageContainer } = require("devtools/client/webconsole/new-console-output/components/message-container");
@@ -22,10 +20,7 @@ window.onload = Task.async(function* () {
 
   const packet = yield getPacket("console.log('foobar', 'test')", "consoleAPICall");
   const message = prepareMessage(packet);
-  const el = React.createElement(MessageContainer, { message });
-  const renderer = TestUtils.createRenderer();
-  renderer.render(el, {});
-  const result = renderer.getRenderOutput();
+  const result = shallowRenderComponent(MessageContainer, { message })
 
   is(result.type, ConsoleApiCall,
     "MessageContainer nests the correct component based on packet");
