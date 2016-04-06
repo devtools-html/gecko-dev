@@ -358,6 +358,8 @@ JSTerm.prototype = {
 
     if (this.hud.SUPER_FRONTEND_EXPERIMENT) {
       this.hud.newConsoleOutput.dispatchMessageAdd(response);
+
+      // @TODO figure out what to do about the objectActors.
     } else {
       let msg = new Messages.JavaScriptEvalOutput(response, errorMessage);
       this.hud.output.addMessage(msg);
