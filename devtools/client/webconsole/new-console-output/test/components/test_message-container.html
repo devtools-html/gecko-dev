@@ -21,7 +21,7 @@ window.onload = Task.async(function* () {
   yield testFullRender();
   yield testGetMessageComponent();
 
-  SimpleTest.finish()
+  SimpleTest.finish();
 
   /**
    * Test that passing in a message correctly wires up all the children.
@@ -50,13 +50,13 @@ window.onload = Task.async(function* () {
       }
     ];
 
-    testValues.forEach(function(testValue) {
-      const packet = yield getPacket(testValue.command, testValue.commandType);
+    for (let testValue of testValues) {
+      const packet = yield getPacket(testValue.command.command, testValue.command.commandType);
       const message = prepareMessage(packet);
-      const rendered = shallowRenderComponent(EvaluationResult, {message});
-      is(result.type, testValue.expectedComponent,
+      const rendered = shallowRenderComponent(MessageContainer, {message});
+      is(rendered.type, testValue.expectedComponent,
         `MessageContainer nests ${testValue.expectedComponent} based on command: ${testValue.command}`);
-    });
+    }
   }
 });
 </script>
