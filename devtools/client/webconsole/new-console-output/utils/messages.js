@@ -17,6 +17,7 @@ const {
 
 function prepareMessage(packet) {
   // @TODO turn this into an Immutable Record.
+  let actor;
   let allowRepeating;
   let category;
   let data;
@@ -37,6 +38,7 @@ function prepareMessage(packet) {
       break;
     case "evaluationResult":
     default:
+      actor = packet.result.actor;
       allowRepeating = true;
       category = CATEGORY_CLASS_FRAGMENTS[CATEGORY_OUTPUT];
       data = Object.assign({}, packet.result);
@@ -48,6 +50,7 @@ function prepareMessage(packet) {
   }
 
   return {
+    actor,
     allowRepeating,
     category,
     data,

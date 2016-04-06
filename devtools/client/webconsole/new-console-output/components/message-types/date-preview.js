@@ -19,18 +19,24 @@ DatePreview.propTypes = {
 };
 
 function DatePreview(props) {
-  const { data } = props;
+  const { data, openVariablesView } = props;
   const { preview } = data;
 
   const dateString = new Date(preview.timestamp).toISOString();
   const textNodes = [
-    dom.a({ className: "cm-variable", draggable: false, href: "#" }, "Date"),
+    dom.a({
+      onClick: openVariablesView,
+      className: "cm-variable",
+      draggable: false,
+      href: "#"
+    }, "Date"),
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];
 
   return dom.div({ className: "message cm-s-mozilla" },
-    dom.span({ className: "message-body-wrapper message-body devtools-monospace" },
-      dom.span({},
+    dom.span({
+      className: "message-body-wrapper message-body devtools-monospace"
+    }, dom.span({},
         dom.span({ className: "class-Date" },
           textNodes
         )
