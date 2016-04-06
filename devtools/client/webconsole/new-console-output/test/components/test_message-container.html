@@ -17,6 +17,7 @@ window.onload = Task.async(function* () {
 
   const { MessageContainer } = require("devtools/client/webconsole/new-console-output/components/message-container");
   const { ConsoleApiCall } = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
+  const { EvaluationResult } = require("devtools/client/webconsole/new-console-output/components/message-types/evaluation-result");
 
   yield testFullRender();
   yield testGetMessageComponent();
@@ -47,6 +48,10 @@ window.onload = Task.async(function* () {
       {
         command: testCommands.get("console.log()"),
         expectedComponent: ConsoleApiCall
+      },
+      {
+        command: testCommands.get("new Date()"),
+        expectedComponent: EvaluationResult
       }
     ];
 

@@ -22,7 +22,6 @@ const MessageContainer = createClass({
   },
 
   render() {
-    debugger
     let MessageComponent = getMessageComponent(this.props.message.messageType);
     return createElement(MessageComponent, { message: this.props.message });
   }
@@ -33,6 +32,9 @@ function getMessageComponent(messageType) {
   switch (messageType) {
     case "ConsoleApiCall":
       MessageComponent = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call").ConsoleApiCall;
+      break;
+    case "EvaluationResult":
+      MessageComponent = require("devtools/client/webconsole/new-console-output/components/message-types/evaluation-result").EvaluationResult;
       break;
   }
   return MessageComponent;
