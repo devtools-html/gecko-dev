@@ -28,10 +28,12 @@ function DatePreview(props) {
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];
 
-  return dom.span({ className: "message-body-wrapper message-body devtools-monospace" },
-    dom.span({},
-      dom.span({ className: "class-Date" },
-        textNodes
+  return dom.div({ className: "message cm-s-mozilla" },
+    dom.span({ className: "message-body-wrapper message-body devtools-monospace" },
+      dom.span({},
+        dom.span({ className: "class-Date" },
+          textNodes
+        )
       )
     )
   );

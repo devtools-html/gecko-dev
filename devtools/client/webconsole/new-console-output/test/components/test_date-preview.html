@@ -21,7 +21,7 @@ window.onload = Task.async(function* () {
   const message = prepareMessage(packet);
   const rendered = renderComponent(DatePreview, {data: message.data});
 
-  const queryPathBase = "span.message-body-wrapper.message-body.devtools-monospace span span.class-Date";
+  const queryPathBase = "div.message.cm-s-mozilla span.message-body-wrapper.message-body.devtools-monospace span span.class-Date";
 
   const preview = rendered.querySelectorAll(queryPathBase);
   is(preview[0].textContent, testCommand.expectedText, "DatePreview outputs expected text");
