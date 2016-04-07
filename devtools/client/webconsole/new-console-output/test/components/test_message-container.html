@@ -46,21 +46,22 @@ window.onload = Task.async(function* () {
   function testGetMessageComponent() {
     const testValues = [
       {
-        command: testCommands.get("console.log()"),
+        commandObj: testCommands.get("console.log()"),
         expectedComponent: ConsoleApiCall
       },
       {
-        command: testCommands.get("new Date()"),
+        commandObj: testCommands.get("new Date()"),
         expectedComponent: EvaluationResult
       }
     ];
 
     for (let testValue of testValues) {
-      const packet = yield getPacket(testValue.command.command, testValue.command.commandType);
+      const { commandObj, expectedComponent } = testValue;
+      const packet = yield getPacket(commandObj.command, commandObj.commandType);
       const message = prepareMessage(packet);
       const rendered = shallowRenderComponent(MessageContainer, {message});
-      is(rendered.type, testValue.expectedComponent,
-        `MessageContainer nests ${testValue.expectedComponent} based on command: ${testValue.command}`);
+      is(rendered.type, expectedComponent,
+        `MessageContainer nests ${expectedComponent} based on command: ${commandObj.command}`);
     }
   }
 });

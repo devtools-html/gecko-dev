@@ -46,18 +46,19 @@ window.onload = Task.async(function* () {
   function testGetPreviewComponent() {
     const testValues = [
       {
-        command: testCommands.get("new Date()"),
+        commandObj: testCommands.get("new Date()"),
         expectedComponent: require("devtools/client/webconsole/new-console-output/components/message-types/date-preview").DatePreview
       }
     ];
 
-    testValues.forEach(function(testValue) {
-      const packet = yield getPacket(testValue.command, testValue.commandType);
+    for (let testValue of testValues) {
+      const { commandObj, expectedComponent } = testValue;
+      const packet = yield getPacket(commandObj.command, commandObj.commandType);
       const message = prepareMessage(packet);
       const rendered = shallowRenderComponent(EvaluationResult, {message});
-      is(result.type, testValue.expectedComponent,
-        `EvaluationResult nests ${testValue.expectedComponent} based on command: ${testValue.command}`);
-    });
+      is(rendered.type, expectedComponent,
+        `EvaluationResult nests ${expectedComponent} based on command: ${commandObj.command}`);
+    }
   }
 });
 
