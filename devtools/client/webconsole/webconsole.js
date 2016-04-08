@@ -525,18 +525,6 @@ WebConsoleFrame.prototype = {
     this.outputNode = doc.getElementById("output-container");
     this.outputWrapper = doc.getElementById("output-wrapper");
 
-    if (this.SUPER_FRONTEND_EXPERIMENT) {
-      console.log("Entering experimental mode for console frontend");
-
-      // XXX: We should actually stop output from happening on old output
-      // panel, but for now let's just hide it.
-      this.experimentalOutputNode = this.outputNode.cloneNode();
-      this.outputNode.hidden = true;
-      this.outputNode.parentNode.appendChild(this.experimentalOutputNode);
-      this.newConsoleOutput = new this.window.NewConsoleOutput(this.experimentalOutputNode);
-      console.log("Created newConsoleOutput", this.newConsoleOutput);
-    }
-
     this.completeNode = doc.querySelector(".jsterm-complete-node");
     this.inputNode = doc.querySelector(".jsterm-input-node");
 
@@ -575,6 +563,20 @@ WebConsoleFrame.prototype = {
 
     this.jsterm = new JSTerm(this);
     this.jsterm.init();
+
+    if (this.SUPER_FRONTEND_EXPERIMENT) {
+      console.log("Entering experimental mode for console frontend");
+
+      // XXX: We should actually stop output from happening on old output
+      // panel, but for now let's just hide it.
+      this.experimentalOutputNode = this.outputNode.cloneNode();
+      this.outputNode.hidden = true;
+      this.outputNode.parentNode.appendChild(this.experimentalOutputNode);
+      // @TODO Once the toolbox has been converted to React, see if passing
+      // in JSTerm is still necessary.
+      this.newConsoleOutput = new this.window.NewConsoleOutput(this.experimentalOutputNode, this.jsterm);
+      console.log("Created newConsoleOutput", this.newConsoleOutput);
+    }
 
     this.resize();
     this.window.addEventListener("resize", this.resize, true);

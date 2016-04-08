@@ -3,31 +3,40 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const React = require("devtools/client/shared/vendor/react");
+const {
+  createClass,
+  createFactory,
+  DOM: dom,
+  PropTypes
+} = require("devtools/client/shared/vendor/react");
 const { connect } = require("devtools/client/shared/vendor/react-redux");
-const DOM = React.DOM;
 
-const MessageContainer = React.createFactory(require("devtools/client/webconsole/new-console-output/components/message-container").MessageContainer);
+const MessageContainer = createFactory(require("devtools/client/webconsole/new-console-output/components/message-container").MessageContainer);
 
-const ConsoleOutput = React.createClass({
+const ConsoleOutput = createClass({
   displayName: "ConsoleOutput",
 
+  propTypes: {
+    "jsterm": PropTypes.object.isRequired
+  },
+
   render() {
+    const { jsterm } = this.props;
     let messageNodes = this.props.messages.map(function(message) {
       return (
-        MessageContainer({ message })
+        MessageContainer({ message, jsterm })
       );
     });
     return (
-      DOM.div({}, messageNodes)
+      dom.div({}, messageNodes)
     );
   }
 });
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
   return {
     messages: state.messages
   };
-};
+}
 
 module.exports = connect(mapStateToProps)(ConsoleOutput);

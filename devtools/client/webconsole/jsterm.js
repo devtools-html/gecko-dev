@@ -358,35 +358,34 @@ JSTerm.prototype = {
 
     if (this.hud.SUPER_FRONTEND_EXPERIMENT) {
       this.hud.newConsoleOutput.dispatchMessageAdd(response);
+      // @TODO figure out what to do about the callback.
+      return;
+    }
+    let msg = new Messages.JavaScriptEvalOutput(response, errorMessage);
+    this.hud.output.addMessage(msg);
 
-      // @TODO figure out what to do about the objectActors.
-    } else {
-      let msg = new Messages.JavaScriptEvalOutput(response, errorMessage);
-      this.hud.output.addMessage(msg);
+    if (callback) {
+      let oldFlushCallback = this.hud._flushCallback;
+      this.hud._flushCallback = () => {
+        callback(msg.element);
+        if (oldFlushCallback) {
+          oldFlushCallback();
+          this.hud._flushCallback = oldFlushCallback;
+          return true;
+        }
 
-      if (callback) {
-        let oldFlushCallback = this.hud._flushCallback;
-        this.hud._flushCallback = () => {
-          callback(msg.element);
-          if (oldFlushCallback) {
-            oldFlushCallback();
-            this.hud._flushCallback = oldFlushCallback;
-            return true;
-          }
+        return false;
+      };
+    }
 
-          return false;
-        };
-      }
+    msg._objectActors = new Set();
 
-      msg._objectActors = new Set();
+    if (WebConsoleUtils.isActorGrip(response.exception)) {
+      msg._objectActors.add(response.exception.actor);
+    }
 
-      if (WebConsoleUtils.isActorGrip(response.exception)) {
-        msg._objectActors.add(response.exception.actor);
-      }
-
-      if (WebConsoleUtils.isActorGrip(result)) {
-        msg._objectActors.add(result.actor);
-      }
+    if (WebConsoleUtils.isActorGrip(result)) {
+      msg._objectActors.add(result.actor);
     }
   },
 
