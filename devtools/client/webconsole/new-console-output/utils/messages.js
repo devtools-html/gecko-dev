@@ -64,20 +64,7 @@ function prepareMessage(packet) {
 }
 
 function getRepeatId(message) {
-  function replacer(key, value) {
-    if (value === null) {
-      return "null";
-    }
-    if (Number.isNaN(value)) {
-      return "NaN";
-    }
-    if (typeof value === "undefined") {
-      return "undefined";
-    }
-    return value;
-  }
-
-  let clonedMessage = JSON.parse(JSON.stringify(message, replacer));
+  let clonedMessage = JSON.parse(JSON.stringify(message));
   delete clonedMessage.timeStamp;
   delete clonedMessage.uniqueID;
   return JSON.stringify(clonedMessage);
