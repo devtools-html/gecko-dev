@@ -14,6 +14,7 @@ const {
   SEVERITY_CLASS_FRAGMENTS,
   SEVERITY_LOG,
 } = require("../constants");
+const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 
 function prepareMessage(packet) {
   // @TODO turn this into an Immutable Record.
@@ -28,23 +29,24 @@ function prepareMessage(packet) {
 
   switch (packet.type) {
     case "consoleAPICall":
+      data = Object.assign({}, packet.message);
+      actor = WebConsoleUtils.isActorGrip(data) ? data : null;
       allowRepeating = true;
       category = CATEGORY_CLASS_FRAGMENTS[CATEGORY_WEBDEV];
-      data = Object.assign({}, packet.message);
       messageType = "ConsoleApiCall";
       repeat = 1;
-      repeatId = getRepeatId(packet.message);
-      severity = SEVERITY_CLASS_FRAGMENTS[LEVELS[packet.message.level]];
+      repeatId = getRepeatId(data);
+      severity = SEVERITY_CLASS_FRAGMENTS[LEVELS[data.level]];
       break;
     case "evaluationResult":
     default:
-      actor = packet.result.actor;
+      data = Object.assign({}, packet.result);
+      actor = WebConsoleUtils.isActorGrip(data) ? data : null;
       allowRepeating = true;
       category = CATEGORY_CLASS_FRAGMENTS[CATEGORY_OUTPUT];
-      data = Object.assign({}, packet.result);
       messageType = "EvaluationResult";
       repeat = 1;
-      repeatId = getRepeatId(packet.result);
+      repeatId = getRepeatId(data);
       severity = SEVERITY_CLASS_FRAGMENTS[SEVERITY_LOG];
       break;
   }
