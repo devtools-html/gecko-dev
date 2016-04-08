@@ -19,7 +19,9 @@ const MessageContainer = createClass({
 
   propTypes: {
     message: PropTypes.object.isRequired,
-    jsterm: PropTypes.object.isRequired
+    jsterm: PropTypes.object.isRequired,
+    // This function is created in mergeProps
+    openVariablesView: PropTypes.func.isRequired
   },
 
   render() {
@@ -47,7 +49,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
   const actor = ownProps.message.actor;
   return Object.assign({}, stateProps, dispatchProps, ownProps, {
     openVariablesView: () => {
-      jsterm.openVariablesView({ objectActor: actor })
+      jsterm.openVariablesView({ objectActor: actor });
     }
   });
 }
@@ -55,4 +57,5 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
 module.exports.MessageContainer = connect(null, null, mergeProps)(MessageContainer);
 
 // Exported so we can test it with unit tests.
+module.exports.UnconnectedMessageContainer = MessageContainer;
 module.exports.getMessageComponent = getMessageComponent;
