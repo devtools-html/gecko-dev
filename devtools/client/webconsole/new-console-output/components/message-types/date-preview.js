@@ -8,9 +8,12 @@
 
 // React & Redux
 const {
+  createFactory,
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
+
+const VariablesViewLink = createFactory(require("devtools/client/webconsole/new-console-output/components/variables-view-link").VariablesViewLink);
 
 DatePreview.displayName = "DatePreview";
 
@@ -24,12 +27,11 @@ function DatePreview(props) {
 
   const dateString = new Date(preview.timestamp).toISOString();
   const textNodes = [
-    dom.a({
-      onClick: openVariablesView,
-      className: "cm-variable",
-      draggable: false,
-      href: "#"
-    }, "Date"),
+    VariablesViewLink({
+      objectActor: data,
+      label: "Date",
+      openVariablesView
+    }),
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];
 

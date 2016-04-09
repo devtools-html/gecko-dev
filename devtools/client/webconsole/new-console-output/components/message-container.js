@@ -46,10 +46,9 @@ function getMessageComponent(messageType) {
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
   const jsterm = ownProps.jsterm;
-  const actor = ownProps.message.actor;
   return Object.assign({}, stateProps, dispatchProps, ownProps, {
-    openVariablesView: () => {
-      jsterm.openVariablesView({ objectActor: actor });
+    openVariablesView: (objectActor) => {
+      jsterm.openVariablesView({objectActor});
     }
   });
 }
