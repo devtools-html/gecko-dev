@@ -70,6 +70,6 @@ function getRepeatId(message) {
   return JSON.stringify(clonedMessage);
 }
 
-// Export for use in testing.
 exports.prepareMessage = prepareMessage;
+// Export for use in testing.
 exports.getRepeatId = getRepeatId;
