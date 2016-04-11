@@ -16,12 +16,11 @@ VariablesViewLink.displayName = "VariablesViewLink";
 
 VariablesViewLink.propTypes = {
   objectActor: PropTypes.object.required,
-  label: PropTypes.string,
+  label: PropTypes.string.label,
   openVariablesView: PropTypes.func.isRequired
 };
 
 function VariablesViewLink(props) {
-  debugger
   const { objectActor, label, openVariablesView } = props;
 
   return dom.a({
