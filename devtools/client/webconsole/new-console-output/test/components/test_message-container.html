@@ -34,7 +34,11 @@ window.onload = Task.async(function* () {
     const testValue = testCommands.get("console.log()");
     const packet = yield getPacket(testValue.command, testValue.commandType);
     const message = prepareMessage(packet);
-    const rendered = renderComponent(MessageContainer, { message });
+    const props = {
+      message,
+      openVariablesView: () => {}
+    };
+    const rendered = renderComponent(MessageContainer, props);
 
     ok(rendered.textContent.contains(testValue.expectedText),
       "MessageContainer pipes data to its children as expected");

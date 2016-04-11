@@ -19,7 +19,12 @@ window.onload = Task.async(function* () {
   const testCommand = testCommands.get("new Date()");
   const packet = yield getPacket(testCommand.command, testCommand.commandType);
   const message = prepareMessage(packet);
-  const rendered = renderComponent(DatePreview, {data: message.data});
+  const props = {
+    data: message.data,
+    // @TODO test the click handler in an end-to-end test.
+    openVariablesView: () => {}
+  };
+  const rendered = renderComponent(DatePreview, props);
 
   const queryPathBase = "div.message.cm-s-mozilla span.message-body-wrapper.message-body.devtools-monospace span span.class-Date";
 
