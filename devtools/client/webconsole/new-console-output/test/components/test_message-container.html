@@ -15,7 +15,7 @@
 window.onload = Task.async(function* () {
   const { prepareMessage } = require("devtools/client/webconsole/new-console-output/utils/messages");
 
-  const { UnconnectedMessageContainer: MessageContainer } = require("devtools/client/webconsole/new-console-output/components/message-container");
+  const { MessageContainer } = require("devtools/client/webconsole/new-console-output/components/message-container");
   const { ConsoleApiCall } = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
   const { EvaluationResult } = require("devtools/client/webconsole/new-console-output/components/message-types/evaluation-result");
 
