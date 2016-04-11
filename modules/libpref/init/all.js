@@ -719,7 +719,7 @@ pref("gfx.canvas.azure.backends", "skia");
 // Accelerated cg canvas where available (10.7+)
 pref("gfx.canvas.azure.accelerated", true);
 #else
-pref("gfx.canvas.azure.backends", "cairo");
+pref("gfx.canvas.azure.backends", "skia");
 pref("gfx.content.azure.backends", "cairo");
 #endif
 #endif
@@ -3770,6 +3770,10 @@ pref("layout.css.scroll-snap.enabled", false);
 pref("ui.panel.default_level_parent", true);
 
 pref("mousewheel.system_scroll_override_on_root_content.enabled", false);
+
+// Forward downloads with known OMA MIME types to Android's download manager
+// instead of downloading them in the browser.
+pref("browser.download.forward_oma_android_download_manager", false);
 
 # ANDROID
 #endif

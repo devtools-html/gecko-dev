@@ -6,6 +6,10 @@
 
 BROWSER_CHROME_MANIFESTS += ['test/browser.ini']
 
+DIRS += [
+    'new-console-output'
+]
+
 DevToolsModules(
     'console-commands.js',
     'console-output.js',
