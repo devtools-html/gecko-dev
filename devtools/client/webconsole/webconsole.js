@@ -565,6 +565,8 @@ WebConsoleFrame.prototype = {
     this.jsterm.init();
 
     if (this.SUPER_FRONTEND_EXPERIMENT) {
+      // @TODO Remove this once JSTerm is handled with React/Redux.
+      this.window.jsterm = this.jsterm;
       console.log("Entering experimental mode for console frontend");
 
       // XXX: We should actually stop output from happening on old output

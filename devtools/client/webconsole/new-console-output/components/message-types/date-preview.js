@@ -22,15 +22,14 @@ DatePreview.propTypes = {
 };
 
 function DatePreview(props) {
-  const { data, openVariablesView } = props;
+  const { data } = props;
   const { preview } = data;
 
   const dateString = new Date(preview.timestamp).toISOString();
   const textNodes = [
     VariablesViewLink({
       objectActor: data,
-      label: "Date",
-      openVariablesView
+      label: "Date"
     }),
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];

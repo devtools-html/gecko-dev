@@ -11,17 +11,17 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
+const {openVariablesView} = require("devtools/client/webconsole/new-console-output/utils/variables-view");
 
 VariablesViewLink.displayName = "VariablesViewLink";
 
 VariablesViewLink.propTypes = {
   objectActor: PropTypes.object.required,
-  label: PropTypes.string.label,
-  openVariablesView: PropTypes.func.isRequired
+  label: PropTypes.string.label
 };
 
 function VariablesViewLink(props) {
-  const { objectActor, label, openVariablesView } = props;
+  const { objectActor, label } = props;
 
   return dom.a({
     onClick: openVariablesView.bind(null, objectActor),
