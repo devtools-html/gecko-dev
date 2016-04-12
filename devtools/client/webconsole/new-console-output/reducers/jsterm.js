@@ -5,10 +5,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { jsterm } = require("./jsterm");
-const { messages } = require("./messages");
+// @TODO This is here so we can hold on to JSTerm and call functions on it.
+// It will be removed once JSTerm functionality is handled with actions.
+function jsterm(state = [], action) {
+  return state;
+}
 
-exports.reducers = {
-  jsterm,
-  messages
-};
+exports.jsterm = jsterm;

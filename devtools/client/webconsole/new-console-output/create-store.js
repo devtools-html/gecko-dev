@@ -10,9 +10,5 @@ function storeFactory(initialState = {}) {
   return createStore(combineReducers(reducers), initialState);
 }
 
-// Provide the single store instance for app code.
-module.exports.store = storeFactory();
-// Provide the store factory for test code so that each test is working with
-// its own instance.
-module.exports.storeFactory = storeFactory;
+module.exports = storeFactory;
 
