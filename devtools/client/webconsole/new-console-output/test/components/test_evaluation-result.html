@@ -34,7 +34,11 @@ window.onload = Task.async(function* () {
     const testValue = testCommands.get("new Date()");
     const packet = yield getPacket(testValue.command, testValue.commandType);
     const message = prepareMessage(packet);
-    const rendered = renderComponent(EvaluationResult, {message});
+    const props = {
+      message,
+      openVariablesView: () => {}
+    };
+    const rendered = renderComponent(EvaluationResult, props);
 
     ok(rendered.textContent.contains(testValue.expectedText),
       "EvaluationResult pipes data to its children as expected");

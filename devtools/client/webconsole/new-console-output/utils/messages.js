@@ -18,7 +18,6 @@ const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 
 function prepareMessage(packet) {
   // @TODO turn this into an Immutable Record.
-  let actor;
   let allowRepeating;
   let category;
   let data;
@@ -30,7 +29,6 @@ function prepareMessage(packet) {
   switch (packet.type) {
     case "consoleAPICall":
       data = Object.assign({}, packet.message);
-      actor = WebConsoleUtils.isActorGrip(data) ? data : null;
       allowRepeating = true;
       category = CATEGORY_CLASS_FRAGMENTS[CATEGORY_WEBDEV];
       messageType = "ConsoleApiCall";
@@ -41,7 +39,6 @@ function prepareMessage(packet) {
     case "evaluationResult":
     default:
       data = Object.assign({}, packet.result);
-      actor = WebConsoleUtils.isActorGrip(data) ? data : null;
       allowRepeating = true;
       category = CATEGORY_CLASS_FRAGMENTS[CATEGORY_OUTPUT];
       messageType = "EvaluationResult";
@@ -52,7 +49,6 @@ function prepareMessage(packet) {
   }
 
   return {
-    actor,
     allowRepeating,
     category,
     data,

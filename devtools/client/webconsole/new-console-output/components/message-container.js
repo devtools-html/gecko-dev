@@ -12,15 +12,12 @@ const {
   createElement,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-const { connect } = require("devtools/client/shared/vendor/react-redux");
 
 const MessageContainer = createClass({
   displayName: "MessageContainer",
 
   propTypes: {
     message: PropTypes.object.isRequired,
-    jsterm: PropTypes.object.isRequired,
-    // This function is created in mergeProps
     openVariablesView: PropTypes.func.isRequired
   },
 
@@ -44,18 +41,7 @@ function getMessageComponent(messageType) {
   return MessageComponent;
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
-  const jsterm = ownProps.jsterm;
-  const actor = ownProps.message.actor;
-  return Object.assign({}, stateProps, dispatchProps, ownProps, {
-    openVariablesView: () => {
-      jsterm.openVariablesView({ objectActor: actor });
-    }
-  });
-}
-
-module.exports.MessageContainer = connect(null, null, mergeProps)(MessageContainer);
+module.exports.MessageContainer = MessageContainer;
 
 // Exported so we can test it with unit tests.
-module.exports.UnconnectedMessageContainer = MessageContainer;
 module.exports.getMessageComponent = getMessageComponent;

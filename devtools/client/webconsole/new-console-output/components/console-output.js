@@ -17,14 +17,16 @@ const ConsoleOutput = createClass({
   displayName: "ConsoleOutput",
 
   propTypes: {
-    "jsterm": PropTypes.object.isRequired
+    jsterm: PropTypes.object.isRequired,
+    // This function is created in mergeProps
+    openVariablesView: PropTypes.func.isRequired
   },
 
   render() {
-    const { jsterm } = this.props;
+    const { openVariablesView } = this.props;
     let messageNodes = this.props.messages.map(function(message) {
       return (
-        MessageContainer({ message, jsterm })
+        MessageContainer({ message, openVariablesView })
       );
     });
     return (
@@ -39,4 +41,13 @@ function mapStateToProps(state) {
   };
 }
 
-module.exports = connect(mapStateToProps)(ConsoleOutput);
+function mergeProps(stateProps, dispatchProps, ownProps) {
+  const jsterm = ownProps.jsterm;
+  return Object.assign({}, stateProps, dispatchProps, ownProps, {
+    openVariablesView: (objectActor) => {
+      jsterm.openVariablesView({objectActor});
+    }
+  });
+}
+
+module.exports = connect(mapStateToProps, null, mergeProps)(ConsoleOutput);
