@@ -16,17 +16,10 @@ const MessageContainer = createFactory(require("devtools/client/webconsole/new-c
 const ConsoleOutput = createClass({
   displayName: "ConsoleOutput",
 
-  propTypes: {
-    jsterm: PropTypes.object.isRequired,
-    // This function is created in mergeProps
-    openVariablesView: PropTypes.func.isRequired
-  },
-
   render() {
-    const { openVariablesView } = this.props;
     let messageNodes = this.props.messages.map(function(message) {
       return (
-        MessageContainer({ message, openVariablesView })
+        MessageContainer({ message })
       );
     });
     return (
@@ -41,13 +34,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
-  const jsterm = ownProps.jsterm;
-  return Object.assign({}, stateProps, dispatchProps, ownProps, {
-    openVariablesView: (objectActor) => {
-      jsterm.openVariablesView({objectActor});
-    }
-  });
-}
-
-module.exports = connect(mapStateToProps, null, mergeProps)(ConsoleOutput);
+module.exports = connect(mapStateToProps)(ConsoleOutput);

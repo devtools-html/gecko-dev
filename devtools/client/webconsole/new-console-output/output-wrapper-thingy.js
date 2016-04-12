@@ -8,27 +8,25 @@ const React = require("devtools/client/shared/vendor/react");
 const ReactDOM = require("devtools/client/shared/vendor/react-dom");
 const { Provider } = require("devtools/client/shared/vendor/react-redux");
 
-const {
-  MESSAGE_ADD,
-  MESSAGES_CLEAR
-} = require("devtools/client/webconsole/new-console-output/constants");
 const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
-const { store } = require("devtools/client/webconsole/new-console-output/store");
+const createStore = require("devtools/client/webconsole/new-console-output/create-store");
 
 const ConsoleOutput = React.createFactory(require("devtools/client/webconsole/new-console-output/components/console-output"));
 
 function OutputWrapperThingy(parentNode, jsterm) {
-  let childComponent = ConsoleOutput({ jsterm });
-  let provider = React.createElement(Provider, { store: store }, childComponent);
+  this.store = createStore({jsterm});
+  let childComponent = ConsoleOutput();
+  let provider = React.createElement(Provider, { store: this.store },
+    childComponent);
   this.body = ReactDOM.render(provider, parentNode);
 }
 
 OutputWrapperThingy.prototype = {
-  dispatchMessageAdd: (message) => {
-    store.dispatch(actions.messageAdd(message));
+  dispatchMessageAdd: function(message) {
+    this.store.dispatch(actions.messageAdd(message));
   },
-  dispatchMessagesClear: () => {
-    store.dispatch(actions.messagesClear());
+  dispatchMessagesClear: function() {
+    this.store.dispatch(actions.messagesClear());
   }
 };
 

@@ -11,6 +11,7 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
+const provideJSTermFunctions = require("devtools/client/webconsole/new-console-output/components/jsterm-function-provider");
 
 VariablesViewLink.displayName = "VariablesViewLink";
 
@@ -31,4 +32,4 @@ function VariablesViewLink(props) {
   }, label);
 }
 
-module.exports.VariablesViewLink = VariablesViewLink;
+module.exports.VariablesViewLink = provideJSTermFunctions(VariablesViewLink);

@@ -12,9 +12,9 @@ DIRS += [
 
 DevToolsModules(
     'constants.js',
+    'create-store.js',
     'main.js',
     'output-wrapper-thingy.js',
-    'store.js',
 )
 
 MOCHITEST_CHROME_MANIFESTS += [
