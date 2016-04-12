@@ -33,6 +33,7 @@ function getPreviewComponent(data) {
         return require("devtools/client/webconsole/new-console-output/components/message-types/date-preview").DatePreview;
     }
   }
+  return require("devtools/client/webconsole/new-console-output/components/message-types/default-renderer").DefaultRenderer;
 }
 
 module.exports.EvaluationResult = EvaluationResult;
