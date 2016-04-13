@@ -910,9 +910,14 @@ JSTerm.prototype = {
   clearOutput: function(clearStorage) {
     let hud = this.hud;
     let outputNode = hud.outputNode;
-    let node;
-    while ((node = outputNode.firstChild)) {
-      hud.removeOutputMessage(node);
+
+    if (hud.SUPER_FRONTEND_EXPERIMENT) {
+      hud.newConsoleOutput.dispatchMessagesClear();
+    } else {
+      let node;
+      while ((node = outputNode.firstChild)) {
+        hud.removeOutputMessage(node);
+      }
     }
 
     hud.groupDepth = 0;
@@ -926,10 +931,6 @@ JSTerm.prototype = {
     }
 
     this._sidebarDestroy();
-
-    if (hud.SUPER_FRONTEND_EXPERIMENT) {
-      hud.newConsoleOutput.dispatchMessagesClear();
-    }
 
     this.emit("messages-cleared");
   },
