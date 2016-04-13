@@ -35,7 +35,7 @@ function ConsoleApiCall(props) {
   // attributes to be applied. I believe these are only used for testing so
   // can probably eventually be removed.
   return dom.div({
-    "class": "message cm-s-mozilla",
+    className: "message cm-s-mozilla",
     is: "fdt-message",
     category: message.category,
     severity: message.severity,
