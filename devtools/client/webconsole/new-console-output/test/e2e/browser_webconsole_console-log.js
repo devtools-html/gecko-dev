@@ -37,9 +37,9 @@ function testConsoleRepeats(hud) {
     messages: [
       {
         name: "console.log 'foo repeat' repeated twice",
-        category: 4,
+        category: CATEGORY_WEBDEV,
         severity: SEVERITY_LOG,
-        repeats: 1,
+        repeats: 2,
       }
     ],
   });
