@@ -39,7 +39,7 @@ function testConsoleRepeats(hud) {
         name: "console.log 'foo repeat' repeated twice",
         category: CATEGORY_WEBDEV,
         severity: SEVERITY_LOG,
-        repeats: 2,
+        text: "foo",
       }
     ],
   });

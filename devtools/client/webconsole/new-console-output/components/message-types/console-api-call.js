@@ -34,7 +34,12 @@ function ConsoleApiCall(props) {
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. I believe these are only used for testing so
   // can probably eventually be removed.
-  return dom.div({ is: "fdt-message", category: message.category, severity: message.severity },
+  return dom.div({
+    "class": "message cm-s-mozilla",
+    is: "fdt-message",
+    category: message.category,
+    severity: message.severity,
+  },
     dom.span({className: "message-body-wrapper"},
       dom.span({},
         dom.span({className: "message-flex-body"},

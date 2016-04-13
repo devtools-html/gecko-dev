@@ -1391,7 +1391,7 @@ function waitForMessages(options) {
 
   executeSoon(() => {
     let messages = [];
-    for (let elem of webconsole.outputNode.childNodes) {
+    for (let elem of webconsole.outputNode.querySelectorAll(".message")) {
       messages.push({
         node: elem,
         update: false,
