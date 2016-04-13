@@ -9,14 +9,9 @@
 // React & Redux
 const {
   DOM: dom,
-  PropTypes
 } = require("devtools/client/shared/vendor/react");
 
 DefaultRenderer.displayName = "DefaultRenderer";
-
-DefaultRenderer.propTypes = {
-  message: PropTypes.object.isRequired,
-};
 
 function DefaultRenderer(props) {
   return dom.div({ className: "message cm-s-mozilla" },
