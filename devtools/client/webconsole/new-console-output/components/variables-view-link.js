@@ -17,7 +17,7 @@ VariablesViewLink.displayName = "VariablesViewLink";
 
 VariablesViewLink.propTypes = {
   objectActor: PropTypes.object.required,
-  label: PropTypes.string.label
+  label: PropTypes.string.label,
 };
 
 function VariablesViewLink(props) {
