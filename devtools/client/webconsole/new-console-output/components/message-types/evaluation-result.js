@@ -21,9 +21,9 @@ EvaluationResult.propTypes = {
 };
 
 function EvaluationResult(props) {
-  const { message, openVariablesView } = props;
+  const { message } = props;
   let PreviewComponent = getPreviewComponent(message.data);
-  return createElement(PreviewComponent, { data: message.data, openVariablesView });
+  return createElement(PreviewComponent, { data: message.data });
 }
 
 function getPreviewComponent(data) {

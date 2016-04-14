@@ -21,8 +21,6 @@ window.onload = Task.async(function* () {
   const message = prepareMessage(packet);
   const props = {
     data: message.data,
-    // @TODO test the click handler in an end-to-end test.
-    openVariablesView: () => {}
   };
   const rendered = renderComponent(DatePreview, props);
 
