@@ -571,12 +571,15 @@ WebConsoleFrame.prototype = {
 
       // XXX: We should actually stop output from happening on old output
       // panel, but for now let's just hide it.
-      this.experimentalOutputNode = this.outputNode.cloneNode();
-      this.outputNode.hidden = true;
-      this.outputNode.parentNode.appendChild(this.experimentalOutputNode);
+      let oldOutputNode = this.outputNode;
+      let clonedOutputNode = this.outputNode.cloneNode();
+      this.outputNode.parentNode.appendChild(clonedOutputNode);
+      oldOutputNode.remove();
+      this.outputNode = clonedOutputNode;
+
       // @TODO Once the toolbox has been converted to React, see if passing
       // in JSTerm is still necessary.
-      this.newConsoleOutput = new this.window.NewConsoleOutput(this.experimentalOutputNode, this.jsterm);
+      this.newConsoleOutput = new this.window.NewConsoleOutput(this.outputNode, this.jsterm);
       console.log("Created newConsoleOutput", this.newConsoleOutput);
     }
 
@@ -1414,7 +1417,12 @@ WebConsoleFrame.prototype = {
    *        The console API message received from the server.
    */
   handleConsoleAPICall: function(message) {
-    this.outputMessage(CATEGORY_WEBDEV, this.logConsoleAPIMessage, [message]);
+    if (this.SUPER_FRONTEND_EXPERIMENT) {
+      this.outputMessage(CATEGORY_WEBDEV, this.logConsoleAPIMessage, [message]);
+      return;
+    }
+
+    this.outputMessage(CATEGORY_WEBDEV, this.logConsoleAPIMessage, [message.message]);
   },
 
   /**
@@ -1984,6 +1992,24 @@ WebConsoleFrame.prototype = {
    *        back end.
    */
   outputMessage: function(category, methodOrNode, args) {
+     // With the new frontend, prevent any of this machinery from happening
+    if (this.SUPER_FRONTEND_EXPERIMENT) {
+      let message = args[0];
+      this.newConsoleOutput.dispatchMessageAdd(message);
+
+      // TODO render a unique id (from + timestamp) on the frontend for querySelector later.
+      // This'll do in the meantime
+      let allMessages = this.outputNode.querySelectorAll(".message");
+      let messages = new Set();
+      messages.add({
+        node: allMessages[allMessages.length-1],
+        response: message.message,
+        update: false,
+      });
+      this.emit("new-messages", messages);
+      return;
+    }
+
     if (!this._outputQueue.length) {
       // If the queue is empty we consider that now was the last output flush.
       // This avoid an immediate output flush when the timer executes.
@@ -3359,11 +3385,7 @@ WebConsoleConnectionProxy.prototype = {
    */
   _onConsoleAPICall: function(type, packet) {
     if (this.webConsoleFrame && packet.from == this._consoleActor) {
-      if (this.webConsoleFrame.SUPER_FRONTEND_EXPERIMENT) {
-        this.webConsoleFrame.newConsoleOutput.dispatchMessageAdd(packet);
-      } else {
-        this.webConsoleFrame.handleConsoleAPICall(packet.message);
-      }
+      this.webConsoleFrame.handleConsoleAPICall(packet);
     }
   },
 
@@ -3435,7 +3457,7 @@ WebConsoleConnectionProxy.prototype = {
    */
   _onServerLogCall: function(type, packet) {
     if (this.webConsoleFrame && packet.from == this._consoleActor) {
-      this.webConsoleFrame.handleConsoleAPICall(packet.message);
+      this.webConsoleFrame.handleConsoleAPICall(packet);
     }
   },
 
