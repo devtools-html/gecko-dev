@@ -31,7 +31,15 @@ function PageError(props) {
     repeat
   ];
 
-  return dom.div({ className: "message cm-s-mozilla"},
+  // @TODO Use of "is" is a temporary hack to get the category and severity
+  // attributes to be applied. There are targeted in webconsole's CSS rules,
+  // so if we remove this hack, we have to modify the CSS rules accordingly.
+  return dom.div({
+    class: "message cm-s-mozilla",
+    is: "page-error-message",
+    category: message.category,
+    severity: message.severity
+  },
     dom.span({className: "message-body-wrapper"},
       dom.span({},
         dom.span({className: "message-flex-body"},
