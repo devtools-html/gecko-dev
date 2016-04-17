@@ -36,7 +36,7 @@ function PageError(props) {
   // so if we remove this hack, we have to modify the CSS rules accordingly.
   return dom.div({
     class: "message cm-s-mozilla",
-    is: "page-error-message",
+    is: "fdt-message",
     category: message.category,
     severity: message.severity
   },

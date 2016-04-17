@@ -14,7 +14,16 @@ const {
 DefaultRenderer.displayName = "DefaultRenderer";
 
 function DefaultRenderer(props) {
-  return dom.div({ className: "message cm-s-mozilla" },
+  const { data } = props;
+  // @TODO Use of "is" is a temporary hack to get the category and severity
+  // attributes to be applied. There are targeted in webconsole's CSS rules,
+  // so if we remove this hack, we have to modify the CSS rules accordingly.
+  return dom.div({
+    class: "message cm-s-mozilla",
+    is: "fdt-message",
+    category: data.category,
+    severity: data.severity
+  },
     "This evaluation result type is not supported yet."
   );
 }

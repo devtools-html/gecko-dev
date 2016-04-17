@@ -34,7 +34,15 @@ function DatePreview(props) {
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];
 
-  return dom.div({ className: "message cm-s-mozilla" },
+  // @TODO Use of "is" is a temporary hack to get the category and severity
+  // attributes to be applied. There are targeted in webconsole's CSS rules,
+  // so if we remove this hack, we have to modify the CSS rules accordingly.
+  return dom.div({
+    class: "message cm-s-mozilla",
+    is: "fdt-message",
+    category: data.category,
+    severity: data.severity
+  },
     dom.span({
       className: "message-body-wrapper message-body devtools-monospace"
     }, dom.span({},
