@@ -13,6 +13,7 @@ const {
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 const { MessageRepeat } = require("devtools/client/webconsole/new-console-output/components/message-repeat");
+const { MessageIcon } = require("devtools/client/webconsole/new-console-output/components/message-icon");
 
 PageError.displayName = "PageError";
 
@@ -26,6 +27,7 @@ function PageError(props) {
     dom.span({className: "message-body devtools-monospace"},
       message.data.errorMessage);
   const repeat = createElement(MessageRepeat, {repeat: message.repeat});
+  const icon = createElement(MessageIcon, {severity: message.severity});
   const children = [
     messageBody,
     repeat
@@ -40,6 +42,7 @@ function PageError(props) {
     category: message.category,
     severity: message.severity
   },
+    icon,
     dom.span({className: "message-body-wrapper"},
       dom.span({},
         dom.span({className: "message-flex-body"},

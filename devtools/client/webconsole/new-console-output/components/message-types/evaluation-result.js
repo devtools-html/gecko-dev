@@ -23,7 +23,12 @@ EvaluationResult.propTypes = {
 function EvaluationResult(props) {
   const { message } = props;
   let PreviewComponent = getPreviewComponent(message.data);
-  return createElement(PreviewComponent, { data: message.data });
+
+  return createElement(PreviewComponent, {
+    data: message.data,
+    category: message.category,
+    severity: message.severity
+  });
 }
 
 function getPreviewComponent(data) {

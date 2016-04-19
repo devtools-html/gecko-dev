@@ -8,12 +8,14 @@
 
 // React & Redux
 const {
+  createElement,
   createFactory,
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 
 const VariablesViewLink = createFactory(require("devtools/client/webconsole/new-console-output/components/variables-view-link").VariablesViewLink);
+const { MessageIcon } = require("devtools/client/webconsole/new-console-output/components/message-icon");
 
 DatePreview.displayName = "DatePreview";
 
@@ -22,7 +24,7 @@ DatePreview.propTypes = {
 };
 
 function DatePreview(props) {
-  const { data } = props;
+  const { data, category, severity } = props;
   const { preview } = data;
 
   const dateString = new Date(preview.timestamp).toISOString();
@@ -33,6 +35,7 @@ function DatePreview(props) {
     }),
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];
+  const icon = createElement(MessageIcon, {severity: data.severity});
 
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. There are targeted in webconsole's CSS rules,
@@ -40,9 +43,10 @@ function DatePreview(props) {
   return dom.div({
     class: "message cm-s-mozilla",
     is: "fdt-message",
-    category: data.category,
-    severity: data.severity
+    category: category,
+    severity: severity
   },
+    icon,
     dom.span({
       className: "message-body-wrapper message-body devtools-monospace"
     }, dom.span({},

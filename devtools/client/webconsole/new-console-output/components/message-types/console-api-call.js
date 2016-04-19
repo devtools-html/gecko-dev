@@ -13,6 +13,7 @@ const {
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 const { MessageRepeat } = require("devtools/client/webconsole/new-console-output/components/message-repeat");
+const { MessageIcon } = require("devtools/client/webconsole/new-console-output/components/message-icon");
 
 ConsoleApiCall.displayName = "ConsoleApiCall";
 
@@ -25,6 +26,7 @@ function ConsoleApiCall(props) {
   const messageBody =
     dom.span({className: "message-body devtools-monospace"},
       formatTextContent(message.data.arguments));
+  const icon = createElement(MessageIcon, {severity: message.severity});
   const repeat = createElement(MessageRepeat, {repeat: message.repeat});
   const children = [
     messageBody,
@@ -40,6 +42,7 @@ function ConsoleApiCall(props) {
     category: message.category,
     severity: message.severity
   },
+    icon,
     dom.span({className: "message-body-wrapper"},
       dom.span({},
         dom.span({className: "message-flex-body"},
