@@ -16,18 +16,17 @@ const {l10n} = require("devtools/client/webconsole/new-console-output/utils/mess
 MessageIcon.displayName = "MessageIcon";
 
 MessageIcon.propTypes = {
-  severity: PropTypes.object.isRequired,
+  severity: PropTypes.string.isRequired,
 };
 
 function MessageIcon(props) {
   const { severity } = props;
-  let config = {
-    className: "icon"
-  };
-  if (severity) {
-    config.title = l10n.getStr("severity." + severity);
-  }
-  return dom.div(config);
+
+  const title = l10n.getStr("severity." + severity);
+  return dom.div({
+    className: "icon",
+    title
+  });
 }
 
 module.exports.MessageIcon = MessageIcon;

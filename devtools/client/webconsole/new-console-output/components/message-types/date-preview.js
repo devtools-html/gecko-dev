@@ -35,7 +35,7 @@ function DatePreview(props) {
     }),
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];
-  const icon = createElement(MessageIcon, {severity: data.severity});
+  const icon = createElement(MessageIcon, { severity });
 
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. There are targeted in webconsole's CSS rules,

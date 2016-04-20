@@ -16,9 +16,9 @@ const { MessageIcon } = require("devtools/client/webconsole/new-console-output/c
 DefaultRenderer.displayName = "DefaultRenderer";
 
 function DefaultRenderer(props) {
-  const { data, category, severity } = props;
+  const { category, severity } = props;
 
-  const icon = createElement(MessageIcon, {severity: data.severity});
+  const icon = createElement(MessageIcon, { severity });
 
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. There are targeted in webconsole's CSS rules,

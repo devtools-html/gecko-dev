@@ -18,12 +18,11 @@ window.onload = Task.async(function* () {
     SEVERITY_ERROR,
   } = require("devtools/client/webconsole/new-console-output/constants");
   const { MessageIcon } = require("devtools/client/webconsole/new-console-output/components/message-icon");
-  const {l10n} = require("devtools/client/webconsole/new-console-output/utils/messages");
 
   let severity = SEVERITY_CLASS_FRAGMENTS[SEVERITY_ERROR];
-  const iconRendered = renderComponent(MessageIcon, { severity});
+  const iconRendered = renderComponent(MessageIcon, { severity });
   ok(iconRendered.classList.contains("icon"), "MessageIcon has expected class");
-  is(iconRendered.getAttribute("title"), l10n.getStr("severity." + severity),
+  is(iconRendered.getAttribute("title"), "Error",
     "MessageIcon shows correct title attribute");
 
   SimpleTest.finish();
