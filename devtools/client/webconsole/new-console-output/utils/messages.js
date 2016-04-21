@@ -15,7 +15,6 @@ const {
   SEVERITY_CLASS_FRAGMENTS,
   SEVERITY_ERROR,
   SEVERITY_WARNING,
-  SEVERITY_INFO,
   SEVERITY_LOG,
 } = require("../constants");
 const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;

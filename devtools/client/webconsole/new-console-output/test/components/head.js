@@ -1,5 +1,9 @@
 /* Any copyright is dedicated to the Public Domain.
    http://creativecommons.org/publicdomain/zero/1.0/ */
+
+/* exported getPacket, renderComponent, shallowRenderComponent,
+   cleanActualHTML, cleanExpectedHTML */
+
 "use strict";
 
 var { utils: Cu } = Components;
@@ -45,7 +49,7 @@ function* getPacket(command, type = "evaluationResult") {
   try {
     // Attach the console to the tab.
     let state = yield new Promise(function(resolve) {
-      attachConsoleToTab(["ConsoleAPI"], (state) => resolve(state));
+      attachConsoleToTab(["ConsoleAPI"], resolve);
     });
 
     // Run the command and get the packet.
@@ -53,12 +57,12 @@ function* getPacket(command, type = "evaluationResult") {
     switch (type) {
       case "consoleAPICall":
         packet = yield new Promise((resolve) => {
-          function onConsoleApiCall(type, packet) {
+          function onConsoleApiCall(apiCallType, apiCallPacket) {
             state.dbgClient.removeListener("consoleAPICall", onConsoleApiCall);
-            resolve(packet)
-          };
-          state.dbgClient.addListener("consoleAPICall", onConsoleApiCall)
-          eval(`top.${command}`);
+            resolve(apiCallPacket);
+          }
+          state.dbgClient.addListener("consoleAPICall", onConsoleApiCall);
+          state.client.evaluateJS(`top.${command}`);
         });
         break;
       case "evaluationResult":

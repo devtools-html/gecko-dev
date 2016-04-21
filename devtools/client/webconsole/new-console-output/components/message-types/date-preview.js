@@ -19,7 +19,7 @@ const MessageIcon = createFactory(require("devtools/client/webconsole/new-consol
 DatePreview.displayName = "DatePreview";
 
 DatePreview.propTypes = {
-  message: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 function DatePreview(props) {

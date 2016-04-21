@@ -14,11 +14,12 @@ const {
 } = require("devtools/client/shared/vendor/react");
 
 const MessageContainer = createClass({
-  displayName: "MessageContainer",
 
   propTypes: {
     message: PropTypes.object.isRequired
   },
+
+  displayName: "MessageContainer",
 
   render() {
     const { message } = this.props;

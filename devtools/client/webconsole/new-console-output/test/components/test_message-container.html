@@ -40,7 +40,7 @@ window.onload = Task.async(function* () {
     };
     const rendered = renderComponent(MessageContainer, props);
 
-    ok(rendered.textContent.contains(testValue.expectedText),
+    ok(rendered.textContent.includes(testValue.expectedText),
       "MessageContainer pipes data to its children as expected");
   }
 
