@@ -8,12 +8,12 @@
 
 // React & Redux
 const {
-  createElement,
+  createFactory,
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-const { MessageRepeat } = require("devtools/client/webconsole/new-console-output/components/message-repeat");
-const { MessageIcon } = require("devtools/client/webconsole/new-console-output/components/message-icon");
+const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
+const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
 ConsoleApiCall.displayName = "ConsoleApiCall";
 
@@ -26,8 +26,8 @@ function ConsoleApiCall(props) {
   const messageBody =
     dom.span({className: "message-body devtools-monospace"},
       formatTextContent(message.data.arguments));
-  const icon = createElement(MessageIcon, {severity: message.severity});
-  const repeat = createElement(MessageRepeat, {repeat: message.repeat});
+  const icon = MessageIcon({severity: message.severity});
+  const repeat = MessageRepeat({repeat: message.repeat});
   const children = [
     messageBody,
     repeat

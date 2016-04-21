@@ -8,14 +8,13 @@
 
 // React & Redux
 const {
-  createElement,
   createFactory,
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 
 const VariablesViewLink = createFactory(require("devtools/client/webconsole/new-console-output/components/variables-view-link").VariablesViewLink);
-const { MessageIcon } = require("devtools/client/webconsole/new-console-output/components/message-icon");
+const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
 DatePreview.displayName = "DatePreview";
 
@@ -35,7 +34,7 @@ function DatePreview(props) {
     }),
     dom.span({ className: "cm-string-2" }, ` ${dateString}`)
   ];
-  const icon = createElement(MessageIcon, { severity });
+  const icon = MessageIcon({ severity });
 
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. There are targeted in webconsole's CSS rules,

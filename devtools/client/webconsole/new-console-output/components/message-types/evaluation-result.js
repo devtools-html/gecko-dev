@@ -8,11 +8,9 @@
 
 // React & Redux
 const {
-  createElement,
-  DOM: dom,
+  createFactory,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-const { MessageRepeat } = require("devtools/client/webconsole/new-console-output/components/message-repeat");
 
 EvaluationResult.displayName = "EvaluationResult";
 
@@ -24,7 +22,7 @@ function EvaluationResult(props) {
   const { message } = props;
   let PreviewComponent = getPreviewComponent(message.data);
 
-  return createElement(PreviewComponent, {
+  return PreviewComponent({
     data: message.data,
     category: message.category,
     severity: message.severity
@@ -35,10 +33,10 @@ function getPreviewComponent(data) {
   if (typeof data.class != "undefined") {
     switch (data.class) {
       case "Date":
-        return require("devtools/client/webconsole/new-console-output/components/message-types/date-preview").DatePreview;
+        return createFactory(require("devtools/client/webconsole/new-console-output/components/message-types/date-preview").DatePreview);
     }
   }
-  return require("devtools/client/webconsole/new-console-output/components/message-types/default-renderer").DefaultRenderer;
+  return createFactory(require("devtools/client/webconsole/new-console-output/components/message-types/default-renderer").DefaultRenderer);
 }
 
 module.exports.EvaluationResult = EvaluationResult;
