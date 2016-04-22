@@ -9,7 +9,7 @@
 // React & Redux
 const {
   createClass,
-  createElement,
+  createFactory,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 
@@ -23,7 +23,7 @@ const MessageContainer = createClass({
   render() {
     const { message } = this.props;
     let MessageComponent = getMessageComponent(message.messageType);
-    return createElement(MessageComponent, { message });
+    return MessageComponent({ message });
   }
 });
 
@@ -40,7 +40,7 @@ function getMessageComponent(messageType) {
       MessageComponent = require("devtools/client/webconsole/new-console-output/components/message-types/page-error").PageError;
       break;
   }
-  return MessageComponent;
+  return createFactory(MessageComponent);
 }
 
 module.exports.MessageContainer = MessageContainer;

@@ -8,17 +8,17 @@
 
 // React & Redux
 const {
-  createElement,
+  createFactory,
   DOM: dom,
 } = require("devtools/client/shared/vendor/react");
-const { MessageIcon } = require("devtools/client/webconsole/new-console-output/components/message-icon");
+const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
 DefaultRenderer.displayName = "DefaultRenderer";
 
 function DefaultRenderer(props) {
   const { category, severity } = props;
 
-  const icon = createElement(MessageIcon, { severity });
+  const icon = MessageIcon({ severity });
 
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. There are targeted in webconsole's CSS rules,
