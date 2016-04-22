@@ -18,9 +18,9 @@ const rootUrl = "resource://devtools/client/webconsole/new-console-output/";
 const require = BrowserLoader({
   baseURI: rootUrl,
   window: this}).require;
-const OutputWrapperThingy = require("./output-wrapper-thingy");
+const NewConsoleOutputWrapper = require("./new-console-output-wrapper");
 
 this.NewConsoleOutput = function(parentNode, jsterm) {
-  console.log("Creating NewConsoleOutput", parentNode, OutputWrapperThingy);
-  return new OutputWrapperThingy(parentNode, jsterm);
+  console.log("Creating NewConsoleOutput", parentNode, NewConsoleOutputWrapper);
+  return new NewConsoleOutputWrapper(parentNode, jsterm);
 };
