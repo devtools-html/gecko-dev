@@ -356,7 +356,7 @@ JSTerm.prototype = {
       return;
     }
 
-    if (this.hud.SUPER_FRONTEND_EXPERIMENT) {
+    if (this.hud.NEW_CONSOLE_OUTPUT_ENABLED) {
       this.hud.newConsoleOutput.dispatchMessageAdd(response);
       // @TODO figure out what to do about the callback.
       return;
@@ -927,7 +927,7 @@ JSTerm.prototype = {
 
     this._sidebarDestroy();
 
-    if (hud.SUPER_FRONTEND_EXPERIMENT) {
+    if (hud.NEW_CONSOLE_OUTPUT_ENABLED) {
       hud.newConsoleOutput.dispatchMessagesClear();
     }
 
