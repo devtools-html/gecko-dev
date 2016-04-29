@@ -5,8 +5,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-const { messages } = require("./messages");
+const { messages, getAllMessages } = require("./messages");
 
 exports.reducers = {
-  messages
+  messages,
+  getAllMessages
 };
