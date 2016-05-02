@@ -12,7 +12,7 @@ const {
 const ReactDOM = require("devtools/client/shared/vendor/react-dom");
 const { connect } = require("devtools/client/shared/vendor/react-redux");
 
-const { reducers } = require("devtools/client/webconsole/new-console-output//reducers/index");
+const { getAllMessages } = require("devtools/client/webconsole/new-console-output/selectors/messages");
 const MessageContainer = createFactory(require("devtools/client/webconsole/new-console-output/components/message-container").MessageContainer);
 
 const ConsoleOutput = createClass({
@@ -62,7 +62,7 @@ function isScrolledToBottom(outputNode, scrollNode) {
 
 function mapStateToProps(state) {
   return {
-    messages: reducers.getAllMessages(state)
+    messages: getAllMessages(state)
   };
 }
 

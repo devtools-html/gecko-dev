@@ -26,12 +26,4 @@ function messages(state = [], action) {
   return state;
 }
 
-function getAllMessages(state = null) {
-  if (!state || !state.messages) {
-    return [];
-  }
-  return state.messages;
-}
-
 exports.messages = messages;
-exports.getAllMessages = getAllMessages;
