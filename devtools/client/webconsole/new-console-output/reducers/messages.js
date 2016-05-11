@@ -14,7 +14,7 @@ function messages(state = Immutable.List(), action) {
       let newMessage = action.message;
 
       if (newMessage.data.level === "clear") {
-        return Immutable.List(newMessage);
+        return Immutable.List([newMessage]);
       }
 
       if (newMessage.allowRepeating && state.size > 0) {

@@ -72,11 +72,13 @@ add_task(function*() {
 
   const expectedMessage = prepareMessage(packet);
 
-  deepEqual(getAllMessages(getState()), [expectedMessage],
+  let messages = getAllMessages(getState());
+  deepEqual(messages.toArray(), [expectedMessage],
     "MESSAGE_ADD action adds a message");
 
   dispatch(actions.messageAdd(clearPacket));
 
-  deepEqual(getAllMessages(getState()), [prepareMessage(clearPacket)],
+  messages = getAllMessages(getState());
+  deepEqual(messages.toArray(), [prepareMessage(clearPacket)],
     "console.clear clears existing messages and add a new one");
 });
