@@ -16,15 +16,16 @@ const {
 const MessageContainer = createClass({
 
   propTypes: {
+    openVariablesView: PropTypes.func.isRequired,
     message: PropTypes.object.isRequired
   },
 
   displayName: "MessageContainer",
 
   render() {
-    const { message } = this.props;
+    const { message, openVariablesView } = this.props;
     let MessageComponent = getMessageComponent(message.messageType);
-    return MessageComponent({ message });
+    return MessageComponent({ message, openVariablesView });
   }
 });
 

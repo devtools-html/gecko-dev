@@ -7,7 +7,7 @@
 "use strict";
 
 // Make this available to both AMD and CJS environments
-define(function(require, exports, module) {
+define(function (require, exports, module) {
   // Dependencies
   const React = require("devtools/client/shared/vendor/react");
   const { createFactories } = require("./rep-utils");
@@ -19,20 +19,22 @@ define(function(require, exports, module) {
   const StringRep = React.createClass({
     displayName: "StringRep",
 
-    render: function() {
+    render: function () {
       let text = this.props.object;
       let member = this.props.member;
-      if (member && member.open) {
+      let preventCropString = this.props.preventCropString;
+      if ((member && member.open) || preventCropString === true) {
         return (
           ObjectBox({className: "string"},
-            "\"" + text + "\""
+            addSurroundingQuotes(text, this.props.hideSurroundingQuotes)
           )
         );
       }
 
       return (
         ObjectBox({className: "string"},
-          "\"" + cropMultipleLines(text) + "\""
+          addSurroundingQuotes(cropMultipleLines(text),
+            this.props.hideSurroundingQuotes)
         )
       );
     },
@@ -89,6 +91,13 @@ define(function(require, exports, module) {
 
   function supportsObject(object, type) {
     return (type == "string");
+  }
+
+  function addSurroundingQuotes(text, hideSurroundingQuotes) {
+    if (hideSurroundingQuotes === true) {
+      return text;
+    }
+    return `"${text}"`;
   }
 
   // Exports from this module

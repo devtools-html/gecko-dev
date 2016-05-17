@@ -12,20 +12,23 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
+const { createFactories } = require("devtools/client/shared/components/reps/rep-utils");
+const { Rep } = createFactories(require("devtools/client/shared/components/reps/rep"));
 const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
 const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
 ConsoleApiCall.displayName = "ConsoleApiCall";
 
 ConsoleApiCall.propTypes = {
-  message: PropTypes.object.isRequired,
+  openVariablesView: PropTypes.func.isRequired,
+  message: PropTypes.object.isRequired
 };
 
 function ConsoleApiCall(props) {
-  const { message } = props;
+  const { message, openVariablesView } = props;
   const messageBody =
     dom.span({className: "message-body devtools-monospace"},
-      formatTextContent(message.data.arguments));
+      buildReps(message.data.arguments, openVariablesView));
   const icon = MessageIcon({severity: message.severity});
   const repeat = MessageRepeat({repeat: message.repeat});
   const children = [
@@ -53,13 +56,17 @@ function ConsoleApiCall(props) {
   );
 }
 
-function formatTextContent(args) {
-  return args.map(function(arg, i, arr) {
-    const str = dom.span({className: "console-string"}, arg);
-    if (i < arr.length - 1) {
-      return [str, " "];
-    }
-    return str;
+function buildReps(args, openVariablesView) {
+  return args.map(function (arg, i, arr) {
+    return Rep({
+      object: arg,
+      hideSurroundingQuotes: true,
+      preventCropString: true,
+      titleLinkHandler: function () {
+        console.log("titleLinkHandler clicked", arg);
+        openVariablesView({objectActor: arg});
+      }
+    });
   });
 }
 

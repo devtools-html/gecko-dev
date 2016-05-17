@@ -6,7 +6,7 @@
 "use strict";
 
 // Make this available to both AMD and CJS environments
-define(function(require, exports, module) {
+define(function (require, exports, module) {
   // ReactJS
   const React = require("devtools/client/shared/vendor/react");
 
@@ -16,7 +16,7 @@ define(function(require, exports, module) {
   const { Caption } = createFactories(require("./caption"));
 
   // Shortcuts
-  const { span } = React.DOM;
+  const { a, span } = React.DOM;
 
   /**
    * @template TODO docs
@@ -29,11 +29,17 @@ define(function(require, exports, module) {
 
     displayName: "Grip",
 
-    getTitle: function() {
+    getTitle: function (object, titleLinkHandler) {
+      if (titleLinkHandler) {
+        return a({
+          className: "variableViewLink",
+          onClick: titleLinkHandler
+        }, object.class);
+      }
       return "";
     },
 
-    longPropIterator: function(object) {
+    longPropIterator: function (object) {
       try {
         return this.propIterator(object, 100);
       } catch (err) {
@@ -42,7 +48,7 @@ define(function(require, exports, module) {
       return [];
     },
 
-    shortPropIterator: function(object) {
+    shortPropIterator: function (object) {
       try {
         return this.propIterator(object, 3);
       } catch (err) {
@@ -51,7 +57,7 @@ define(function(require, exports, module) {
       return [];
     },
 
-    propIterator: function(object, max) {
+    propIterator: function (object, max) {
       // Property filter. Show only interesting properties to the user.
       let isInterestingProp = (type, value) => {
         return (
@@ -68,7 +74,7 @@ define(function(require, exports, module) {
 
       if (props.length <= max) {
         // There are not enough props yet (or at least, not enough props to
-        // be able to know whether we should print "more..." or not).
+        // be able to know whether we should print "more…" or not).
         // Let's display also empty members and functions.
         props = props.concat(this.getProps(object, max, (t, value) => {
           return !isInterestingProp(t, value);
@@ -77,12 +83,12 @@ define(function(require, exports, module) {
 
       // getProps() can return max+1 properties (it can't return more)
       // to indicate that there is more props than allowed. Remove the last
-      // one and append 'more...' postfix in such case.
+      // one and append 'more…' postfix in such case.
       if (props.length > max) {
         props.pop();
         props.push(Caption({
           key: "more",
-          object: "more...",
+          object: "more…",
         }));
       } else if (props.length > 0) {
         // Remove the last comma.
@@ -97,7 +103,7 @@ define(function(require, exports, module) {
       return props;
     },
 
-    getProps: function(object, max, filter) {
+    getProps: function (object, max, filter) {
       let props = [];
 
       max = max || 3;
@@ -139,7 +145,7 @@ define(function(require, exports, module) {
       return props;
     },
 
-    render: function() {
+    render: function () {
       let object = this.props.object;
       let props = this.shortPropIterator(object);
 
@@ -154,6 +160,7 @@ define(function(require, exports, module) {
 
       return (
         ObjectBox({className: "object"},
+          this.getTitle(object, this.props.titleLinkHandler),
           span({className: "objectTitle"}, this.getTitle(object)),
           span({className: "objectLeftBrace", role: "presentation"}, "{"),
           props,
@@ -175,7 +182,7 @@ define(function(require, exports, module) {
 
     displayName: "PropRep",
 
-    render: function() {
+    render: function () {
       let { Rep } = createFactories(require("./rep"));
 
       return (
