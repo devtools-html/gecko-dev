@@ -14,6 +14,7 @@ const {
 } = require("devtools/client/shared/vendor/react");
 const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
 const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
+const Stacktrace = createFactory(require("devtools/client/webconsole/new-console-output/components/stacktrace").Stacktrace);
 
 ConsoleApiCall.displayName = "ConsoleApiCall";
 
@@ -23,9 +24,26 @@ ConsoleApiCall.propTypes = {
 
 function ConsoleApiCall(props) {
   const { message } = props;
+
+  let content;
+  if (message.data.level === "trace") {
+    content = [
+      dom.span({className: "cm-variable"}, "console"),
+      ".",
+      dom.span({className: "cm-property"}, "trace"),
+      "():"
+    ];
+  } else {
+    content = formatTextContent(message.data.arguments);
+  }
+
+  let container = "";
+  if (message.data.stacktrace) {
+    container = Stacktrace({stacktrace: message.data.stacktrace});
+  }
+
   const messageBody =
-    dom.span({className: "message-body devtools-monospace"},
-      formatTextContent(message.data.arguments));
+    dom.span({className: "message-body devtools-monospace"}, content);
   const icon = MessageIcon({severity: message.severity});
   const repeat = MessageRepeat({repeat: message.repeat});
   const children = [
@@ -40,14 +58,16 @@ function ConsoleApiCall(props) {
     class: "message cm-s-mozilla",
     is: "fdt-message",
     category: message.category,
-    severity: message.severity
+    severity: message.severity,
+    open: (message.data.level === "trace")
   },
     icon,
     dom.span({className: "message-body-wrapper"},
       dom.span({},
         dom.span({className: "message-flex-body"},
           children
-        )
+        ),
+        container
       )
     )
   );

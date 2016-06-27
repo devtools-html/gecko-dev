@@ -9,8 +9,10 @@ DIRS += [
 
 DevToolsModules(
     'console-output.js',
+    'function-call.js',
     'message-container.js',
     'message-icon.js',
     'message-repeat.js',
+    'stacktrace.js',
     'variables-view-link.js'
 )

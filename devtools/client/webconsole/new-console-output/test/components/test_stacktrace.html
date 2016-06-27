@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <title>Test for Stacktrace component</title>
+  <script type="text/javascript" src="chrome://mochikit/content/tests/SimpleTest/SimpleTest.js"></script>
+  <script type="application/javascript;version=1.8" src="head.js"></script>
+  <!-- Any copyright is dedicated to the Public Domain.
+     - http://creativecommons.org/publicdomain/zero/1.0/ -->
+</head>
+<body>
+<p>Test for Stacktrace component</p>
+
+<script type="text/javascript;version=1.8">
+"use strict";
+window.onload = Task.async(function* () {
+  const { Stacktrace } = require("devtools/client/webconsole/new-console-output/components/stacktrace");
+
+  let mock = [{
+    functionName: "foo",
+    asyncCause: null
+  }, {
+    functionName: "bar",
+    asyncCause: null
+  }, {
+    functionName: "",
+    asyncCause: null
+  }];
+  const stacktraceRendered = renderComponent(Stacktrace, { stacktrace: mock });
+  ok(stacktraceRendered.classList.contains("stacktrace"),
+    "Stacktrace has expected class");
+
+  const functionCalls = stacktraceRendered.querySelectorAll("li");
+  is(functionCalls.length, 3,
+    "Stacktrace has the expected number of li items");
+
+  SimpleTest.finish();
+});
+</script>
+</body>
+</html>

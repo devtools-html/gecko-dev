@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <title>Test for FunctionCall component</title>
+  <script type="text/javascript" src="chrome://mochikit/content/tests/SimpleTest/SimpleTest.js"></script>
+  <script type="application/javascript;version=1.8" src="head.js"></script>
+  <!-- Any copyright is dedicated to the Public Domain.
+     - http://creativecommons.org/publicdomain/zero/1.0/ -->
+</head>
+<body>
+<p>Test for FunctionCall component</p>
+
+<script type="text/javascript;version=1.8">
+"use strict";
+window.onload = Task.async(function* () {
+  const { FunctionCall } = require("devtools/client/webconsole/new-console-output/components/function-call");
+
+  info("Test named function call");
+  const namedFunctionCallRendered = renderComponent(FunctionCall, {
+    functionName: "foo"
+  });
+  ok(namedFunctionCallRendered.classList.contains("function"),
+    "FunctionCall component has expected class");
+  is(namedFunctionCallRendered.textContent, "foo()",
+    "Named FunctionCall has the expected text content");
+  ok(namedFunctionCallRendered.firstChild.classList.contains("cm-variable"),
+    "Named FunctionCall children has the expected className");
+
+  info("Test anonymous function call");
+  const anonymousFunctionCallRendered = renderComponent(FunctionCall, {
+    functionName: ""
+  });
+  ok(anonymousFunctionCallRendered.classList.contains("function"),
+    "FunctionCall component has expected class");
+  is(anonymousFunctionCallRendered.textContent, "<anonymous>",
+    "Anonymous FunctionCall has the expected text content");
+  ok(anonymousFunctionCallRendered.firstChild.classList.contains("cm-comment"),
+    "Anonymous FunctionCall children has the expected className");
+
+  info("Test async function call");
+  const asyncFunctionCallRendered = renderComponent(FunctionCall, {
+    functionName: "bar",
+    asyncCause: "setTimeout handler"
+  });
+  is(asyncFunctionCallRendered.textContent, "(Async: setTimeout handler) bar()",
+    "Async FunctionCall has the expected text content");
+
+  SimpleTest.finish();
+});
+</script>
+</body>
+</html>
