@@ -3333,10 +3333,27 @@ WebConsoleConnectionProxy.prototype = {
       response.messages.concat(...this.webConsoleClient.getNetworkEvents());
     messages.sort((a, b) => a.timeStamp - b.timeStamp);
 
-    this.webConsoleFrame.displayCachedMessages(messages);
-
-    if (!this._hasNativeConsoleAPI) {
-      this.webConsoleFrame.logWarningAboutReplacedAPI();
+    if (this.webConsoleFrame.NEW_CONSOLE_OUTPUT_ENABLED) {
+      for (let packet of messages) {
+        // The packet returned from getCachedMessages has different shape from
+        // packets in onConsoleApiCall.
+        let convertPacket = {};
+        if (packet._type === "ConsoleAPI") {
+          convertPacket.message = packet;
+          convertPacket.type = "consoleAPICall";
+        } else if (packet._type === "PageError") {
+          convertPacket.pageError = packet;
+          convertPacket.type = "pageError";
+        } else {
+          throw new Error("Unexpected packet type");
+        }
+        this.webConsoleFrame.newConsoleOutput.dispatchMessageAdd(convertPacket);
+      }
+    } else {
+      this.webConsoleFrame.displayCachedMessages(messages);
+      if (!this._hasNativeConsoleAPI) {
+        this.webConsoleFrame.logWarningAboutReplacedAPI();
+      }
     }
 
     this.connected = true;
