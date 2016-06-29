@@ -12,6 +12,10 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
+const { createFactories } = require("devtools/client/shared/components/reps/rep-utils");
+const { Rep } = createFactories(require("devtools/client/shared/components/reps/rep"));
+const { Grip } = require("devtools/client/shared/components/reps/grip");
+const VariablesViewLink = createFactory(require("devtools/client/webconsole/new-console-output/components/variables-view-link").VariablesViewLink);
 const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
 const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
@@ -23,9 +27,15 @@ ConsoleApiCall.propTypes = {
 
 function ConsoleApiCall(props) {
   const { message } = props;
+  const evaluatedOutput =
+    message.data.arguments.map((arg) => Rep({
+      object: arg,
+      objectLink: VariablesViewLink,
+      defaultRep: Grip
+    }));
   const messageBody =
     dom.span({className: "message-body devtools-monospace"},
-      formatTextContent(message.data.arguments));
+      evaluatedOutput);
   const icon = MessageIcon({severity: message.severity});
   const repeat = MessageRepeat({repeat: message.repeat});
   const children = [
@@ -51,16 +61,6 @@ function ConsoleApiCall(props) {
       )
     )
   );
-}
-
-function formatTextContent(args) {
-  return args.map(function(arg, i, arr) {
-    const str = dom.span({className: "console-string"}, arg);
-    if (i < arr.length - 1) {
-      return [str, " "];
-    }
-    return str;
-  });
 }
 
 module.exports.ConsoleApiCall = ConsoleApiCall;
