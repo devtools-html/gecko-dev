@@ -9,8 +9,15 @@
 // React & Redux
 const {
   createFactory,
+  DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
+const { createFactories } = require("devtools/client/shared/components/reps/rep-utils");
+const { Rep } = createFactories(require("devtools/client/shared/components/reps/rep"));
+const VariablesViewLink = createFactory(require("devtools/client/webconsole/new-console-output/components/variables-view-link").VariablesViewLink);
+const { Grip } = require("devtools/client/shared/components/reps/grip");
+const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
+const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
 EvaluationResult.displayName = "EvaluationResult";
 
@@ -20,23 +27,41 @@ EvaluationResult.propTypes = {
 
 function EvaluationResult(props) {
   const { message } = props;
-  let PreviewComponent = getPreviewComponent(message.data);
+  console.log(message);
+  const evaluatedOutput =
+    Rep({
+      object: message.data,
+      objectLink: VariablesViewLink,
+      defaultRep: Grip
+    });
+  const messageBody =
+    dom.span({className: "message-body devtools-monospace"},
+      evaluatedOutput);
+  const icon = MessageIcon({severity: message.severity});
+  const repeat = MessageRepeat({repeat: message.repeat});
+  const children = [
+    messageBody,
+    repeat
+  ];
 
-  return PreviewComponent({
-    data: message.data,
+  // @TODO Use of "is" is a temporary hack to get the category and severity
+  // attributes to be applied. There are targeted in webconsole's CSS rules,
+  // so if we remove this hack, we have to modify the CSS rules accordingly.
+  return dom.div({
+    class: "message cm-s-mozilla",
+    is: "fdt-message",
     category: message.category,
     severity: message.severity
-  });
-}
-
-function getPreviewComponent(data) {
-  if (typeof data.class != "undefined") {
-    switch (data.class) {
-      case "Date":
-        return createFactory(require("devtools/client/webconsole/new-console-output/components/message-types/date-preview").DatePreview);
-    }
-  }
-  return createFactory(require("devtools/client/webconsole/new-console-output/components/message-types/default-renderer").DefaultRenderer);
+  },
+    icon,
+    dom.span({className: "message-body-wrapper"},
+      dom.span({},
+        dom.span({className: "message-flex-body"},
+          children
+        )
+      )
+    )
+  );
 }
 
 module.exports.EvaluationResult = EvaluationResult;
