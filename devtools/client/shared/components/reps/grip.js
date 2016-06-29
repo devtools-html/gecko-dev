@@ -29,7 +29,12 @@ define(function(require, exports, module) {
 
     displayName: "Grip",
 
-    getTitle: function() {
+    getTitle: function(object) {
+      if (this.props.objectLink) {
+        return this.props.objectLink({
+          objectActor: object
+        }, object.class);
+      }
       return "";
     },
 
@@ -80,9 +85,14 @@ define(function(require, exports, module) {
       // one and append 'more...' postfix in such case.
       if (props.length > max) {
         props.pop();
+
+        let objectLink = this.props.objectLink || span;
+
         props.push(Caption({
           key: "more",
-          object: "more...",
+          object: objectLink({
+            objectActor: object
+          }, "more...")
         }));
       } else if (props.length > 0) {
         // Remove the last comma.
@@ -142,22 +152,35 @@ define(function(require, exports, module) {
     render: function() {
       let object = this.props.object;
       let props = this.shortPropIterator(object);
+      let objectLink = this.props.objectLink || span;
 
       if (this.props.mode == "tiny" || !props.length) {
         return (
           ObjectBox({className: "object"},
-            span({className: "objectTitle"}, this.getTitle(object)),
-            span({className: "objectLeftBrace", role: "presentation"}, "{}")
+            this.getTitle(object),
+            objectLink({
+              className: "objectLeftBrace",
+              role: "presentation",
+              objectActor: object
+            }, "{}")
           )
         );
       }
 
       return (
         ObjectBox({className: "object"},
-          span({className: "objectTitle"}, this.getTitle(object)),
-          span({className: "objectLeftBrace", role: "presentation"}, "{"),
+          this.getTitle(object),
+          objectLink({
+            className: "objectLeftBrace",
+            role: "presentation",
+            objectActor: object
+          }, "{"),
           props,
-          span({className: "objectRightBrace"}, "}")
+          objectLink({
+            className: "objectRightBrace",
+            role: "presentation",
+            objectActor: object
+          }, "}")
         )
       );
     },

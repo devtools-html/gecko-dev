@@ -36,29 +36,22 @@ define(function(require, exports, module) {
         items = this.arrayIterator(object, max);
       }
 
+      let objectLink = this.props.objectLink || DOM.span;
+
       return (
         ObjectBox({
-          className: "array",
-          onClick: this.onToggleProperties},
-          DOM.a({
-            className: "objectLink",
-            onclick: this.onClickBracket},
-            DOM.span({
-              className: "arrayLeftBracket",
-              role: "presentation"},
-              "["
-            )
-          ),
+          className: "array"},
+          objectLink({
+            className: "arrayLeftBracket",
+            role: "presentation",
+            objectActor: object
+          }, "["),
           items,
-          DOM.a({
-            className: "objectLink",
-            onclick: this.onClickBracket},
-            DOM.span({
-              className: "arrayRightBracket",
-              role: "presentation"},
-              "]"
-            )
-          ),
+          objectLink({
+            className: "arrayRightBracket",
+            role: "presentation",
+            objectActor: object
+          }, "]"),
           DOM.span({
             className: "arrayProperties",
             role: "group"}
@@ -105,9 +98,13 @@ define(function(require, exports, module) {
 
       if (array.length > max + 1) {
         items.pop();
+
+        let objectLink = this.props.objectLink || DOM.span;
         items.push(Caption({
           key: "more",
-          object: "more...",
+          object: objectLink({
+            objectActor: this.props.object
+          }, "more...")
         }));
       }
 
