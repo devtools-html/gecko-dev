@@ -12,10 +12,7 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-const { createFactories } = require("devtools/client/shared/components/reps/rep-utils");
-const { Rep } = createFactories(require("devtools/client/shared/components/reps/rep"));
-const { Grip } = require("devtools/client/shared/components/reps/grip");
-const VariablesViewLink = createFactory(require("devtools/client/webconsole/new-console-output/components/variables-view-link").VariablesViewLink);
+const GripMessageBody = createFactory(require("devtools/client/webconsole/new-console-output/components/grip-message-body").GripMessageBody);
 const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
 const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
@@ -27,21 +24,11 @@ ConsoleApiCall.propTypes = {
 
 function ConsoleApiCall(props) {
   const { message } = props;
-  const evaluatedOutput =
-    message.data.arguments.map((arg) => Rep({
-      object: arg,
-      objectLink: VariablesViewLink,
-      defaultRep: Grip
-    }));
+
   const messageBody =
-    dom.span({className: "message-body devtools-monospace"},
-      evaluatedOutput);
+    message.data.arguments.map((arg) => GripMessageBody({grip: arg}));
   const icon = MessageIcon({severity: message.severity});
   const repeat = MessageRepeat({repeat: message.repeat});
-  const children = [
-    messageBody,
-    repeat
-  ];
 
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. There are targeted in webconsole's CSS rules,
@@ -52,11 +39,16 @@ function ConsoleApiCall(props) {
     category: message.category,
     severity: message.severity
   },
+    // @TODO add timestamp
+    // @TODO add indent if necessary
     icon,
     dom.span({className: "message-body-wrapper"},
       dom.span({},
         dom.span({className: "message-flex-body"},
-          children
+          dom.span({className: "message-body devtools-monospace"},
+            messageBody
+          ),
+          repeat
         )
       )
     )

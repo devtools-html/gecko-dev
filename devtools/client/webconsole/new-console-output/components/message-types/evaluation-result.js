@@ -12,11 +12,7 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-const { createFactories } = require("devtools/client/shared/components/reps/rep-utils");
-const { Rep } = createFactories(require("devtools/client/shared/components/reps/rep"));
-const VariablesViewLink = createFactory(require("devtools/client/webconsole/new-console-output/components/variables-view-link").VariablesViewLink);
-const { Grip } = require("devtools/client/shared/components/reps/grip");
-const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
+const GripMessageBody = createFactory(require("devtools/client/webconsole/new-console-output/components/grip-message-body").GripMessageBody);
 const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
 
 EvaluationResult.displayName = "EvaluationResult";
@@ -27,22 +23,7 @@ EvaluationResult.propTypes = {
 
 function EvaluationResult(props) {
   const { message } = props;
-
-  const evaluatedOutput =
-    Rep({
-      object: message.data,
-      objectLink: VariablesViewLink,
-      defaultRep: Grip
-    });
-  const messageBody =
-    dom.span({className: "message-body devtools-monospace"},
-      evaluatedOutput);
   const icon = MessageIcon({severity: message.severity});
-  const repeat = MessageRepeat({repeat: message.repeat});
-  const children = [
-    messageBody,
-    repeat
-  ];
 
   // @TODO Use of "is" is a temporary hack to get the category and severity
   // attributes to be applied. There are targeted in webconsole's CSS rules,
@@ -53,13 +34,13 @@ function EvaluationResult(props) {
     category: message.category,
     severity: message.severity
   },
+    // @TODO add timestamp
+    // @TODO add indent if needed with console.group
     icon,
     dom.span(
       {className: "message-body-wrapper message-body devtools-monospace"},
       dom.span({},
-        dom.span({className: "class-Date"},
-          children
-        )
+        GripMessageBody({grip: message.data})
       )
     )
   );
