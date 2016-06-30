@@ -3333,15 +3333,10 @@ WebConsoleConnectionProxy.prototype = {
       response.messages.concat(...this.webConsoleClient.getNetworkEvents());
     messages.sort((a, b) => a.timeStamp - b.timeStamp);
 
-    if (this.webConsoleFrame.NEW_CONSOLE_OUTPUT_ENABLED) {
-      for (let packet of messages) {
-        this.webConsoleFrame.newConsoleOutput.dispatchMessageAdd(packet);
-      }
-    } else {
-      this.webConsoleFrame.displayCachedMessages(messages);
-      if (!this._hasNativeConsoleAPI) {
-        this.webConsoleFrame.logWarningAboutReplacedAPI();
-      }
+    this.webConsoleFrame.displayCachedMessages(messages);
+
+    if (!this._hasNativeConsoleAPI) {
+      this.webConsoleFrame.logWarningAboutReplacedAPI();
     }
 
     this.connected = true;
