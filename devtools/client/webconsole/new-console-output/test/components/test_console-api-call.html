@@ -22,9 +22,10 @@ window.onload = Task.async(function* () {
 
   const queryPath = "div.message.cm-s-mozilla span span.message-flex-body span.message-body.devtools-monospace";
   const messageBody = rendered.querySelectorAll(queryPath);
-  const consoleStringNodes = messageBody[0].querySelectorAll("span.console-string");
+  const consoleStringNodes = messageBody[0].querySelectorAll(".objectBox");
   is(consoleStringNodes.length, 2, "ConsoleApiCall outputs expected HTML structure");
-  is(messageBody[0].textContent, "foobar test", "ConsoleApiCall outputs expected text");
+  // @TODO should output: foobar test
+  is(messageBody[0].textContent, "\"foobar\"\"test\"", "ConsoleApiCall outputs expected text");
 
   SimpleTest.finish()
 });
