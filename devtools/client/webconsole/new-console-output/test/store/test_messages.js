@@ -40,12 +40,11 @@ add_task(function* () {
   dispatch(actions.messageAdd(packet));
   dispatch(actions.messageAdd(packet));
 
-  const expectedMessage = prepareMessage(packet);
-  expectedMessage.repeat = 3;
-
-  let messages = getAllMessages(getState());
-  deepEqual(messages.toArray(), [expectedMessage],
-    "Adding same message to the store three times results in repeated message");
+  const messages = getAllMessages(getState());
+  equal(messages.size, 1,
+    "Repeated messages don't increase message list size");
+  const actualMessage = messages.first();
+  equal(3, actualMessage.repeat, "Repeated message is updated as expected");
 });
 
 /**

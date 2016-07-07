@@ -8,10 +8,11 @@
 const Immutable = require("devtools/client/shared/vendor/immutable");
 
 exports.ConsoleMessage = Immutable.Record({
-  allowRepeating: false,
+  allowRepeating: true,
   category: "output",
   severity: "log",
   data: null,
   messageType: "evaluationResult",
   repeat: 1,
+  repeatId: null,
 });
