@@ -43,7 +43,7 @@ add_task(function* () {
   const messages = getAllMessages(getState());
   equal(messages.size, 1,
     "Repeated messages don't increase message list size");
-  equal(3, messages.first().repeat, "Repeated message is updated as expected");
+  equal(messages.first().repeat, 3, "Repeated message is updated as expected");
 
   let newPacket = Object.assign({}, packet);
   newPacket.message.arguments = ["funny"];

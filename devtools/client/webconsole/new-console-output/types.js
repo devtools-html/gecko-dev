@@ -12,7 +12,7 @@ exports.ConsoleMessage = Immutable.Record({
   category: "output",
   severity: "log",
   data: null,
-  messageType: "evaluationResult",
+  messageType: null,
   repeat: 1,
   repeatId: null,
 });
