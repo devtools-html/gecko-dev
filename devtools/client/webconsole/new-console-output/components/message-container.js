@@ -15,6 +15,8 @@ const {
 
 const componentMap = new Map([
   ["ConsoleApiCall", require("./message-types/console-api-call").ConsoleApiCall],
+  ["ConsoleCommand", require("./message-types/console-command").ConsoleCommand],
+  ["DefaultRenderer", require("./message-types/default-renderer").DefaultRenderer],
   ["EvaluationResult", require("./message-types/evaluation-result").EvaluationResult],
   ["PageError", require("./message-types/page-error").PageError]
 ]);
@@ -28,16 +30,31 @@ const MessageContainer = createClass({
 
   render() {
     const { message } = this.props;
-    let MessageComponent = getMessageComponent(message.messageType);
+    let MessageComponent = getMessageComponent(message);
     return MessageComponent({ message });
   }
 });
 
-function getMessageComponent(messageType) {
-  if (!componentMap.has(messageType)) {
-    throw new Error("Message type not supported");
+function getMessageComponent(message) {
+  // @TODO Once packets have been converted to Chrome RDP structure, remove.
+  if (message.messageType) {
+    let {messageType} = message;
+    if (!componentMap.has(messageType)) {
+      return componentMap.get("DefaultRenderer");
+    }
+    return createFactory(componentMap.get(messageType));
   }
-  return createFactory(componentMap.get(messageType));
+
+  switch (message.source) {
+    case "javascript":
+      switch (message.type) {
+        case "command":
+          return componentMap.get("ConsoleCommand");
+      }
+      break;
+  }
+
+  return componentMap.get("DefaultRenderer");
 }
 
 module.exports.MessageContainer = MessageContainer;
