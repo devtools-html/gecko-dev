@@ -43,8 +43,14 @@ add_task(function* () {
   const messages = getAllMessages(getState());
   equal(messages.size, 1,
     "Repeated messages don't increase message list size");
-  const actualMessage = messages.first();
-  equal(3, actualMessage.repeat, "Repeated message is updated as expected");
+  equal(3, messages.first().repeat, "Repeated message is updated as expected");
+
+  let newPacket = Object.assign({}, packet);
+  newPacket.message.arguments = ["funny"];
+  dispatch(actions.messageAdd(newPacket));
+
+  equal(getAllMessages(getState()).size, 2,
+    "Non-repeated messages aren't clobbered");
 });
 
 /**
