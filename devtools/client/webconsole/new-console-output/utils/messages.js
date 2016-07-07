@@ -22,22 +22,6 @@ const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";
 const l10n = new WebConsoleUtils.L10n(STRINGS_URI);
 const { ConsoleMessage } = require("../types");
 
-function convertCachedPacket(packet) {
-  // The devtools server provides cached message packets in a different shape
-  // from those of consoleApiCalls, so we prepare them for preparation here.
-  let convertPacket = {};
-  if (packet._type === "ConsoleAPI") {
-    convertPacket.message = packet;
-    convertPacket.type = "consoleAPICall";
-  } else if (packet._type === "PageError") {
-    convertPacket.pageError = packet;
-    convertPacket.type = "pageError";
-  } else {
-    throw new Error("Unexpected packet type");
-  }
-  return convertPacket;
-}
-
 function prepareMessage(packet) {
   if (packet._type) {
     packet = convertCachedPacket(packet);
@@ -95,11 +79,28 @@ function prepareMessage(packet) {
   }
 }
 
+// Helpers
 function getRepeatId(message) {
   let clonedMessage = JSON.parse(JSON.stringify(message));
   delete clonedMessage.timeStamp;
   delete clonedMessage.uniqueID;
   return JSON.stringify(clonedMessage);
+}
+
+function convertCachedPacket(packet) {
+  // The devtools server provides cached message packets in a different shape
+  // from those of consoleApiCalls, so we prepare them for preparation here.
+  let convertPacket = {};
+  if (packet._type === "ConsoleAPI") {
+    convertPacket.message = packet;
+    convertPacket.type = "consoleAPICall";
+  } else if (packet._type === "PageError") {
+    convertPacket.pageError = packet;
+    convertPacket.type = "pageError";
+  } else {
+    throw new Error("Unexpected packet type");
+  }
+  return convertPacket;
 }
 
 exports.prepareMessage = prepareMessage;
