@@ -13,13 +13,18 @@ const {
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 
+const componentMap = new Map([
+  ["ConsoleApiCall", require("./message-types/console-api-call").ConsoleApiCall],
+  ["EvaluationResult", require("./message-types/evaluation-result").EvaluationResult],
+  ["PageError", require("./message-types/page-error").PageError]
+]);
+
 const MessageContainer = createClass({
+  displayName: "MessageContainer",
 
   propTypes: {
     message: PropTypes.object.isRequired
   },
-
-  displayName: "MessageContainer",
 
   render() {
     const { message } = this.props;
@@ -29,19 +34,10 @@ const MessageContainer = createClass({
 });
 
 function getMessageComponent(messageType) {
-  let MessageComponent;
-  switch (messageType) {
-    case "ConsoleApiCall":
-      MessageComponent = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call").ConsoleApiCall;
-      break;
-    case "EvaluationResult":
-      MessageComponent = require("devtools/client/webconsole/new-console-output/components/message-types/evaluation-result").EvaluationResult;
-      break;
-    case "PageError":
-      MessageComponent = require("devtools/client/webconsole/new-console-output/components/message-types/page-error").PageError;
-      break;
+  if (!componentMap.has(messageType)) {
+    throw new Error("Message type not supported");
   }
-  return createFactory(MessageComponent);
+  return createFactory(componentMap.get(messageType));
 }
 
 module.exports.MessageContainer = MessageContainer;
