@@ -7,12 +7,10 @@
 "use strict";
 
 const {
-  CATEGORY_CLASS_FRAGMENTS,
   CATEGORY_JS,
   CATEGORY_WEBDEV,
   CATEGORY_OUTPUT,
   LEVELS,
-  SEVERITY_CLASS_FRAGMENTS,
   SEVERITY_ERROR,
   SEVERITY_WARNING,
   SEVERITY_LOG,
@@ -39,24 +37,24 @@ function prepareMessage(packet) {
       }
 
       return new ConsoleMessage({
-        category: CATEGORY_CLASS_FRAGMENTS[CATEGORY_WEBDEV],
+        category: CATEGORY_WEBDEV,
         data,
         messageType: "ConsoleApiCall",
         repeatId: getRepeatId(data),
-        severity: SEVERITY_CLASS_FRAGMENTS[LEVELS[data.level]] || "log",
+        severity: LEVELS[data.level] || "log",
       });
     }
     case "pageError": {
       let data = Object.assign({}, packet.pageError);
-      let severity = SEVERITY_CLASS_FRAGMENTS[SEVERITY_ERROR];
+      let severity = SEVERITY_ERROR;
       if (data.warning || data.strict) {
-        severity = SEVERITY_CLASS_FRAGMENTS[SEVERITY_WARNING];
+        severity = SEVERITY_WARNING;
       } else if (data.info) {
-        severity = SEVERITY_CLASS_FRAGMENTS[SEVERITY_LOG];
+        severity = SEVERITY_LOG;
       }
 
       return new ConsoleMessage({
-        category: CATEGORY_CLASS_FRAGMENTS[CATEGORY_JS],
+        category: CATEGORY_JS,
         data,
         messageType: "PageError",
         repeatId: getRepeatId(data),
@@ -73,11 +71,11 @@ function prepareMessage(packet) {
       }
 
       return new ConsoleMessage({
-        category: CATEGORY_CLASS_FRAGMENTS[CATEGORY_OUTPUT],
+        category: CATEGORY_OUTPUT,
         data,
         messageType: "EvaluationResult",
         repeatId: getRepeatId(data),
-        severity: SEVERITY_CLASS_FRAGMENTS[SEVERITY_LOG],
+        severity: SEVERITY_LOG,
       });
     }
   }

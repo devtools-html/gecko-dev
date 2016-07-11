@@ -11,41 +11,21 @@ const actionTypes = {
 };
 
 const categories = {
-  CATEGORY_NETWORK: 0,
-  CATEGORY_CSS: 1,
-  CATEGORY_JS: 2,
-  CATEGORY_WEBDEV: 3,
-  CATEGORY_INPUT: 4,
-  CATEGORY_OUTPUT: 5,
-  CATEGORY_SECURITY: 6,
-  CATEGORY_SERVER: 7
+  CATEGORY_NETWORK: "network",
+  CATEGORY_CSS: "cssparser",
+  CATEGORY_JS: "exception",
+  CATEGORY_WEBDEV: "console",
+  CATEGORY_INPUT: "input",
+  CATEGORY_OUTPUT: "output",
+  CATEGORY_SECURITY: "security",
+  CATEGORY_SERVER: "server"
 };
 
 const severities = {
-  SEVERITY_ERROR: 0,
-  SEVERITY_WARNING: 1,
-  SEVERITY_INFO: 2,
-  SEVERITY_LOG: 3
-};
-
-// The fragment of a CSS class name that identifies categories/severities.
-const fragments = {
-  CATEGORY_CLASS_FRAGMENTS: [
-    "network",
-    "cssparser",
-    "exception",
-    "console",
-    "input",
-    "output",
-    "security",
-    "server",
-  ],
-  SEVERITY_CLASS_FRAGMENTS: [
-    "error",
-    "warn",
-    "info",
-    "log",
-  ]
+  SEVERITY_ERROR: "error",
+  SEVERITY_WARNING: "warn",
+  SEVERITY_INFO: "info",
+  SEVERITY_LOG: "log"
 };
 
 // A mapping from the console API log event levels to the Web Console
@@ -74,5 +54,4 @@ const levels = {
 };
 
 // Combine into a single constants object
-module.exports = Object.assign({}, actionTypes, categories, severities,
-  fragments, levels);
+module.exports = Object.assign({}, actionTypes, categories, severities, levels);
