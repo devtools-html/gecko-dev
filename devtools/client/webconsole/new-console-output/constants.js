@@ -66,7 +66,7 @@ const chromeRDPEnums = {
     OTHER: "other",
     DEPRECATION: "deprecation"
   },
-  TYPE: {
+  MESSAGE_TYPE: {
     LOG: "log",
     DIR: "dir",
     TABLE: "table",
@@ -77,9 +77,13 @@ const chromeRDPEnums = {
     END_GROUP: "endGroup",
     ASSERT: "assert",
     PROFILE: "profile",
-    PROFILE_END: "profileEnd"
+    PROFILE_END: "profileEnd",
+    // Undocumented in Chrome RDP, but is used for evaluation results.
+    RESULT: "result",
+    // Undocumented in Chrome RDP, but is used for input.
+    COMMAND: "command"
   },
-  LEVEL: {
+  MESSAGE_LEVEL: {
     LOG: "log",
     ERROR: "error",
     WARN: "warn",

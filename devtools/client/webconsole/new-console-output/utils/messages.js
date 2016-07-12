@@ -7,12 +7,13 @@
 "use strict";
 
 const {
+  MESSAGE_SOURCE,
+  MESSAGE_TYPE,
+  MESSAGE_LEVEL,
+  // Legacy
   CATEGORY_JS,
-  CATEGORY_WEBDEV,
   CATEGORY_OUTPUT,
   LEVELS,
-  SEVERITY_ERROR,
-  SEVERITY_WARNING,
   SEVERITY_LOG,
 } = require("../constants");
 const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
@@ -21,60 +22,88 @@ const l10n = new WebConsoleUtils.L10n(STRINGS_URI);
 const { ConsoleMessage } = require("../types");
 
 function prepareMessage(packet) {
+  // This packet is already in the expected packet structure. Simply return.
   if (packet.source) {
     return packet;
   }
 
+  return transformPacket(packet);
+}
+
+/**
+ * Transforms a packet from Firefox RDP structure to Chrome RDP structure.
+ */
+function transformPacket(packet) {
   if (packet._type) {
     packet = convertCachedPacket(packet);
   }
 
   switch (packet.type) {
     case "consoleAPICall": {
-      let data = Object.assign({}, packet.message);
-      if (data.level === "clear") {
-        data.arguments = [l10n.getStr("consoleCleared")];
+      let { message } = packet;
+
+      let parameters = message.arguments;
+      let type = message.level;
+      let level = LEVELS[type] || MESSAGE_TYPE.LOG;
+      let messageText = null;
+
+      // Special per-type conversion.
+      switch (type) {
+        case "clear":
+          // We show a message to users when calls console.clear() is called.
+          parameters = [l10n.getStr("consoleCleared")];
+          break;
+        case "count":
+          // Chrome RDP doesn't have a special type for count.
+          type = MESSAGE_TYPE.LOG;
+          level = MESSAGE_LEVEL.DEBUG;
+          messageText = `${message.counter.label}: ${message.counter.count}`;
+          parameters = null;
+          break;
       }
 
       return new ConsoleMessage({
-        category: CATEGORY_WEBDEV,
-        data,
-        messageType: "ConsoleApiCall",
-        repeatId: getRepeatId(data),
-        severity: LEVELS[data.level] || "log",
+        source: MESSAGE_SOURCE.CONSOLE_API,
+        type: message.level,
+        level,
+        parameters,
+        messageText,
+        repeatId: getRepeatId(message),
+        category: "console",
+        severity: level,
       });
     }
+
     case "pageError": {
-      let data = Object.assign({}, packet.pageError);
-      let severity = SEVERITY_ERROR;
-      if (data.warning || data.strict) {
-        severity = SEVERITY_WARNING;
-      } else if (data.info) {
-        severity = SEVERITY_LOG;
+      let { pageError } = packet;
+      let level = MESSAGE_LEVEL.ERROR;
+      if (pageError.warning || pageError.strict) {
+        level = MESSAGE_LEVEL.WARN;
+      } else if (pageError.info) {
+        level = MESSAGE_LEVEL.INFO;
       }
 
       return new ConsoleMessage({
+        source: MESSAGE_SOURCE.JAVASCRIPT,
+        type: MESSAGE_TYPE.LOG,
+        messageText: pageError.errorMessage,
+        repeatId: getRepeatId(pageError),
         category: CATEGORY_JS,
-        data,
-        messageType: "PageError",
-        repeatId: getRepeatId(data),
-        severity,
+        severity: level,
       });
     }
+
     case "evaluationResult":
     default: {
-      let data;
-      if (typeof packet.result === "object") {
-        data = Object.assign({}, packet.result);
-      } else {
-        data = packet.result;
-      }
+      let { result } = packet;
 
       return new ConsoleMessage({
+        source: MESSAGE_SOURCE.JAVASCRIPT,
+        type: MESSAGE_TYPE.RESULT,
+        level: MESSAGE_LEVEL.LOG,
+        parameters: result,
+        repeatId: getRepeatId(result),
         category: CATEGORY_OUTPUT,
-        data,
-        messageType: "EvaluationResult",
-        repeatId: getRepeatId(data),
         severity: SEVERITY_LOG,
       });
     }
