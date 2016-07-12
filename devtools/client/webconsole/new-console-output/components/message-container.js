@@ -30,7 +30,7 @@ const MessageContainer = createClass({
 
   render() {
     const { message } = this.props;
-    let MessageComponent = getMessageComponent(message);
+    let MessageComponent = createFactory(getMessageComponent(message));
     return MessageComponent({ message });
   }
 });
@@ -42,7 +42,7 @@ function getMessageComponent(message) {
     if (!componentMap.has(messageType)) {
       return componentMap.get("DefaultRenderer");
     }
-    return createFactory(componentMap.get(messageType));
+    return componentMap.get(messageType);
   }
 
   switch (message.source) {
