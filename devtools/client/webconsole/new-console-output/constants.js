@@ -53,5 +53,41 @@ const levels = {
   }
 };
 
+const chromeRDPEnums = {
+  MESSAGE_SOURCE: {
+    XML: "xml",
+    JAVASCRIPT: "javascript",
+    NETWORK: "network",
+    CONSOLE_API: "console-api",
+    STORAGE: "storage",
+    APPCACHE: "appcache",
+    RENDERING: "rendering",
+    SECURITY: "security",
+    OTHER: "other",
+    DEPRECATION: "deprecation"
+  },
+  TYPE: {
+    LOG: "log",
+    DIR: "dir",
+    TABLE: "table",
+    TRACE: "trace",
+    CLEAR: "clear",
+    START_GROUP: "startGroup",
+    START_GROUP_COLLAPSED: "startGroupCollapsed",
+    END_GROUP: "endGroup",
+    ASSERT: "assert",
+    PROFILE: "profile",
+    PROFILE_END: "profileEnd"
+  },
+  LEVEL: {
+    LOG: "log",
+    ERROR: "error",
+    WARN: "warn",
+    DEBUG: "debug",
+    INFO: "info"
+  }
+};
+
 // Combine into a single constants object
-module.exports = Object.assign({}, actionTypes, categories, severities, levels);
+module.exports = Object.assign({}, actionTypes, categories, severities, levels,
+  chromeRDPEnums);
