@@ -21,6 +21,9 @@ ConsoleCommand.propTypes = {
   message: PropTypes.instanceOf(ConsoleCommandType).isRequired,
 };
 
+/**
+ * Displays input from the console.
+ */
 function ConsoleCommand(props) {
   const { message } = props;
 
