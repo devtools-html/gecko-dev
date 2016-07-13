@@ -13,6 +13,7 @@ const {
   // Legacy
   CATEGORY_JS,
   CATEGORY_OUTPUT,
+  CATEGORY_WEBDEV,
   LEVELS,
   SEVERITY_LOG,
 } = require("../constants");
@@ -64,12 +65,12 @@ function transformPacket(packet) {
 
       return new ConsoleMessage({
         source: MESSAGE_SOURCE.CONSOLE_API,
-        type: message.level,
+        type,
         level,
         parameters,
         messageText,
         repeatId: getRepeatId(message),
-        category: "console",
+        category: CATEGORY_WEBDEV,
         severity: level,
       });
     }
