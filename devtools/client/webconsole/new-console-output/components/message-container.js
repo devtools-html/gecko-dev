@@ -33,6 +33,10 @@ const MessageContainer = createClass({
     message: PropTypes.object.isRequired
   },
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.message.uniqueKey !== nextProps.message.uniqueKey;
+  },
+
   render() {
     const { message } = this.props;
     let MessageComponent = createFactory(getMessageComponent(message));
