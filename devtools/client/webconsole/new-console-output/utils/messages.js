@@ -105,7 +105,7 @@ function transformPacket(packet) {
         parameters: result,
         repeatId: getRepeatId(result),
         category: CATEGORY_OUTPUT,
-        severity: SEVERITY_LOG
+        severity: SEVERITY_LOG,
       });
     }
   }
