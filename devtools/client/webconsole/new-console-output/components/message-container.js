@@ -34,7 +34,7 @@ const MessageContainer = createClass({
   },
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.message.uniqueKey !== nextProps.message.uniqueKey;
+    return this.props.message.repeat !== nextProps.message.repeat;
   },
 
   render() {

@@ -4,6 +4,7 @@
   <meta charset="utf8">
   <title>Test for getRepeatId()</title>
   <script type="text/javascript" src="chrome://mochikit/content/tests/SimpleTest/SimpleTest.js"></script>
+  <script type="application/javascript;version=1.8" src="head.js"></script>
   <!-- Any copyright is dedicated to the Public Domain.
      - http://creativecommons.org/publicdomain/zero/1.0/ -->
 </head>
@@ -12,25 +13,8 @@
 <div id="output"></div>
 
 <script type="text/javascript;version=1.8">
-var { utils: Cu } = Components;
-var { require } = Cu.import("resource://devtools/shared/Loader.jsm", {});
-var { Assert } = require("resource://testing-common/Assert.jsm");
-var { BrowserLoader } = Cu.import("resource://devtools/client/shared/browser-loader.js", {});
-var DevToolsUtils = require("devtools/shared/DevToolsUtils");
-var { Task } = require("devtools/shared/task");
-var { DebuggerServer } = require("devtools/server/main");
-var { DebuggerClient } = require("devtools/shared/client/main");
-
-var { require: browserRequire } = BrowserLoader({
-  baseURI: "resource://devtools/client/webconsole/",
-  window: this
-});
-
-let ReactDOM = browserRequire("devtools/client/shared/vendor/react-dom");
-let React = browserRequire("devtools/client/shared/vendor/react");
-
 const testPackets = [];
-for (let id = 0; id < 10; id++) {
+for (let id = 0; id < 2000; id++) {
   testPackets.push({
     "from": "server1.conn4.child1/consoleActor2",
     "type": "consoleAPICall",
@@ -60,13 +44,17 @@ console.log(testPackets);
 
 
 window.onload = Task.async(function* () {
-  const NewConsoleOutputWrapper = require("devtools/client/webconsole/new-console-output/new-console-output-wrapper");
+  const NewConsoleOutputWrapper = browserRequire("devtools/client/webconsole/new-console-output/new-console-output-wrapper");
   const wrapper = new NewConsoleOutputWrapper(document.querySelector("#output"), {});
-  yield new Promise(r => r);
-  wrapper.dispatchMessageAdd(testPackets[0]);
-  yield new Promise(r => r);
+  let start = Date.now();
+  testPackets.forEach((message) => {
+    wrapper.dispatchMessageAdd(message);
+  });
+  let elapsed = Date.now() - start;
+  info("took " + elapsed / 1000 + " seconds");
+  is(1,1, "Yay, it didn't time out!");
 
-  //SimpleTest.finish();
+  SimpleTest.finish();
 });
 </script>
 </body>

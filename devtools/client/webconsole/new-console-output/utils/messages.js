@@ -21,7 +21,6 @@ const WebConsoleUtils = require("devtools/shared/webconsole/utils").Utils;
 const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";
 const l10n = new WebConsoleUtils.L10n(STRINGS_URI);
 const { ConsoleMessage } = require("../types");
-let key = 0;
 
 function prepareMessage(packet) {
   // This packet is already in the expected packet structure. Simply return.
@@ -106,8 +105,7 @@ function transformPacket(packet) {
         parameters: result,
         repeatId: getRepeatId(result),
         category: CATEGORY_OUTPUT,
-        severity: SEVERITY_LOG,
-        uniqueKey: key++,
+        severity: SEVERITY_LOG
       });
     }
   }
