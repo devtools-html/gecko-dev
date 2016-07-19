@@ -122,7 +122,7 @@ add_task(function* () {
 
   let newPacket = Object.assign({}, packet);
   for (let i = 1; i <= userSetLimit + 1; i++) {
-    newPacket.message.parameters = [i];
+    newPacket.message.arguments = [i];
     dispatch(actions.messageAdd(newPacket));
   }
 
