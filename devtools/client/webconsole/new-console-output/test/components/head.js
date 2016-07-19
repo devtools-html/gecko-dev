@@ -18,6 +18,15 @@ var { DebuggerClient } = require("devtools/shared/client/main");
 
 const Services = require("Services");
 
+const {
+  MESSAGE_SOURCE,
+  MESSAGE_TYPE,
+  MESSAGE_LEVEL,
+  // Legacy
+  CATEGORY_WEBDEV,
+  SEVERITY_LOG,
+} = require("devtools/client/webconsole/new-console-output/constants");
+
 DevToolsUtils.testing = true;
 var { require: browserRequire } = BrowserLoader({
   baseURI: "resource://devtools/client/webconsole/",
@@ -28,6 +37,81 @@ let ReactDOM = browserRequire("devtools/client/shared/vendor/react-dom");
 let React = browserRequire("devtools/client/shared/vendor/react");
 var TestUtils = React.addons.TestUtils;
 
+const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
+const stubConsoleMessages = new Map();
+
+stubConsoleMessages.set("console.log('foobar', 'test')", new ConsoleMessage({
+  allowRepeating: true,
+  source: MESSAGE_SOURCE.CONSOLE_API,
+  type: MESSAGE_TYPE.LOG,
+  level: MESSAGE_LEVEL.LOG,
+  messageText: null,
+  parameters: ["foobar", "test"],
+  repeat: 1,
+  repeatId: null,
+  category: CATEGORY_WEBDEV,
+  severity: SEVERITY_LOG,
+}));
+
+stubConsoleMessages.set("console.warn('danger, will robinson!')", new ConsoleMessage({
+  allowRepeating: true,
+  source: MESSAGE_SOURCE.CONSOLE_API,
+  type: MESSAGE_TYPE.LOG,
+  level: MESSAGE_LEVEL.WARN,
+  messageText: null,
+  parameters: ["danger, will robinson!"],
+  repeat: 1,
+  repeatId: null,
+  category: CATEGORY_WEBDEV,
+  severity: SEVERITY_LOG,
+}));
+
+stubConsoleMessages.set("console.log(undefined)", new ConsoleMessage({
+  allowRepeating: true,
+  source: MESSAGE_SOURCE.CONSOLE_API,
+  type: MESSAGE_TYPE.LOG,
+  level: MESSAGE_LEVEL.LOG,
+  messageText: null,
+  parameters: [
+    { type: "undefined" }
+  ],
+  repeat: 1,
+  repeatId: null,
+  category: CATEGORY_WEBDEV,
+  severity: SEVERITY_LOG,
+}));
+
+stubConsoleMessages.set("console.log(NaN)", new ConsoleMessage({
+  allowRepeating: true,
+  source: MESSAGE_SOURCE.CONSOLE_API,
+  type: MESSAGE_TYPE.LOG,
+  level: MESSAGE_LEVEL.LOG,
+  messageText: null,
+  parameters: [
+    { type: "NaN" }
+  ],
+  repeat: 1,
+  repeatId: null,
+  category: CATEGORY_WEBDEV,
+  severity: SEVERITY_LOG,
+}));
+
+stubConsoleMessages.set("console.log(null)", new ConsoleMessage({
+  allowRepeating: true,
+  source: MESSAGE_SOURCE.CONSOLE_API,
+  type: MESSAGE_TYPE.LOG,
+  level: MESSAGE_LEVEL.LOG,
+  messageText: null,
+  parameters: [
+    { type: "null" }
+  ],
+  repeat: 1,
+  repeatId: null,
+  category: CATEGORY_WEBDEV,
+  severity: SEVERITY_LOG,
+}));
+
+// @TODO Remove this.
 let testCommands = new Map();
 testCommands.set("console.log()", {
   command: "console.log('foobar', 'test')",
