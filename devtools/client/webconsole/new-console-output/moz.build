@@ -8,6 +8,7 @@ DIRS += [
     'components',
     'reducers',
     'selectors',
+    'test',
     'utils',
 ]
 
@@ -22,7 +23,3 @@ DevToolsModules(
 MOCHITEST_CHROME_MANIFESTS += [
   'test/chrome.ini'
 ]
-XPCSHELL_TESTS_MANIFESTS += [
-  'test/xpcshell.ini'
-]
-
