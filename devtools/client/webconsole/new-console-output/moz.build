@@ -19,7 +19,3 @@ DevToolsModules(
     'store.js',
     'types.js',
 )
-
-MOCHITEST_CHROME_MANIFESTS += [
-  'test/chrome.ini'
-]
