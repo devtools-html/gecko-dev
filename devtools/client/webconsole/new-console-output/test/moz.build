@@ -3,19 +3,18 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-DIRS += [
-    'actions',
-    'components',
-    'reducers',
-    'selectors',
-    'test',
-    'utils',
+DevToolsModules(
+    'chrome-head.js',
+    'xpcshell-head.js',
+)
+
+MOCHITEST_CHROME_MANIFESTS += [
+  'components/chrome.ini',
+  'utils/chrome.ini'
 ]
 
-DevToolsModules(
-    'constants.js',
-    'main.js',
-    'new-console-output-wrapper.js',
-    'store.js',
-    'types.js',
-)
+XPCSHELL_TESTS_MANIFESTS += [
+  'actions/xpcshell.ini',
+  'store/xpcshell.ini'
+]
+
