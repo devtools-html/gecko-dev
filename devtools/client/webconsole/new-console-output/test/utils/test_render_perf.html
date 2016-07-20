@@ -15,10 +15,9 @@
 <script type="text/javascript;version=1.8">
 const testPackets = [];
 const numMessages = 1000;
-let even = true;
 for (let id = 0; id < numMessages; id++) {
   let message = "Odd text";
-  if (even) {
+  if (id % 2 === 0) {
     message = "Even text";
   }
   testPackets.push({
@@ -45,7 +44,6 @@ for (let id = 0; id < numMessages; id++) {
       "category": "webdev"
     }
   });
-  even = !even;
 }
 
 function timeit(cb) {
