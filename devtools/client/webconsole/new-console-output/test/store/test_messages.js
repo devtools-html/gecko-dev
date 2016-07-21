@@ -59,20 +59,6 @@ add_task(function* () {
 });
 
 /**
- * Test getRepeatId().
- */
-add_task(function* () {
-  const message1 = prepareMessage(packet);
-  let message2 = prepareMessage(packet);
-  equal(getRepeatId(message1), getRepeatId(message2),
-    "getRepeatId() returns same repeat id for objects with the same values");
-
-  message2 = message2.set("parameters", ["new args"]);
-  notEqual(getRepeatId(message1), getRepeatId(message2),
-    "getRepeatId() returns different repeat ids for different values");
-});
-
-/**
  * Test adding a console.clear message to the store.
  */
 add_task(function*() {
