@@ -35,9 +35,9 @@ function prepareMessage(packet) {
   }
 
   if (packet.allowRepeating) {
-    return packet.set("repeatId", getRepeatId(packet));
+    packet = packet.set("repeatId", getRepeatId(packet));
   }
-  return packet;
+  return packet.set("id", getNextMessageId());
 }
 
 /**
@@ -80,7 +80,6 @@ function transformPacket(packet) {
         messageText,
         category: CATEGORY_WEBDEV,
         severity: level,
-        id: getNextMessageId(),
       });
     }
 
@@ -99,7 +98,6 @@ function transformPacket(packet) {
         messageText: pageError.errorMessage,
         category: CATEGORY_JS,
         severity: level,
-        id: getNextMessageId(),
       });
     }
 
@@ -114,7 +112,6 @@ function transformPacket(packet) {
         parameters: result,
         category: CATEGORY_OUTPUT,
         severity: SEVERITY_LOG,
-        id: getNextMessageId(),
       });
     }
   }
