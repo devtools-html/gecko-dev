@@ -23,13 +23,27 @@ describe("ConsoleAPICall component:", () => {
       // @TODO should output: foobar test
       expect(messageBody.textContent).toBe("\"foobar\"\"test\"");
 
-      const consoleStringNodes = messageBody.querySelectorAll(".objectBox");
+      const consoleStringNodes = messageBody.querySelectorAll(".objectBox-string");
       expect(consoleStringNodes.length).toBe(2);
+    });
+    it("renders repeat node", () => {
+      const message =
+        stubConsoleMessages.get("console.log('foobar', 'test')")
+        .set("repeat", 107);
+      const rendered = renderComponent(ConsoleApiCall, {message});
+
+      const repeatNode = getRepeatNode(rendered);
+      expect(repeatNode[0].textContent).toBe("107");
     });
   });
 });
 
-function getMessageBody(renderedComponent) {
+function getMessageBody(rendered) {
   const queryPath = "div.message.cm-s-mozilla span span.message-flex-body span.message-body.devtools-monospace";
-  return renderedComponent.querySelector(queryPath);
+  return rendered.querySelector(queryPath);
+}
+
+function getRepeatNode(rendered) {
+  const repeatPath = "span > span.message-flex-body > span.message-body.devtools-monospace + span.message-repeats";
+  return rendered.querySelectorAll(repeatPath);
 }
