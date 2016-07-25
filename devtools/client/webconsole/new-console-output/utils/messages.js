@@ -12,7 +12,11 @@ try {
   const STRINGS_URI = "chrome://devtools/locale/webconsole.properties";
   l10n = new WebConsoleUtils.L10n(STRINGS_URI);
 } catch (e) {
-  l10n = {};
+  l10n = {
+    getStr: str => {
+      return str;
+    }
+  };
 }
 
 const {
