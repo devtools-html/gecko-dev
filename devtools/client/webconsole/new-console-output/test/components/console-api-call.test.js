@@ -11,9 +11,8 @@ const {
   renderComponent
 } = require("devtools/client/webconsole/new-console-output/test/helpers");
 
-jsdom();
-
 describe("ConsoleAPICall component:", () => {
+  jsdom();
   describe("console.log", () => {
     it("renders string grips", () => {
       const message = stubConsoleMessages.get("console.log('foobar', 'test')");
