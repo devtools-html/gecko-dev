@@ -121,5 +121,20 @@ exports.stubConsoleMessages = new Map([
       category: CATEGORY_WEBDEV,
       severity: SEVERITY_LOG,
     })
+  ],
+  [
+    "ReferenceError",
+    new ConsoleMessage({
+      allowRepeating: true,
+      source: MESSAGE_SOURCE.JAVASCRIPT,
+      type: MESSAGE_TYPE.LOG,
+      level: MESSAGE_LEVEL.ERROR,
+      messageText: "ReferenceError: asdf is not defined",
+      parameters: null,
+      repeat: 1,
+      repeatId: null,
+      category: CATEGORY_WEBDEV,
+      severity: SEVERITY_LOG,
+    })
   ]
 ]);
