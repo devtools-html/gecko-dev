@@ -97,6 +97,21 @@ exports.stubConsoleMessages = new Map([
     })
   ],
   [
+    "console.count('bar')",
+    new ConsoleMessage({
+      allowRepeating: true,
+      source: MESSAGE_SOURCE.CONSOLE_API,
+      type: MESSAGE_TYPE.LOG,
+      level: MESSAGE_LEVEL.DEBUG,
+      messageText: "bar: 1",
+      parameters: null,
+      repeat: 1,
+      repeatId: null,
+      category: CATEGORY_WEBDEV,
+      severity: SEVERITY_LOG,
+    })
+  ],
+  [
     "new Date(0)",
     new ConsoleMessage({
       allowRepeating: true,

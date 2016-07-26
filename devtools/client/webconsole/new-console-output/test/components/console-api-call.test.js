@@ -35,6 +35,16 @@ describe("ConsoleAPICall component:", () => {
       expect(repeatNode[0].textContent).toBe("107");
     });
   });
+
+  describe("console.count", () => {
+    it("renders", () => {
+      const message = stubConsoleMessages.get("console.count('bar')");
+      const rendered = renderComponent(ConsoleApiCall, {message});
+
+      const messageBody = getMessageBody(rendered);
+      expect(messageBody.textContent).toBe("bar: 1");
+    });
+  });
 });
 
 function getMessageBody(rendered) {
