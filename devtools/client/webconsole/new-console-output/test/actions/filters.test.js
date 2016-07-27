@@ -4,6 +4,7 @@
 
 const actions = require("devtools/client/webconsole/new-console-output/actions/filters");
 const {
+  FILTER_TOGGLE,
   MESSAGE_LEVEL
 } = require("devtools/client/webconsole/new-console-output/constants");
 
