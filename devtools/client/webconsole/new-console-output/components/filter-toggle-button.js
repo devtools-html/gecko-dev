@@ -9,9 +9,6 @@ const {
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 const actions = require("devtools/client/webconsole/new-console-output/actions/filters");
-const {
-  FILTER_TOGGLE
-} = require("../constants");
 
 const FilterToggleButton = createClass({
 
@@ -19,16 +16,13 @@ const FilterToggleButton = createClass({
 
   propTypes: {
     label: PropTypes.string.isRequired,
-    filterType: PropTypes.string.isRequired,
     filterKey: PropTypes.string.isRequired,
     active: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
   },
 
   onClick: function () {
-    if (this.props.filterType === FILTER_TOGGLE) {
-      this.props.dispatch(actions.filterToggle(this.props.filterKey));
-    }
+    this.props.dispatch(actions.filterToggle(this.props.filterKey));
   },
 
   render() {
