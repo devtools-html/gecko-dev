@@ -5,6 +5,7 @@
 const actions = require("devtools/client/webconsole/new-console-output/actions/filters");
 const {
   FILTER_TOGGLE,
+  FILTERS_CLEAR,
   MESSAGE_LEVEL
 } = require("devtools/client/webconsole/new-console-output/constants");
 
@@ -17,6 +18,17 @@ describe("Filter actions:", () => {
       const expected = {
         type: FILTER_TOGGLE,
         filter: "error"
+      };
+
+      expect(action).toEqual(expected);
+    });
+  });
+
+  describe("filtersClear", () => {
+    it("creates expected action", () => {
+      const action = actions.filtersClear();
+      const expected = {
+        type: FILTERS_CLEAR
       };
 
       expect(action).toEqual(expected);
