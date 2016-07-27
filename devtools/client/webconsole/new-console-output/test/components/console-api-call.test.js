@@ -42,7 +42,7 @@ describe("ConsoleAPICall component:", () => {
       const rendered = renderComponent(ConsoleApiCall, {message});
 
       const messageBody = getMessageBody(rendered);
-      expect(messageBody.textContent).toBe("bar: 1");
+      expect(messageBody.textContent).toBe(message.messageText);
     });
   });
 });
