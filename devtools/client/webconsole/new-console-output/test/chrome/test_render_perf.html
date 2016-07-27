@@ -58,7 +58,8 @@ function timeit(cb) {
 
 window.onload = Task.async(function* () {
   const { configureStore } = browserRequire("devtools/client/webconsole/new-console-output/store");
-  const { messagesSearch, filtersClear } = browserRequire("devtools/client/webconsole/new-console-output/actions/messages");
+  const { messagesSearch } = browserRequire("devtools/client/webconsole/new-console-output/actions/messages");
+  const { filtersClear } = browserRequire("devtools/client/webconsole/new-console-output/actions/filters");
   const NewConsoleOutputWrapper = browserRequire("devtools/client/webconsole/new-console-output/new-console-output-wrapper");
   const wrapper = new NewConsoleOutputWrapper(document.querySelector("#output"), {});
 

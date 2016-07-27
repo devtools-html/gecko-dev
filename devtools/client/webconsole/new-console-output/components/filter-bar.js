@@ -12,6 +12,7 @@ const {
 const { connect } = require("devtools/client/shared/vendor/react-redux");
 const { getAllFilters } = require("devtools/client/webconsole/new-console-output/selectors/filters");
 const { getAllUi } = require("devtools/client/webconsole/new-console-output/selectors/ui");
+const { filtersClear } = require("devtools/client/webconsole/new-console-output/actions/filters");
 const messagesActions = require("devtools/client/webconsole/new-console-output/actions/messages");
 const uiActions = require("devtools/client/webconsole/new-console-output/actions/ui");
 const {
@@ -37,7 +38,7 @@ const FilterBar = createClass({
   },
 
   onClearFiltersButtonClick: function () {
-    this.props.dispatch(messagesActions.filtersClear());
+    this.props.dispatch(filtersClear());
   },
 
   onSearchInput: function (e) {

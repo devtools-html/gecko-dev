@@ -15,7 +15,6 @@ const {
   MESSAGE_ADD,
   MESSAGES_CLEAR,
   MESSAGES_SEARCH,
-  FILTERS_CLEAR,
 } = require("../constants");
 
 const defaultIdGenerator = new IdGenerator();
@@ -38,12 +37,6 @@ function messagesClear() {
   };
 }
 
-function filtersClear() {
-  return {
-    type: FILTERS_CLEAR
-  };
-}
-
 function messagesSearch(searchText) {
   return {
     type: MESSAGES_SEARCH,
@@ -53,5 +46,4 @@ function messagesSearch(searchText) {
 
 exports.messageAdd = messageAdd;
 exports.messagesClear = messagesClear;
-exports.filtersClear = filtersClear;
 exports.messagesSearch = messagesSearch;

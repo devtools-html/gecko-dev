@@ -8,6 +8,7 @@
 
 const {
   FILTER_TOGGLE,
+  FILTERS_CLEAR
 } = require("../constants");
 
 function filterToggle(filter) {
@@ -17,6 +18,13 @@ function filterToggle(filter) {
   };
 }
 
+function filtersClear() {
+  return {
+    type: FILTERS_CLEAR
+  };
+}
+
 module.exports = {
-  filterToggle
+  filterToggle,
+  filtersClear
 };
