@@ -14,7 +14,6 @@ const { IdGenerator } = require("devtools/client/webconsole/new-console-output/u
 const {
   MESSAGE_ADD,
   MESSAGES_CLEAR,
-  SEVERITY_FILTER,
   MESSAGES_SEARCH,
   FILTERS_CLEAR,
 } = require("../constants");
@@ -39,14 +38,6 @@ function messagesClear() {
   };
 }
 
-function severityFilter(filter, toggled) {
-  return {
-    type: SEVERITY_FILTER,
-    filter,
-    toggled
-  };
-}
-
 function filtersClear() {
   return {
     type: FILTERS_CLEAR
@@ -62,6 +53,5 @@ function messagesSearch(searchText) {
 
 exports.messageAdd = messageAdd;
 exports.messagesClear = messagesClear;
-exports.severityFilter = severityFilter;
 exports.filtersClear = filtersClear;
 exports.messagesSearch = messagesSearch;

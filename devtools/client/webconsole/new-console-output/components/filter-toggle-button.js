@@ -8,9 +8,9 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-const actions = require("devtools/client/webconsole/new-console-output/actions/messages");
+const actions = require("devtools/client/webconsole/new-console-output/actions/filters");
 const {
-  SEVERITY_FILTER
+  FILTER_TOGGLE
 } = require("../constants");
 
 const FilterToggleButton = createClass({
@@ -26,9 +26,8 @@ const FilterToggleButton = createClass({
   },
 
   onClick: function () {
-    if (this.props.filterType === SEVERITY_FILTER) {
-      this.props.dispatch(actions.severityFilter(
-        this.props.filterKey, !this.props.active));
+    if (this.props.filterType === FILTER_TOGGLE) {
+      this.props.dispatch(actions.filterToggle(this.props.filterKey));
     }
   },
 

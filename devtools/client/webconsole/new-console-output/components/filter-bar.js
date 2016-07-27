@@ -15,7 +15,7 @@ const { getAllUi } = require("devtools/client/webconsole/new-console-output/sele
 const messagesActions = require("devtools/client/webconsole/new-console-output/actions/messages");
 const uiActions = require("devtools/client/webconsole/new-console-output/actions/ui");
 const {
-  SEVERITY_FILTER
+  FILTER_TOGGLE
 } = require("../constants");
 const FilterToggleButton = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-toggle-button").FilterToggleButton);
 
@@ -76,28 +76,28 @@ const FilterBar = createClass({
           FilterToggleButton({
             active: filter.error,
             label: "Errors",
-            filterType: SEVERITY_FILTER,
+            filterType: FILTER_TOGGLE,
             filterKey: "error",
             dispatch
           }),
           FilterToggleButton({
             active: filter.warn,
             label: "Warnings",
-            filterType: SEVERITY_FILTER,
+            filterType: FILTER_TOGGLE,
             filterKey: "warn",
             dispatch
           }),
           FilterToggleButton({
             active: filter.log,
             label: "Logs",
-            filterType: SEVERITY_FILTER,
+            filterType: FILTER_TOGGLE,
             filterKey: "log",
             dispatch
           }),
           FilterToggleButton({
             active: filter.info,
             label: "Info",
-            filterType: SEVERITY_FILTER,
+            filterType: FILTER_TOGGLE,
             filterKey: "info",
             dispatch
           })
