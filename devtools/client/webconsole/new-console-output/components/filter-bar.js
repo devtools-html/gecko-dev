@@ -12,8 +12,8 @@ const {
 const { connect } = require("devtools/client/shared/vendor/react-redux");
 const { getAllFilters } = require("devtools/client/webconsole/new-console-output/selectors/filters");
 const { getAllUi } = require("devtools/client/webconsole/new-console-output/selectors/ui");
-const { filtersClear } = require("devtools/client/webconsole/new-console-output/actions/filters");
-const messagesActions = require("devtools/client/webconsole/new-console-output/actions/messages");
+const { filterTextSet, filtersClear } = require("devtools/client/webconsole/new-console-output/actions/filters");
+const { messagesClear } = require("devtools/client/webconsole/new-console-output/actions/messages");
 const uiActions = require("devtools/client/webconsole/new-console-output/actions/ui");
 const {
   MESSAGE_LEVEL
@@ -30,7 +30,7 @@ const FilterBar = createClass({
   },
 
   onClearOutputButtonClick: function () {
-    this.props.dispatch(messagesActions.messagesClear());
+    this.props.dispatch(messagesClear());
   },
 
   onToggleFilterConfigBarButtonClick: function () {
@@ -42,7 +42,7 @@ const FilterBar = createClass({
   },
 
   onSearchInput: function (e) {
-    this.props.dispatch(messagesActions.messagesSearch(e.target.value));
+    this.props.dispatch(filterTextSet(e.target.value));
   },
 
   render() {
@@ -65,7 +65,7 @@ const FilterBar = createClass({
       dom.input({
         className: "devtools-plain-input",
         type: "search",
-        value: filter.searchText,
+        value: filter.text,
         placeholder: "Filter output",
         onInput: this.onSearchInput
       })

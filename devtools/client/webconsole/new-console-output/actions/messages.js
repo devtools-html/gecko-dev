@@ -13,8 +13,7 @@ const { IdGenerator } = require("devtools/client/webconsole/new-console-output/u
 
 const {
   MESSAGE_ADD,
-  MESSAGES_CLEAR,
-  MESSAGES_SEARCH,
+  MESSAGES_CLEAR
 } = require("../constants");
 
 const defaultIdGenerator = new IdGenerator();
@@ -37,13 +36,5 @@ function messagesClear() {
   };
 }
 
-function messagesSearch(searchText) {
-  return {
-    type: MESSAGES_SEARCH,
-    searchText
-  };
-}
-
 exports.messageAdd = messageAdd;
 exports.messagesClear = messagesClear;
-exports.messagesSearch = messagesSearch;

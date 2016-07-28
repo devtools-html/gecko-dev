@@ -13,7 +13,7 @@ const FilterState = Immutable.Record({
   warn: true,
   info: true,
   log: true,
-  searchText: ""
+  text: ""
 });
 
 function filters(state = new FilterState(), action) {
@@ -25,8 +25,8 @@ function filters(state = new FilterState(), action) {
     case constants.FILTERS_CLEAR:
       return new FilterState();
     case constants.MESSAGES_SEARCH:
-      let {searchText} = action;
-      return state.set("searchText", searchText);
+      let {text} = action;
+      return state.set("text", text);
   }
 
   return state;

@@ -24,6 +24,10 @@ describe("Filter actions:", () => {
     });
   });
 
+  describe("filterTextApply", () => {
+
+  });
+
   describe("filtersClear", () => {
     it("creates expected action", () => {
       const action = actions.filtersClear();

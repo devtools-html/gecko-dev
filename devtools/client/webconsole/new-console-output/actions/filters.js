@@ -7,9 +7,17 @@
 "use strict";
 
 const {
+  MESSAGES_SEARCH,
   FILTER_TOGGLE,
   FILTERS_CLEAR
 } = require("../constants");
+
+function filterTextSet(text) {
+  return {
+    type: MESSAGES_SEARCH,
+    text
+  };
+}
 
 function filterToggle(filter) {
   return {
@@ -25,6 +33,7 @@ function filtersClear() {
 }
 
 module.exports = {
+  filterTextSet,
   filterToggle,
   filtersClear
 };
