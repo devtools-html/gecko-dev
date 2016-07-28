@@ -7,14 +7,14 @@
 "use strict";
 
 const {
-  MESSAGES_SEARCH,
+  FILTER_TEXT_SET,
   FILTER_TOGGLE,
   FILTERS_CLEAR
 } = require("../constants");
 
 function filterTextSet(text) {
   return {
-    type: MESSAGES_SEARCH,
+    type: FILTER_TEXT_SET,
     text
   };
 }

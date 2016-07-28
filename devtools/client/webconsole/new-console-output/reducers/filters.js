@@ -24,7 +24,7 @@ function filters(state = new FilterState(), action) {
       return state.set(filter, active);
     case constants.FILTERS_CLEAR:
       return new FilterState();
-    case constants.MESSAGES_SEARCH:
+    case constants.FILTER_TEXT_SET:
       let {text} = action;
       return state.set("text", text);
   }
