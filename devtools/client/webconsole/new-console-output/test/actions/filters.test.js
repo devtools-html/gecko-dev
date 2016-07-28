@@ -4,6 +4,7 @@
 
 const actions = require("devtools/client/webconsole/new-console-output/actions/filters");
 const {
+  FILTER_TEXT_SET,
   FILTER_TOGGLE,
   FILTERS_CLEAR,
   MESSAGE_LEVEL
@@ -12,6 +13,18 @@ const {
 const expect = require("expect");
 
 describe("Filter actions:", () => {
+  describe("filterTextSet", () => {
+    it("creates expected action", () => {
+      const action = actions.filterTextSet("test");
+      const expected = {
+        type: FILTER_TEXT_SET,
+        text: "test"
+      };
+
+      expect(action).toEqual(expected);
+    });
+  });
+
   describe("filterToggle", () => {
     it("creates expected action", () => {
       const action = actions.filterToggle(MESSAGE_LEVEL.ERROR);
