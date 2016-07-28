@@ -29,15 +29,15 @@ const FilterBar = createClass({
     ui: PropTypes.object.isRequired
   },
 
-  onClearOutputButtonClick: function () {
+  onClickMessagesClear: function () {
     this.props.dispatch(messagesClear());
   },
 
-  onToggleFilterConfigBarButtonClick: function () {
+  onClickFilterBarToggle: function () {
     this.props.dispatch(uiActions.filterBarToggle());
   },
 
-  onClearFiltersButtonClick: function () {
+  onClickFiltersClear: function () {
     this.props.dispatch(filtersClear());
   },
 
@@ -47,20 +47,20 @@ const FilterBar = createClass({
 
   render() {
     const {dispatch, filter, ui} = this.props;
-    let configFilterBarVisible = ui.configFilterBarVisible;
+    let filterBarVisible = ui.filterBarVisible;
     let children = [];
 
     children.push(dom.div({className: "devtools-toolbar webconsole-filterbar-primary"},
       dom.button({
         className: "devtools-button devtools-clear-icon",
         title: "Clear output",
-        onClick: this.onClearOutputButtonClick
+        onClick: this.onClickMessagesClear
       }),
       dom.button({
         className: "devtools-button devtools-filter-icon" + (
-          configFilterBarVisible ? " checked" : ""),
+          filterBarVisible ? " checked" : ""),
         title: "Toggle filter bar",
-        onClick: this.onToggleFilterConfigBarButtonClick
+        onClick: this.onClickFilterBarToggle
       }),
       dom.input({
         className: "devtools-plaininput",
@@ -71,7 +71,7 @@ const FilterBar = createClass({
       })
     ));
 
-    if (configFilterBarVisible) {
+    if (filterBarVisible) {
       children.push(
         dom.div({className: "devtools-toolbar"},
           FilterButton({
@@ -113,7 +113,7 @@ const FilterBar = createClass({
             "."),
           dom.button({
             className: "menu-filter-button",
-            onClick: this.onClearFiltersButtonClick
+            onClick: this.onClickFiltersClear
           }, "Remove filters")
         )
       );

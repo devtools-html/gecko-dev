@@ -57,7 +57,7 @@ describe("FilterBar component:", () => {
     let wrapper = shallow(FilterBar(getProps(store)));
     wrapper.find(".devtools-filter-icon").simulate("click");
 
-    expect(getAllUi(store.getState()).configFilterBarVisible).toBe(true);
+    expect(getAllUi(store.getState()).filterBarVisible).toBe(true);
     wrapper = shallow(FilterBar(getProps(store)));
 
     // Buttons are displayed
