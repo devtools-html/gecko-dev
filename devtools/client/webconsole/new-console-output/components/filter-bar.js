@@ -18,7 +18,7 @@ const uiActions = require("devtools/client/webconsole/new-console-output/actions
 const {
   MESSAGE_LEVEL
 } = require("../constants");
-const FilterToggleButton = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-toggle-button").FilterToggleButton);
+const FilterButton = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-button").FilterButton);
 
 const FilterBar = createClass({
 
@@ -74,25 +74,25 @@ const FilterBar = createClass({
     if (configFilterBarVisible) {
       children.push(
         dom.div({className: "devtools-toolbar"},
-          FilterToggleButton({
+          FilterButton({
             active: filter.error,
             label: "Errors",
             filterKey: MESSAGE_LEVEL.ERROR,
             dispatch
           }),
-          FilterToggleButton({
+          FilterButton({
             active: filter.warn,
             label: "Warnings",
             filterKey: MESSAGE_LEVEL.WARN,
             dispatch
           }),
-          FilterToggleButton({
+          FilterButton({
             active: filter.log,
             label: "Logs",
             filterKey: MESSAGE_LEVEL.LOG,
             dispatch
           }),
-          FilterToggleButton({
+          FilterButton({
             active: filter.info,
             label: "Info",
             filterKey: MESSAGE_LEVEL.INFO,
