@@ -12,7 +12,7 @@ const actions = require("devtools/client/webconsole/new-console-output/actions/m
 const { configureStore } = require("devtools/client/webconsole/new-console-output/store");
 
 const ConsoleOutput = React.createFactory(require("devtools/client/webconsole/new-console-output/components/console-output"));
-const FilterBar = React.createFactory(require("devtools/client/webconsole/new-console-output/components/filter-bar").FilterBar);
+const FilterBar = React.createFactory(require("devtools/client/webconsole/new-console-output/components/filter-bar"));
 
 const store = configureStore();
 

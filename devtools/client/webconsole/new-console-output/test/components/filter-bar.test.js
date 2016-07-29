@@ -2,11 +2,15 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 "use strict";
 
+// Require helper is necessary to load certain modules.
+require("devtools/client/webconsole/new-console-output/test/requireHelper")();
+const { render, mount } = require("enzyme");
+
 const { createFactory } = require("devtools/client/shared/vendor/react");
+const Provider = createFactory(require("react-redux").Provider);
 
 const FilterButton = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-button").FilterButton);
-const FilterBar = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-bar").UnconnectedFilterBar);
-const { getAllFilters } = require("devtools/client/webconsole/new-console-output/selectors/filters");
+const FilterBar = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-bar"));
 const { getAllUi } = require("devtools/client/webconsole/new-console-output/selectors/ui");
 const {
   MESSAGES_CLEAR,
@@ -16,20 +20,13 @@ const {
 const { setupStore } = require("devtools/client/webconsole/new-console-output/test/helpers");
 
 const expect = require("expect");
-const jsdom = require("mocha-jsdom");
 const sinon = require("sinon");
 
-// Require helper is necessary to load certain modules.
-require("devtools/client/webconsole/new-console-output/test/requireHelper")();
-const { render, shallow } = require("enzyme");
-
 describe("FilterBar component:", () => {
-  jsdom();
-
   it("initial render", () => {
     const store = setupStore([]);
 
-    const wrapper = render(FilterBar(getProps(store)));
+    const wrapper = render(Provider({store}, FilterBar({})));
     const toolbar = wrapper.find(
       ".devtools-toolbar.webconsole-filterbar-primary"
     );
@@ -56,11 +53,10 @@ describe("FilterBar component:", () => {
 
     expect(getAllUi(store.getState()).filterBarVisible).toBe(false);
 
-    let wrapper = shallow(FilterBar(getProps(store)));
+    const wrapper = mount(Provider({store}, FilterBar({})));
     wrapper.find(".devtools-filter-icon").simulate("click");
 
     expect(getAllUi(store.getState()).filterBarVisible).toBe(true);
-    wrapper = shallow(FilterBar(getProps(store)));
 
     // Buttons are displayed
     const buttonProps = {
@@ -82,7 +78,7 @@ describe("FilterBar component:", () => {
     const store = setupStore([]);
     store.dispatch = sinon.spy();
 
-    const wrapper = shallow(FilterBar(getProps(store)));
+    const wrapper = mount(Provider({store}, FilterBar({})));
     wrapper.find(".devtools-clear-icon").simulate("click");
     const call = store.dispatch.getCall(0);
     expect(call.args[0]).toEqual({
@@ -93,17 +89,8 @@ describe("FilterBar component:", () => {
   it("sets filter text when text is typed", () => {
     const store = setupStore([]);
 
-    const wrapper = shallow(FilterBar(getProps(store)));
+    const wrapper = mount(Provider({store}, FilterBar({})));
     wrapper.find(".devtools-plain-input").simulate("input", { target: { value: "a" } });
     expect(store.getState().filters.text).toBe("a");
   });
 });
-
-function getProps(store) {
-  const { dispatch, getState } = store;
-  return {
-    dispatch,
-    filter: getAllFilters(getState()),
-    ui: getAllUi(getState())
-  };
-}

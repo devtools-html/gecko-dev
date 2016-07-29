@@ -134,7 +134,4 @@ function mapStateToProps(state) {
   };
 }
 
-module.exports = {
-  FilterBar: connect(mapStateToProps)(FilterBar),
-  UnconnectedFilterBar: FilterBar
-};
+module.exports = connect(mapStateToProps)(FilterBar);

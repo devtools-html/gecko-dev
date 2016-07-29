@@ -15,12 +15,9 @@ const {
 } = require("devtools/client/webconsole/new-console-output/constants");
 
 const expect = require("expect");
-const jsdom = require("mocha-jsdom");
 const sinon = require("sinon");
 
 describe("FilterButton component:", () => {
-  jsdom();
-
   const props = {
     active: true,
     label: "Error",
