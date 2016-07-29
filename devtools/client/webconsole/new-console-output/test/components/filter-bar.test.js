@@ -2,10 +2,6 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 "use strict";
 
-// Require helper is necessary to load certain modules.
-require("devtools/client/webconsole/new-console-output/test/requireHelper")();
-const { render, shallow } = require("enzyme");
-
 const { createFactory } = require("devtools/client/shared/vendor/react");
 
 const FilterButton = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-button").FilterButton);
@@ -22,6 +18,10 @@ const { setupStore } = require("devtools/client/webconsole/new-console-output/te
 const expect = require("expect");
 const jsdom = require("mocha-jsdom");
 const sinon = require("sinon");
+
+// Require helper is necessary to load certain modules.
+require("devtools/client/webconsole/new-console-output/test/requireHelper")();
+const { render, shallow } = require("enzyme");
 
 describe("FilterBar component:", () => {
   jsdom();
@@ -53,6 +53,8 @@ describe("FilterBar component:", () => {
 
   it("displays filter bar when button is clicked", () => {
     const store = setupStore([]);
+
+    expect(getAllUi(store.getState()).filterBarVisible).toBe(false);
 
     let wrapper = shallow(FilterBar(getProps(store)));
     wrapper.find(".devtools-filter-icon").simulate("click");
