@@ -6,7 +6,7 @@
 require("devtools/client/webconsole/new-console-output/test/requireHelper")();
 const { render, shallow } = require("enzyme");
 
-const { createFactory } = require("react-dev");
+const { createFactory } = require("devtools/client/shared/vendor/react");
 
 const FilterButton = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-button").FilterButton);
 const FilterBar = createFactory(require("devtools/client/webconsole/new-console-output/components/filter-bar").UnconnectedFilterBar);
