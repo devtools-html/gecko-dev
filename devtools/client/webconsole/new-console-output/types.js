@@ -7,12 +7,17 @@
 
 const Immutable = require("devtools/client/shared/vendor/immutable");
 
+const {
+  MESSAGE_SOURCE,
+  MESSAGE_TYPE
+} = require("devtools/client/webconsole/new-console-output/constants");
+
 exports.ConsoleCommand = Immutable.Record({
   id: null,
   allowRepeating: false,
   messageText: null,
-  source: null,
-  type: null,
+  source: MESSAGE_SOURCE.JAVASCRIPT,
+  type: MESSAGE_TYPE.COMMAND,
   category: null,
   severity: null,
 });
