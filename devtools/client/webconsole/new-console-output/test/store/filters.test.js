@@ -65,6 +65,11 @@ describe("Filtering", () => {
       expect(messages.size).toEqual(3);
     });
   });
+
+  describe("Combined filters", () => {
+    // @TODO add test
+    it("filters");
+  });
 });
 
 describe("Clear filters", () => {
