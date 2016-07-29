@@ -9,7 +9,8 @@ const Immutable = require("devtools/client/shared/vendor/immutable");
 
 const {
   MESSAGE_SOURCE,
-  MESSAGE_TYPE
+  MESSAGE_TYPE,
+  MESSAGE_LEVEL
 } = require("devtools/client/webconsole/new-console-output/constants");
 
 exports.ConsoleCommand = Immutable.Record({
@@ -18,8 +19,9 @@ exports.ConsoleCommand = Immutable.Record({
   messageText: null,
   source: MESSAGE_SOURCE.JAVASCRIPT,
   type: MESSAGE_TYPE.COMMAND,
-  category: null,
-  severity: null,
+  level: MESSAGE_LEVEL.LOG,
+  category: "input",
+  severity: MESSAGE_TYPE.LOG,
 });
 
 exports.ConsoleMessage = Immutable.Record({
