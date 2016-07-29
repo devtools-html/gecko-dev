@@ -12,6 +12,12 @@ module.exports = () => {
           return `const React = require('react-dev'); module.exports = React`;
         case "react-addons-test-utils":
           return `const React = require('react-dev'); module.exports = React.addons.TestUtils`;
+        case "react":
+          return `const React = require('react-dev'); module.exports = React`;
+        case "devtools/client/shared/vendor/react":
+          return `const React = require('react-dev'); module.exports = React`;
+        case "devtools/client/shared/vendor/react.default":
+          return `const React = require('react-dev'); module.exports = React`;
       }
     });
   } catch (e) {
