@@ -25,6 +25,7 @@ const {
   CATEGORY_WEBDEV,
   LEVELS,
   SEVERITY_LOG,
+  SEVERITY_INFO
 } = require("../constants");
 const { ConsoleMessage } = require("../types");
 
@@ -85,6 +86,17 @@ function transformPacket(packet) {
       });
     }
 
+    case "navigationMessage": {
+      let { message } = packet;
+      return new ConsoleMessage({
+        source: MESSAGE_SOURCE.CONSOLE_API,
+        type: MESSAGE_TYPE.CONSOLE_API,
+        messageText: "Navigated to " + message.url,
+        category: CATEGORY_WEBDEV,
+        severity: SEVERITY_INFO
+      });
+    }
+
     case "pageError": {
       let { pageError } = packet;
       let level = MESSAGE_LEVEL.ERROR;
@@ -136,6 +148,9 @@ function convertCachedPacket(packet) {
   } else if (packet._type === "PageError") {
     convertPacket.pageError = packet;
     convertPacket.type = "pageError";
+  } else if ("_navPayload" in packet) {
+    convertPacket.type = "navigationMessage";
+    convertPacket.message = packet;
   } else {
     throw new Error("Unexpected packet type");
   }
