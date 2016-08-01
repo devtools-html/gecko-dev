@@ -10,6 +10,7 @@ const {
   // Legacy
   CATEGORY_WEBDEV,
   SEVERITY_LOG,
+  SEVERITY_INFO,
 } = require("devtools/client/webconsole/new-console-output/constants");
 
 const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
@@ -163,6 +164,20 @@ exports.stubConsoleMessages = new Map([
       repeatId: null,
       category: CATEGORY_WEBDEV,
       severity: SEVERITY_LOG,
+    })
+  ],
+  [
+    "Navigated to foo.test",
+    new ConsoleMessage({
+      allowRepeating: false,
+      source: MESSAGE_SOURCE.CONSOLE_API,
+      type: MESSAGE_TYPE.CONSOLE_LOG,
+      messageText: "Navigated to foo.test",
+      category: CATEGORY_WEBDEV,
+      severity: SEVERITY_INFO,
+      parameters: null,
+      repeat: 1,
+      repeatId: null,
     })
   ]
 ]);
