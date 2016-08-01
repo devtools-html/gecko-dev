@@ -3,8 +3,6 @@
 
 "use strict";
 
-require("devtools/client/webconsole/new-console-output/test/requireHelper")();
-
 let ReactDOM = require("devtools/client/shared/vendor/react-dom");
 let React = require("devtools/client/shared/vendor/react");
 var TestUtils = React.addons.TestUtils;
