@@ -88,9 +88,11 @@ function transformPacket(packet) {
 
     case "navigationMessage": {
       let { message } = packet;
+      console.log(message);
       return new ConsoleMessage({
+        allowRepeating: false,
         source: MESSAGE_SOURCE.CONSOLE_API,
-        type: MESSAGE_TYPE.CONSOLE_API,
+        type: MESSAGE_TYPE.CONSOLE_LOG,
         messageText: "Navigated to " + message.url,
         category: CATEGORY_WEBDEV,
         severity: SEVERITY_INFO
