@@ -42,7 +42,7 @@ describe("FilterBar component:", () => {
     expect(toolbar.children().eq(1).attr("title")).toBe("Toggle filter bar");
 
     // Text filter
-    expect(toolbar.children().eq(2).attr("class")).toBe("devtools-plain-input");
+    expect(toolbar.children().eq(2).attr("class")).toBe("devtools-plaininput");
     expect(toolbar.children().eq(2).attr("placeholder")).toBe("Filter output");
     expect(toolbar.children().eq(2).attr("type")).toBe("search");
     expect(toolbar.children().eq(2).attr("value")).toBe("");
@@ -90,7 +90,7 @@ describe("FilterBar component:", () => {
     const store = setupStore([]);
 
     const wrapper = mount(Provider({store}, FilterBar({})));
-    wrapper.find(".devtools-plain-input").simulate("input", { target: { value: "a" } });
+    wrapper.find(".devtools-plaininput").simulate("input", { target: { value: "a" } });
     expect(store.getState().filters.text).toBe("a");
   });
 });
