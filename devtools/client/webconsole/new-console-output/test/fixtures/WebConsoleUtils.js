@@ -3,7 +3,7 @@
 
 "use strict";
 
-const L10n = require("devtools/client/webconsole/new-console-output/test/fixtures/l10n");
+const L10n = require("devtools/client/webconsole/new-console-output/test/fixtures/L10n");
 
 const Utils = {
   L10n
