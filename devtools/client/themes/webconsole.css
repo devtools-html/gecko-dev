@@ -552,7 +552,8 @@ a {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.message[open] .stacktrace {
+.message[open] .stacktrace,
+.message.open .stacktrace {
   display: block;
 }
 
