@@ -14,11 +14,8 @@ const {
   MESSAGE_SOURCE,
   MESSAGE_TYPE,
   MESSAGE_LEVEL,
-  // Legacy
-  CATEGORY_JS,
-  CATEGORY_OUTPUT,
-  CATEGORY_WEBDEV,
   LEVELS,
+  // Legacy
   SEVERITY_LOG,
 } = require("../constants");
 const { ConsoleMessage } = require("../types");
@@ -75,7 +72,6 @@ function transformPacket(packet) {
         level,
         parameters,
         messageText,
-        category: CATEGORY_WEBDEV,
         severity: level,
         stacktrace: message.stacktrace,
       });
@@ -94,7 +90,6 @@ function transformPacket(packet) {
         source: MESSAGE_SOURCE.JAVASCRIPT,
         type: MESSAGE_TYPE.LOG,
         messageText: pageError.errorMessage,
-        category: CATEGORY_JS,
         severity: level,
       });
     }
@@ -108,7 +103,6 @@ function transformPacket(packet) {
         type: MESSAGE_TYPE.RESULT,
         level: MESSAGE_LEVEL.LOG,
         parameters: result,
-        category: CATEGORY_OUTPUT,
         severity: SEVERITY_LOG,
       });
     }

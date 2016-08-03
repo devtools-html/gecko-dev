@@ -14,17 +14,6 @@ const actionTypes = {
   FILTER_BAR_TOGGLE: "FILTER_BAR_TOGGLE",
 };
 
-const categories = {
-  CATEGORY_NETWORK: "network",
-  CATEGORY_CSS: "cssparser",
-  CATEGORY_JS: "exception",
-  CATEGORY_WEBDEV: "console",
-  CATEGORY_INPUT: "input",
-  CATEGORY_OUTPUT: "output",
-  CATEGORY_SECURITY: "security",
-  CATEGORY_SERVER: "server"
-};
-
 const severities = {
   SEVERITY_ERROR: "error",
   SEVERITY_WARNING: "warn",
@@ -101,5 +90,5 @@ const filterTypes = {
 };
 
 // Combine into a single constants object
-module.exports = Object.assign({}, actionTypes, categories, severities, levels,
-  chromeRDPEnums, filterTypes);
+module.exports = Object.assign({}, actionTypes, severities, levels, chromeRDPEnums,
+  filterTypes);

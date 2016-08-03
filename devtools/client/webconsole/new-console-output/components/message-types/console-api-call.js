@@ -26,7 +26,7 @@ ConsoleApiCall.propTypes = {
 
 function ConsoleApiCall(props) {
   const { message, onViewSourceInDebugger } = props;
-  const {category, severity, stacktrace, type} = message;
+  const {source, severity, stacktrace, type} = message;
 
   let messageBody;
   if (type === "trace") {
@@ -57,8 +57,8 @@ function ConsoleApiCall(props) {
 
   const classes = ["message", "cm-s-mozilla"];
 
-  if (category) {
-    classes.push(category);
+  if (source) {
+    classes.push(source);
   }
 
   if (severity) {

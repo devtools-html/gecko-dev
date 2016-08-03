@@ -23,15 +23,15 @@ PageError.propTypes = {
 
 function PageError(props) {
   const { message } = props;
-  const {category, severity} = message;
+  const {source, severity} = message;
 
   const repeat = MessageRepeat({repeat: message.repeat});
   const icon = MessageIcon({severity: severity});
 
   const classes = ["message"];
 
-  if (category) {
-    classes.push(category);
+  if (source) {
+    classes.push(source);
   }
 
   if (severity) {

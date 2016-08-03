@@ -23,13 +23,13 @@ EvaluationResult.propTypes = {
 
 function EvaluationResult(props) {
   const { message } = props;
-  const {category, severity} = message;
+  const {source, severity} = message;
   const icon = MessageIcon({severity: severity});
 
   const classes = ["message", "cm-s-mozilla"];
 
-  if (category) {
-    classes.push(category);
+  if (source) {
+    classes.push(source);
   }
 
   if (severity) {
