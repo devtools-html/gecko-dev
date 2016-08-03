@@ -55,7 +55,6 @@ function transformPacket(packet) {
         case "count":
           // Chrome RDP doesn't have a special type for count.
           type = MESSAGE_TYPE.LOG;
-          level = MESSAGE_LEVEL.DEBUG;
           let {counter} = message;
           let label = counter.label ? counter.label : l10n.getStr("noCounterLabel");
           messageText = `${label}: ${counter.count}`;
@@ -127,12 +126,16 @@ function convertCachedPacket(packet) {
   return convertPacket;
 }
 
+/**
+ * Maps a Firefox RDP type to its corresponding level.
+ */
 function getLevelFromType(type) {
   const severities = {
     SEVERITY_ERROR: "error",
     SEVERITY_WARNING: "warn",
     SEVERITY_INFO: "info",
-    SEVERITY_LOG: "log"
+    SEVERITY_LOG: "log",
+    SEVERITY_DEBUG: "debug",
   };
 
   // A mapping from the console API log event levels to the Web Console
@@ -155,7 +158,7 @@ function getLevelFromType(type) {
     groupEnd: severities.SEVERITY_LOG,
     time: severities.SEVERITY_LOG,
     timeEnd: severities.SEVERITY_LOG,
-    count: severities.SEVERITY_LOG
+    count: severities.SEVERITY_DEBUG,
   };
 
   return levels[type] || MESSAGE_TYPE.LOG;
