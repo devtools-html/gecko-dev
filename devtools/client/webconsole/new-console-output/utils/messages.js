@@ -130,38 +130,38 @@ function convertCachedPacket(packet) {
  * Maps a Firefox RDP type to its corresponding level.
  */
 function getLevelFromType(type) {
-  const severities = {
-    SEVERITY_ERROR: "error",
-    SEVERITY_WARNING: "warn",
-    SEVERITY_INFO: "info",
-    SEVERITY_LOG: "log",
-    SEVERITY_DEBUG: "debug",
+  const levels = {
+    LEVEL_ERROR: "error",
+    LEVEL_WARNING: "warn",
+    LEVEL_INFO: "info",
+    LEVEL_LOG: "log",
+    LEVEL_DEBUG: "debug",
   };
 
   // A mapping from the console API log event levels to the Web Console
-  // severities.
-  const levels = {
-    error: severities.SEVERITY_ERROR,
-    exception: severities.SEVERITY_ERROR,
-    assert: severities.SEVERITY_ERROR,
-    warn: severities.SEVERITY_WARNING,
-    info: severities.SEVERITY_INFO,
-    log: severities.SEVERITY_LOG,
-    clear: severities.SEVERITY_LOG,
-    trace: severities.SEVERITY_LOG,
-    table: severities.SEVERITY_LOG,
-    debug: severities.SEVERITY_LOG,
-    dir: severities.SEVERITY_LOG,
-    dirxml: severities.SEVERITY_LOG,
-    group: severities.SEVERITY_LOG,
-    groupCollapsed: severities.SEVERITY_LOG,
-    groupEnd: severities.SEVERITY_LOG,
-    time: severities.SEVERITY_LOG,
-    timeEnd: severities.SEVERITY_LOG,
-    count: severities.SEVERITY_DEBUG,
+  // levels.
+  const levelMap = {
+    error: levels.LEVEL_ERROR,
+    exception: levels.LEVEL_ERROR,
+    assert: levels.LEVEL_ERROR,
+    warn: levels.LEVEL_WARNING,
+    info: levels.LEVEL_INFO,
+    log: levels.LEVEL_LOG,
+    clear: levels.LEVEL_LOG,
+    trace: levels.LEVEL_LOG,
+    table: levels.LEVEL_LOG,
+    debug: levels.LEVEL_LOG,
+    dir: levels.LEVEL_LOG,
+    dirxml: levels.LEVEL_LOG,
+    group: levels.LEVEL_LOG,
+    groupCollapsed: levels.LEVEL_LOG,
+    groupEnd: levels.LEVEL_LOG,
+    time: levels.LEVEL_LOG,
+    timeEnd: levels.LEVEL_LOG,
+    count: levels.LEVEL_DEBUG,
   };
 
-  return levels[type] || MESSAGE_TYPE.LOG;
+  return levelMap[type] || MESSAGE_TYPE.LOG;
 }
 
 exports.prepareMessage = prepareMessage;
