@@ -15,8 +15,6 @@ const {
   MESSAGE_TYPE,
   MESSAGE_LEVEL,
   LEVELS,
-  // Legacy
-  SEVERITY_LOG,
 } = require("../constants");
 const { ConsoleMessage } = require("../types");
 
@@ -72,7 +70,6 @@ function transformPacket(packet) {
         level,
         parameters,
         messageText,
-        severity: level,
         stacktrace: message.stacktrace,
       });
     }
@@ -89,8 +86,8 @@ function transformPacket(packet) {
       return new ConsoleMessage({
         source: MESSAGE_SOURCE.JAVASCRIPT,
         type: MESSAGE_TYPE.LOG,
+        level,
         messageText: pageError.errorMessage,
-        severity: level,
       });
     }
 
@@ -103,7 +100,6 @@ function transformPacket(packet) {
         type: MESSAGE_TYPE.RESULT,
         level: MESSAGE_LEVEL.LOG,
         parameters: result,
-        severity: SEVERITY_LOG,
       });
     }
   }

@@ -20,7 +20,6 @@ exports.ConsoleCommand = Immutable.Record({
   source: MESSAGE_SOURCE.JAVASCRIPT,
   type: MESSAGE_TYPE.COMMAND,
   level: MESSAGE_LEVEL.LOG,
-  severity: MESSAGE_TYPE.LOG,
 });
 
 exports.ConsoleMessage = Immutable.Record({
@@ -33,6 +32,5 @@ exports.ConsoleMessage = Immutable.Record({
   parameters: null,
   repeat: 1,
   repeatId: null,
-  severity: "log",
   stacktrace: null,
 });

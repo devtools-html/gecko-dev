@@ -7,8 +7,6 @@ const {
   MESSAGE_SOURCE,
   MESSAGE_TYPE,
   MESSAGE_LEVEL,
-  // Legacy
-  SEVERITY_LOG,
 } = require("devtools/client/webconsole/new-console-output/constants");
 
 const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
@@ -25,7 +23,6 @@ exports.stubConsoleMessages = new Map([
       parameters: ["foobar", "test"],
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
       stacktrace: undefined
     })
   ],
@@ -40,7 +37,6 @@ exports.stubConsoleMessages = new Map([
       parameters: ["danger, will robinson!"],
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
     })
   ],
   [
@@ -56,7 +52,6 @@ exports.stubConsoleMessages = new Map([
       ],
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
     })
   ],
   [
@@ -72,7 +67,6 @@ exports.stubConsoleMessages = new Map([
       ],
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
     })
   ],
   [
@@ -88,7 +82,6 @@ exports.stubConsoleMessages = new Map([
       ],
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
     })
   ],
   [
@@ -115,7 +108,6 @@ exports.stubConsoleMessages = new Map([
       parameters: null,
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
     })
   ],
   [
@@ -140,7 +132,6 @@ exports.stubConsoleMessages = new Map([
       },
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
     })
   ],
   [
@@ -154,7 +145,6 @@ exports.stubConsoleMessages = new Map([
       parameters: null,
       repeat: 1,
       repeatId: null,
-      severity: SEVERITY_LOG,
     })
   ]
 ]);

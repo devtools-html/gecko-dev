@@ -23,10 +23,10 @@ PageError.propTypes = {
 
 function PageError(props) {
   const { message } = props;
-  const {source, severity} = message;
+  const {source, level} = message;
 
   const repeat = MessageRepeat({repeat: message.repeat});
-  const icon = MessageIcon({severity: severity});
+  const icon = MessageIcon({level});
 
   const classes = ["message"];
 
@@ -34,8 +34,8 @@ function PageError(props) {
     classes.push(source);
   }
 
-  if (severity) {
-    classes.push(severity);
+  if (level) {
+    classes.push(level);
   }
 
   return dom.div({

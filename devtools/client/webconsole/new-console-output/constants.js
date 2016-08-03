@@ -90,5 +90,4 @@ const filterTypes = {
 };
 
 // Combine into a single constants object
-module.exports = Object.assign({}, actionTypes, severities, levels, chromeRDPEnums,
-  filterTypes);
+module.exports = Object.assign({}, actionTypes, levels, chromeRDPEnums, filterTypes);
