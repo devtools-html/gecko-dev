@@ -138,8 +138,7 @@ function getLevelFromType(type) {
     LEVEL_DEBUG: "debug",
   };
 
-  // A mapping from the console API log event levels to the Web Console
-  // levels.
+  // A mapping from the console API log event levels to the Web Console levels.
   const levelMap = {
     error: levels.LEVEL_ERROR,
     exception: levels.LEVEL_ERROR,
