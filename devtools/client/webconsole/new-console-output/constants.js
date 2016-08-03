@@ -53,9 +53,5 @@ const chromeRDPEnums = {
   }
 };
 
-const filterTypes = {
-  FILTER_TOGGLE: "FILTER_TOGGLE"
-};
-
 // Combine into a single constants object
-module.exports = Object.assign({}, actionTypes, chromeRDPEnums, filterTypes);
+module.exports = Object.assign({}, actionTypes, chromeRDPEnums);
