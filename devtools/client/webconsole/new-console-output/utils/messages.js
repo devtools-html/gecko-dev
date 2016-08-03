@@ -14,7 +14,6 @@ const {
   MESSAGE_SOURCE,
   MESSAGE_TYPE,
   MESSAGE_LEVEL,
-  LEVELS,
 } = require("../constants");
 const { ConsoleMessage } = require("../types");
 
@@ -44,7 +43,7 @@ function transformPacket(packet) {
 
       let parameters = message.arguments;
       let type = message.level;
-      let level = LEVELS[type] || MESSAGE_TYPE.LOG;
+      let level = getLevelFromType(type);
       let messageText = null;
 
       // Special per-type conversion.
@@ -126,6 +125,40 @@ function convertCachedPacket(packet) {
     throw new Error("Unexpected packet type");
   }
   return convertPacket;
+}
+
+function getLevelFromType(type) {
+  const severities = {
+    SEVERITY_ERROR: "error",
+    SEVERITY_WARNING: "warn",
+    SEVERITY_INFO: "info",
+    SEVERITY_LOG: "log"
+  };
+
+  // A mapping from the console API log event levels to the Web Console
+  // severities.
+  const levels = {
+    error: severities.SEVERITY_ERROR,
+    exception: severities.SEVERITY_ERROR,
+    assert: severities.SEVERITY_ERROR,
+    warn: severities.SEVERITY_WARNING,
+    info: severities.SEVERITY_INFO,
+    log: severities.SEVERITY_LOG,
+    clear: severities.SEVERITY_LOG,
+    trace: severities.SEVERITY_LOG,
+    table: severities.SEVERITY_LOG,
+    debug: severities.SEVERITY_LOG,
+    dir: severities.SEVERITY_LOG,
+    dirxml: severities.SEVERITY_LOG,
+    group: severities.SEVERITY_LOG,
+    groupCollapsed: severities.SEVERITY_LOG,
+    groupEnd: severities.SEVERITY_LOG,
+    time: severities.SEVERITY_LOG,
+    timeEnd: severities.SEVERITY_LOG,
+    count: severities.SEVERITY_LOG
+  };
+
+  return levels[type] || MESSAGE_TYPE.LOG;
 }
 
 exports.prepareMessage = prepareMessage;
