@@ -27,20 +27,10 @@ define(function (require, exports, module) {
       object: React.PropTypes.object.isRequired
     },
 
-    getTitle: function (grip) {
-      if (this.props.objectLink) {
-        return this.props.objectLink({
-          object: grip
-        }, grip.class);
-      }
-      return "";
-    },
-
     render: function () {
       let grip = this.props.object;
       return (
         ObjectBox({},
-          this.getTitle(grip),
           span({className: "Date"},
             new Date(grip.preview.timestamp).toISOString()
           )
