@@ -17,11 +17,12 @@ const { PageError } = require("devtools/client/webconsole/new-console-output/com
 
 // Test fakes.
 const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs");
+const onViewSourceInDebugger = () => {};
 
 describe("MessageContainer component:", () => {
   it("pipes data to children as expected", () => {
     const message = stubConsoleMessages.get("console.log('foobar', 'test')");
-    const rendered = renderComponent(MessageContainer, {message});
+    const rendered = renderComponent(MessageContainer, {message, onViewSourceInDebugger});
 
     expect(rendered.textContent.includes("foobar")).toBe(true);
   });
@@ -42,8 +43,12 @@ describe("MessageContainer component:", () => {
     ];
 
     messageTypes.forEach(info => {
-      const rendered = shallowRenderComponent(MessageContainer, {message: info.message});
-      expect(rendered.type).toBe(info.component);
+      const { component, message } = info;
+      const rendered = shallowRenderComponent(MessageContainer, {
+        message,
+        onViewSourceInDebugger,
+      });
+      expect(rendered.type).toBe(component);
     });
   });
 });
