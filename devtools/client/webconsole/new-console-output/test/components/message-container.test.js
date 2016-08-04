@@ -2,19 +2,21 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 "use strict";
 
-const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs");
+// Test utils.
+const expect = require("expect");
+const {
+  renderComponent,
+  shallowRenderComponent
+} = require("devtools/client/webconsole/new-console-output/test/helpers");
 
+// Components under test.
 const { MessageContainer } = require("devtools/client/webconsole/new-console-output/components/message-container");
 const { ConsoleApiCall } = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
 const { EvaluationResult } = require("devtools/client/webconsole/new-console-output/components/message-types/evaluation-result");
 const { PageError } = require("devtools/client/webconsole/new-console-output/components/message-types/page-error");
 
-const expect = require("expect");
-
-const {
-  renderComponent,
-  shallowRenderComponent
-} = require("devtools/client/webconsole/new-console-output/test/helpers");
+// Test fakes.
+const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs");
 
 describe("MessageContainer component:", () => {
   it("pipes data to children as expected", () => {

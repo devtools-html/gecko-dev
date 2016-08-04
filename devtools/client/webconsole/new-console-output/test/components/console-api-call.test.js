@@ -2,13 +2,15 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 "use strict";
 
-const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs");
-const { ConsoleApiCall } = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
+// Test utils.
 const expect = require("expect");
+const { renderComponent } = require("devtools/client/webconsole/new-console-output/test/helpers");
 
-const {
-  renderComponent
-} = require("devtools/client/webconsole/new-console-output/test/helpers");
+// Components under test.
+const { ConsoleApiCall } = require("devtools/client/webconsole/new-console-output/components/message-types/console-api-call");
+
+// Test fakes.
+const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs");
 
 describe("ConsoleAPICall component:", () => {
   describe("console.log", () => {
