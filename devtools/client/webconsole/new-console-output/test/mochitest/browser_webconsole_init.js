@@ -20,7 +20,9 @@ add_task(function* () {
     hud,
     messages: [{
       text: '0',
+    }, {
       text: '1',
+    }, {
       text: '2',
     }],
   });
@@ -52,7 +54,7 @@ function waitForMessages({ hud, messages }) {
         if (newMessage.node.querySelector(".message-body").textContent == message.text) {
           numMatched++;
           message.matched = true;
-          info("Matched a message with text: " + message.text + ", still waiting for " + (messages.size - numMatched) + " messages");
+          info("Matched a message with text: " + message.text + ", still waiting for " + (messages.length - numMatched) + " messages");
         }
 
         if (numMatched === messages.length) {
