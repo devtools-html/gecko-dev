@@ -127,7 +127,9 @@ const FilterBar = createClass({
 
     return (
       dom.div({className: "webconsole-filteringbar-wrapper"},
-        children
+        // The elements in FilterBar will never change order so we can use the array
+        // index as the key.
+        children.map((child, key) => Object.assign({}, child, { key }))
       )
     );
   }
