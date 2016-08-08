@@ -79,12 +79,12 @@ function ConsoleApiCall(props) {
           ),
           repeat,
           dom.span({ className: "message-location devtools-monospace" },
-            FrameView({
+            frame ? FrameView({
               frame,
               onClick: onViewSourceInDebugger,
               showEmptyPathAsHost: true,
               sourceMapService
-            })
+            }) : null
           )
         ),
         attachment
