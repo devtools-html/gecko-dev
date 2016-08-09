@@ -65,6 +65,7 @@ function ConsoleApiCall(props) {
     classes.push("open");
   }
 
+  const shouldRenderFrame = frame && frame.source !== "debugger eval code";
   return dom.div({
     className: classes.join(" ")
   },
@@ -79,7 +80,7 @@ function ConsoleApiCall(props) {
           ),
           repeat,
           dom.span({ className: "message-location devtools-monospace" },
-            frame ? FrameView({
+            shouldRenderFrame ? FrameView({
               frame,
               onClick: onViewSourceInDebugger,
               showEmptyPathAsHost: true,
