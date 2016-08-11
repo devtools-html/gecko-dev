@@ -8,4 +8,18 @@ const commands = [
   "console.count('bar')",
 ];
 
-module.exports = new Map(commands.map(cmd => [cmd, cmd]));
+let stubSnippets = new Map(commands.map(cmd => [cmd, cmd]));
+
+stubSnippets.set("console.trace()",
+`
+function bar() {
+  console.trace()
+}
+function foo() {
+  bar()
+}
+
+foo()
+`);
+
+module.exports = stubSnippets;
