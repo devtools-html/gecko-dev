@@ -32,6 +32,7 @@ snippets.forEach((code, key) => {
       if (stubs.length == snippets.size) {
         let filePath = OS.Path.join("../../../../devtools/client/webconsole/new-console-output/test/fixtures", "stubs.js");
         OS.File.writeAtomic(filePath, formatFile(stubs));
+        OS.File.remove(tempFilePath);
       }
     });
 
