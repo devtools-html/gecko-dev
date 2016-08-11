@@ -1,0 +1,1 @@
+function triggerPacket() {console.count('bar')}
