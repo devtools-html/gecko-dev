@@ -4,8 +4,8 @@
 
 // Test utils.
 const expect = require("expect");
-const sinon = require("sinon");
 const { render } = require("enzyme");
+const { unbeautify } = require("devtools/client/webconsole/new-console-output/test/helpers");
 
 // React
 const { createFactory } = require("devtools/client/shared/vendor/react");
@@ -49,6 +49,35 @@ describe("ConsoleAPICall component:", () => {
       const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
 
       expect(wrapper.find(".message-body").text()).toBe("bar: 1");
+    });
+  });
+
+  describe("console.trace", () => {
+    it("renders", () => {
+      const message = stubConsoleMessages.get("console.trace()");
+      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+
+      expect(wrapper.find(".message-body").text()).toBe("console.trace()");
+
+      expect(wrapper.find(".stack-trace").html()).toBe(unbeautify(`
+<span data-url="http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js" class="frame-link">
+  <span class="frame-link-function-display-name">bar</span>
+  <span class="frame-link-source" title="http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js">
+    <span class="frame-link-filename">http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js</span>
+  </span>
+</span>
+<span data-url="http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js" class="frame-link">
+  <span class="frame-link-function-display-name">foo</span>
+  <span class="frame-link-source" title="http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js">
+    <span class="frame-link-filename">http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js</span>
+  </span>
+</span>
+<span data-url="http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js" class="frame-link">
+  <span class="frame-link-function-display-name">triggerPacket</span>
+  <span class="frame-link-source" title="http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js">
+    <span class="frame-link-filename">http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js</span>
+  </span>
+</span>`));
     });
   });
 });
