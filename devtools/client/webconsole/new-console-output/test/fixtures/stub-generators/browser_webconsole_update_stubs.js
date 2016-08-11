@@ -64,6 +64,41 @@ const { ConsoleMessage } = require("devtools/client/webconsole/new-console-outpu
 
 let stubConsoleMessages = new Map();
 ${stubs.join("")}
+
+// Temporarily hardcode these
+stubConsoleMessages.set("new Date(0)", new ConsoleMessage({
+	allowRepeating: true,
+	source: MESSAGE_SOURCE.JAVASCRIPT,
+	type: MESSAGE_TYPE.RESULT,
+	level: MESSAGE_LEVEL.LOG,
+	messageText: null,
+	parameters: {
+		"type": "object",
+		"class": "Date",
+		"actor": "server2.conn0.obj115",
+		"extensible": true,
+		"frozen": false,
+		"sealed": false,
+		"ownPropertyLength": 0,
+		"preview": {
+			"timestamp": 0
+		}
+	},
+	repeat: 1,
+	repeatId: null,
+}));
+
+stubConsoleMessages.set("ReferenceError", new ConsoleMessage({
+	allowRepeating: true,
+	source: MESSAGE_SOURCE.JAVASCRIPT,
+	type: MESSAGE_TYPE.LOG,
+	level: MESSAGE_LEVEL.ERROR,
+	messageText: "ReferenceError: asdf is not defined",
+	parameters: null,
+	repeat: 1,
+	repeatId: null,
+}));
+
 module.exports = {
   stubConsoleMessages
 }`;
