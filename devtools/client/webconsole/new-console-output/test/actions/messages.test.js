@@ -26,9 +26,9 @@ describe("Message actions:", () => {
             "foobar",
             "test"
           ],
-          "columnNumber": 1,
+          "columnNumber": 27,
           "counter": null,
-          "filename": "file:///test.html",
+          "filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
           "functionName": "",
           "groupName": "",
           "level": "log",
