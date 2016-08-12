@@ -5,5 +5,4 @@
 
 DevToolsModules(
     'stub-snippets.js',
-    'stubs.js',
 )

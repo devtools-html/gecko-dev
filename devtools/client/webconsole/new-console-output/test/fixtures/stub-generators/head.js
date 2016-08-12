@@ -16,3 +16,46 @@ Services.prefs.setBoolPref("devtools.webconsole.new-frontend-enabled", true);
 registerCleanupFunction(() => {
   Services.prefs.clearUserPref("devtools.webconsole.new-frontend-enabled");
 });
+
+const { prepareMessage } = require("devtools/client/webconsole/new-console-output/utils/messages");
+
+const BASE_PATH = "../../../../devtools/client/webconsole/new-console-output/test/fixtures";
+
+function formatStub(key, message) {
+  let prepared = prepareMessage(message, {getNextId: () => "1"});
+  return `
+stubConsoleMessages.set("${key}", new ConsoleMessage(${JSON.stringify(prepared, null, "\t")}));
+`;
+}
+
+function formatFile(stubs) {
+  return `/* Any copyright is dedicated to the Public Domain.
+  http://creativecommons.org/publicdomain/zero/1.0/ */
+
+"use strict";
+
+const {
+  MESSAGE_SOURCE,
+  MESSAGE_TYPE,
+  MESSAGE_LEVEL,
+} = require("devtools/client/webconsole/new-console-output/constants");
+
+const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
+
+let stubConsoleMessages = new Map();
+${stubs.join("")}
+
+// Temporarily hardcode these
+stubConsoleMessages.set("ReferenceError", new ConsoleMessage({
+  allowRepeating: true,
+  source: MESSAGE_SOURCE.JAVASCRIPT,
+  type: MESSAGE_TYPE.LOG,
+  level: MESSAGE_LEVEL.ERROR,
+  messageText: "ReferenceError: asdf is not defined",
+  parameters: null,
+  repeat: 1,
+  repeatId: null,
+}));
+
+module.exports = stubConsoleMessages`;
+}

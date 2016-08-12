@@ -1,4 +1,11 @@
-const commands = [
+/* Any copyright is dedicated to the Public Domain.
+ * http://creativecommons.org/publicdomain/zero/1.0/ */
+
+"use strict";
+
+// Console API
+
+const consoleApiCommands = [
   "console.log('foobar', 'test')",
   "console.log(undefined)",
   "console.warn('danger, will robinson!')",
@@ -8,9 +15,9 @@ const commands = [
   "console.count('bar')",
 ];
 
-let stubSnippets = new Map(commands.map(cmd => [cmd, cmd]));
+let consoleApi = new Map(consoleApiCommands.map(cmd => [cmd, cmd]));
 
-stubSnippets.set("console.trace()",
+consoleApi.set("console.trace()",
 `
 function bar() {
   console.trace()
@@ -22,4 +29,15 @@ function foo() {
 foo()
 `);
 
-module.exports = stubSnippets;
+// Evaluation Result
+
+const evaluationResultCommands = [
+  "new Date(0)"
+];
+
+let evaluationResult = new Map(evaluationResultCommands.map(cmd => [cmd, cmd]));
+
+module.exports = {
+  consoleApi,
+  evaluationResult,
+};
