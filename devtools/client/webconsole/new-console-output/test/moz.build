@@ -13,5 +13,6 @@ DIRS += [
 ]
 
 MOCHITEST_CHROME_MANIFESTS += [
-  'chrome/chrome.ini'
+  'chrome/chrome.ini',
+  'fixtures/stub-generators/chrome.ini',
 ]

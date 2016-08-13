@@ -37,7 +37,16 @@ const evaluationResultCommands = [
 
 let evaluationResult = new Map(evaluationResultCommands.map(cmd => [cmd, cmd]));
 
+// Page Error
+
+const pageErrorCommands = [
+  "asdf()"
+];
+
+let pageError = new Map(pageErrorCommands.map(cmd => [cmd, cmd]));
+
 module.exports = {
   consoleApi,
   evaluationResult,
+  pageError,
 };
