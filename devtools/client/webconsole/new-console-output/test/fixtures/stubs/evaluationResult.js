@@ -39,16 +39,4 @@ stubConsoleMessages.set("new Date(0)", new ConsoleMessage({
 }));
 
 
-// Temporarily hardcode these
-stubConsoleMessages.set("ReferenceError", new ConsoleMessage({
-  allowRepeating: true,
-  source: MESSAGE_SOURCE.JAVASCRIPT,
-  type: MESSAGE_TYPE.LOG,
-  level: MESSAGE_LEVEL.ERROR,
-  messageText: "ReferenceError: asdf is not defined",
-  parameters: null,
-  repeat: 1,
-  repeatId: null,
-}));
-
 module.exports = stubConsoleMessages

@@ -6,7 +6,7 @@
 "use strict";
 
 Cu.import("resource://gre/modules/osfile.jsm");
-const { consoleApi: snippets } = require("devtools/client/webconsole/new-console-output/test/fixtures/stub-snippets.js");
+const { consoleApi: snippets } = require("devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/stub-snippets.js");
 
 const TEST_URI = "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-console-api.html";
 
@@ -29,7 +29,7 @@ snippets.forEach((code, key) => {
       if (stubs.length == snippets.size) {
         let filePath = OS.Path.join("../../../../devtools/client/webconsole/new-console-output/test/fixtures/stubs", "consoleApi.js");
         OS.File.writeAtomic(filePath, formatFile(stubs));
-        OS.File.remove(tempFilePath);
+        OS.File.writeAtomic(tempFilePath, "");
       }
     });
 

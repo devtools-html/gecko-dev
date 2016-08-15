@@ -9,7 +9,7 @@ var { DebuggerServer } = require("devtools/server/main");
 var { DebuggerClient } = require("devtools/shared/client/main");
 
 Cu.import("resource://gre/modules/osfile.jsm");
-const { evaluationResult: snippets} = require("devtools/client/webconsole/new-console-output/test/fixtures/stub-snippets.js");
+const { evaluationResult: snippets} = require("devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/stub-snippets.js");
 
 let stubs = [];
 

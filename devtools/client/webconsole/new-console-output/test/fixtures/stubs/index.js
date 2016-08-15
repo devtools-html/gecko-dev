@@ -7,7 +7,8 @@ let maps = [];
 
 [
   "consoleApi",
-  "evaluationResult"
+  "evaluationResult",
+  "pageError",
 ].forEach((filename) => {
   maps[filename] = require(`./${filename}`);
 });
@@ -16,5 +17,6 @@ let maps = [];
 module.exports = new Map([
   ...maps.consoleApi,
   ...maps.evaluationResult,
+  ...maps.pageError,
 ]);
 

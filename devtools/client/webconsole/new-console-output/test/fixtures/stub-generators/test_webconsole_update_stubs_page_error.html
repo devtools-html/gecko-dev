@@ -18,11 +18,11 @@ let stubs = [];
 
 Cu.import("resource://gre/modules/osfile.jsm");
 const { prepareMessage } = require("devtools/client/webconsole/new-console-output/utils/messages");
-const { pageError: snippets} = require("devtools/client/webconsole/new-console-output/test/fixtures/stub-snippets.js");
+const { pageError: snippets} = require("devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/stub-snippets.js");
 
 function doPageErrors() {
   let container = document.createElement("script");
-  snippets.forEach((code, key) => {
+  snippets.forEach((code) => {
     SimpleTest.expectUncaughtException();
     info("starting code: " + code);
     container = document.createElement("script");
@@ -48,7 +48,8 @@ function onAttach(aState, aResponse) {
 let pageErrors = [];
 
 function onPageError(aState, aType, aPacket) {
-  stubs.push(formatStub("key", aPacket));
+  let message = prepareMessage(aPacket, {getNextId: () => 1});
+  stubs.push(formatStub(message.messageText, aPacket));
   let filePath = OS.Path.join("../../../../devtools/client/webconsole/new-console-output/test/fixtures/stubs", "pageError.js");
   OS.File.writeAtomic(filePath, formatFile(stubs));
 }
