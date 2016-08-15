@@ -27,19 +27,5 @@ stubConsoleMessages.set("ReferenceError: asdf is not defined", new ConsoleMessag
 	"frame": null
 }));
 
-stubConsoleMessages.set("ReferenceError: foobar is not defined", new ConsoleMessage({
-	"id": "1",
-	"allowRepeating": true,
-	"source": "javascript",
-	"type": "log",
-	"level": "error",
-	"messageText": "ReferenceError: foobar is not defined",
-	"parameters": null,
-	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"javascript\",\"type\":\"log\",\"level\":\"error\",\"messageText\":\"ReferenceError: foobar is not defined\",\"parameters\":null,\"repeatId\":null,\"stacktrace\":null,\"frame\":null}",
-	"stacktrace": null,
-	"frame": null
-}));
-
 
 module.exports = stubConsoleMessages

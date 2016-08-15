@@ -41,7 +41,6 @@ let evaluationResult = new Map(evaluationResultCommands.map(cmd => [cmd, cmd]));
 
 const pageErrorCommands = [
   "asdf()",
-  "foobar()"
 ];
 
 let pageError = new Map(pageErrorCommands.map(cmd => [cmd, cmd]));
