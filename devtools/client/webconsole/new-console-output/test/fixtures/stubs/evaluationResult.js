@@ -26,7 +26,7 @@ stubConsoleMessages.set("new Date(0)", new ConsoleMessage({
 	"messageText": null,
 	"parameters": {
 		"type": "object",
-		"actor": "server1.conn0.child1/obj27",
+		"actor": "server1.conn0.child1/obj29",
 		"class": "Date",
 		"extensible": true,
 		"frozen": false,
@@ -37,7 +37,7 @@ stubConsoleMessages.set("new Date(0)", new ConsoleMessage({
 		}
 	},
 	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"javascript\",\"type\":\"result\",\"level\":\"log\",\"messageText\":null,\"parameters\":{\"type\":\"object\",\"actor\":\"server1.conn0.child1/obj27\",\"class\":\"Date\",\"extensible\":true,\"frozen\":false,\"sealed\":false,\"ownPropertyLength\":0,\"preview\":{\"timestamp\":0}},\"repeatId\":null,\"stacktrace\":null,\"frame\":null}",
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"javascript\",\"type\":\"result\",\"level\":\"log\",\"messageText\":null,\"parameters\":{\"type\":\"object\",\"actor\":\"server1.conn0.child1/obj29\",\"class\":\"Date\",\"extensible\":true,\"frozen\":false,\"sealed\":false,\"ownPropertyLength\":0,\"preview\":{\"timestamp\":0}},\"repeatId\":null,\"stacktrace\":null,\"frame\":null}",
 	"stacktrace": null,
 	"frame": null
 }));
