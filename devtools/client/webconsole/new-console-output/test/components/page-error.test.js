@@ -14,7 +14,7 @@ const {
 
 describe("PageError component:", () => {
   it("renders a page error", () => {
-    const message = stubConsoleMessages.get("ReferenceError");
+    const message = stubConsoleMessages.get("ReferenceError: asdf is not defined");
     const rendered = renderComponent(PageError, {message});
 
     const messageBody = getMessageBody(rendered);

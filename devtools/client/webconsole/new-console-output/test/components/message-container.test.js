@@ -38,7 +38,7 @@ describe("MessageContainer component:", () => {
       },
       {
         component: PageError,
-        message: stubConsoleMessages.get("ReferenceError")
+        message: stubConsoleMessages.get("ReferenceError: asdf is not defined")
       }
     ];
 
