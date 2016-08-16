@@ -27,7 +27,7 @@ snippets.forEach((code, key) => {
     toolbox.target.client.addListener("consoleAPICall", (type, res) => {
       stubs.push(formatStub(key, res));
       if (stubs.length == snippets.size) {
-        let filePath = OS.Path.join("../../../../devtools/client/webconsole/new-console-output/test/fixtures/stubs", "consoleApi.js");
+        let filePath = OS.Path.join(`${BASE_PATH}/stubs`, "consoleApi.js");
         OS.File.writeAtomic(filePath, formatFile(stubs));
         OS.File.writeAtomic(tempFilePath, "");
       }

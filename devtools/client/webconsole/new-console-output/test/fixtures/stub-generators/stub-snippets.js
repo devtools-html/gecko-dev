@@ -29,6 +29,12 @@ function foo() {
 foo()
 `);
 
+consoleApi.set("console.time()",
+`
+console.time()
+console.timeEnd()
+`);
+
 // Evaluation Result
 
 const evaluationResultCommands = [
