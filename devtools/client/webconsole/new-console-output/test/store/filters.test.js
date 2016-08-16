@@ -24,7 +24,7 @@ describe("Filtering", () => {
     // Evaluation Result
     "new Date(0)",
     // PageError
-    "ReferenceError: asdf is not defined"
+    "ReferenceError"
   ]);
   // Console Command
   store.dispatch(messageAdd(new ConsoleCommand({ messageText: `console.warn("x")` })));
