@@ -42,6 +42,13 @@ function setupStore(input) {
   return store;
 }
 
+/**
+ * Strip whitespace from HTML.
+ */
+function unbeautify(html) {
+  return html.replace(/(^\s*|\s+$|\s+(?=[\s|<]))/g, "").replace(/\n/g, "");
+}
+
 function renderComponent(component, props) {
   const el = React.createElement(component, props, {});
   // By default, renderIntoDocument() won't work for stateless components, but
@@ -62,6 +69,7 @@ function shallowRenderComponent(component, props) {
 module.exports = {
   setupActions,
   setupStore,
+  unbeautify,
   renderComponent,
   shallowRenderComponent
 };
