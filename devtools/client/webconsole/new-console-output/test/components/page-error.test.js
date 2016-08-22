@@ -2,7 +2,7 @@
    http://creativecommons.org/publicdomain/zero/1.0/ */
 "use strict";
 
-const stubConsoleMessages = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs/index");
+const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs/index");
 
 const { PageError } = require("devtools/client/webconsole/new-console-output/components/message-types/page-error");
 

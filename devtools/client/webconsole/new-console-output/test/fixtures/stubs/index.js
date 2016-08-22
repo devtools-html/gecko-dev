@@ -14,9 +14,13 @@ let maps = [];
 });
 
 // Combine all the maps into a single map.
-module.exports = new Map([
-  ...maps.consoleApi,
-  ...maps.evaluationResult,
-  ...maps.pageError,
-]);
-
+module.exports = {
+    stubConsoleMessages: new Map([
+      ...maps.consoleApi.stubConsoleMessages,
+      ...maps.evaluationResult.stubConsoleMessages,
+      ...maps.pageError.stubConsoleMessages, ]),
+    stubPackets: new Map([
+      ...maps.consoleApi.stubPackets,
+      ...maps.evaluationResult.stubPackets,
+      ...maps.pageError.stubPackets, ]),
+};

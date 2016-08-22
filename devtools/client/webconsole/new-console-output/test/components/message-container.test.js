@@ -16,7 +16,7 @@ const { EvaluationResult } = require("devtools/client/webconsole/new-console-out
 const { PageError } = require("devtools/client/webconsole/new-console-output/components/message-types/page-error");
 
 // Test fakes.
-const stubConsoleMessages = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs/index");
+const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs/index");
 const onViewSourceInDebugger = () => {};
 
 describe("MessageContainer component:", () => {
