@@ -21,6 +21,12 @@ const { prepareMessage } = require("devtools/client/webconsole/new-console-outpu
 
 const BASE_PATH = "../../../../devtools/client/webconsole/new-console-output/test/fixtures";
 
+function formatPacket(key, packet) {
+  return `
+stubPackets.set("${key}", ${JSON.stringify(packet, null, "\t")});
+`;
+}
+
 function formatStub(key, message) {
   let prepared = prepareMessage(message, {getNextId: () => "1"});
   return `
@@ -41,7 +47,13 @@ function formatFile(stubs) {
 const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
 
 let stubConsoleMessages = new Map();
-${stubs.join("")}
+let stubPackets = new Map();
 
-module.exports = stubConsoleMessages`;
+${stubs.preparedMessages.join("")}
+${stubs.packets.join("")}
+
+module.exports = {
+  stubConsoleMessages,
+  stubPackets,
+}`;
 }
