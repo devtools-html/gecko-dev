@@ -20,15 +20,13 @@ add_task(function* () {
   ok(true, "make the test not fail");
 
   for (var [code,key] of snippets) {
-    let i = 0;
     const packet = yield new Promise(resolve => {
       toolbox.target.activeConsole.evaluateJS(code, resolve);
     });
     stubs.packets.push(formatPacket(key, packet));
     stubs.preparedMessages.push(formatStub(key, packet));
-    if (++i == snippets.size) {
-      let filePath = OS.Path.join(`${BASE_PATH}/stubs`, "evaluationResult.js");
-      OS.File.writeAtomic(filePath, formatFile(stubs));
-    }
   }
+
+  let filePath = OS.Path.join(`${BASE_PATH}/stubs`, "evaluationResult.js");
+  OS.File.writeAtomic(filePath, formatFile(stubs));
 });
