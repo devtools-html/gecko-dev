@@ -15,10 +15,10 @@ let maps = [];
 
 // Combine all the maps into a single map.
 module.exports = {
-    stubConsoleMessages: new Map([
-      ...maps.consoleApi.stubConsoleMessages,
-      ...maps.evaluationResult.stubConsoleMessages,
-      ...maps.pageError.stubConsoleMessages, ]),
+    stubPreparedMessages: new Map([
+      ...maps.consoleApi.stubPreparedMessages,
+      ...maps.evaluationResult.stubPreparedMessages,
+      ...maps.pageError.stubPreparedMessages, ]),
     stubPackets: new Map([
       ...maps.consoleApi.stubPackets,
       ...maps.evaluationResult.stubPackets,

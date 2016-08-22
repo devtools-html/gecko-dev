@@ -9,11 +9,11 @@
 
 const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
 
-let stubConsoleMessages = new Map();
+let stubPreparedMessages = new Map();
 let stubPackets = new Map();
 
 
-stubConsoleMessages.set("new Date(0)", new ConsoleMessage({
+stubPreparedMessages.set("new Date(0)", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "javascript",
@@ -61,6 +61,6 @@ stubPackets.set("new Date(0)", {
 
 
 module.exports = {
-  stubConsoleMessages,
+  stubPreparedMessages,
   stubPackets,
 }

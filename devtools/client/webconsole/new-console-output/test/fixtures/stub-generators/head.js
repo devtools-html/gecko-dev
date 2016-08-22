@@ -30,7 +30,7 @@ stubPackets.set("${key}", ${JSON.stringify(packet, null, "\t")});
 function formatStub(key, message) {
   let prepared = prepareMessage(message, {getNextId: () => "1"});
   return `
-stubConsoleMessages.set("${key}", new ConsoleMessage(${JSON.stringify(prepared, null, "\t")}));
+stubPreparedMessages.set("${key}", new ConsoleMessage(${JSON.stringify(prepared, null, "\t")}));
 `;
 }
 
@@ -46,14 +46,14 @@ function formatFile(stubs) {
 
 const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
 
-let stubConsoleMessages = new Map();
+let stubPreparedMessages = new Map();
 let stubPackets = new Map();
 
 ${stubs.preparedMessages.join("")}
 ${stubs.packets.join("")}
 
 module.exports = {
-  stubConsoleMessages,
+  stubPreparedMessages,
   stubPackets,
 }`;
 }

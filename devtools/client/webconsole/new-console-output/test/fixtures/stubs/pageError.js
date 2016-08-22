@@ -9,11 +9,11 @@
 
 const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
 
-let stubConsoleMessages = new Map();
+let stubPreparedMessages = new Map();
 let stubPackets = new Map();
 
 
-stubConsoleMessages.set("ReferenceError: asdf is not defined", new ConsoleMessage({
+stubPreparedMessages.set("ReferenceError: asdf is not defined", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "javascript",
@@ -72,6 +72,6 @@ stubPackets.set("ReferenceError: asdf is not defined", {
 
 
 module.exports = {
-  stubConsoleMessages,
+  stubPreparedMessages,
   stubPackets,
 }

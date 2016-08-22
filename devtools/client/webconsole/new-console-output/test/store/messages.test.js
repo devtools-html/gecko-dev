@@ -8,7 +8,7 @@ const {
   setupActions,
   setupStore
 } = require("devtools/client/webconsole/new-console-output/test/helpers");
-const { stubConsoleMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs/index");
+const { stubPreparedMessages } = require("devtools/client/webconsole/new-console-output/test/fixtures/stubs/index");
 
 const expect = require("expect");
 
@@ -22,7 +22,7 @@ describe("Message reducer:", () => {
   it("adds a message to an empty store", () => {
     const { dispatch, getState } = setupStore([]);
 
-    const message = stubConsoleMessages.get("console.log('foobar', 'test')");
+    const message = stubPreparedMessages.get("console.log('foobar', 'test')");
     dispatch(actions.messageAdd(message));
 
     const messages = getAllMessages(getState());
@@ -38,7 +38,7 @@ describe("Message reducer:", () => {
       "console.log('foobar', 'test')"
     ]);
 
-    const message = stubConsoleMessages.get("console.log('foobar', 'test')");
+    const message = stubPreparedMessages.get("console.log('foobar', 'test')");
     dispatch(actions.messageAdd(message));
     dispatch(actions.messageAdd(message));
 
@@ -54,10 +54,10 @@ describe("Message reducer:", () => {
       "console.log('foobar', 'test')"
     ]);
 
-    const message = stubConsoleMessages.get("console.log('foobar', 'test')");
+    const message = stubPreparedMessages.get("console.log('foobar', 'test')");
     dispatch(actions.messageAdd(message));
 
-    const message2 = stubConsoleMessages.get("console.log(undefined)");
+    const message2 = stubPreparedMessages.get("console.log(undefined)");
     dispatch(actions.messageAdd(message2));
 
     const messages = getAllMessages(getState());
@@ -73,7 +73,7 @@ describe("Message reducer:", () => {
       "console.log(undefined)"
     ]);
 
-    dispatch(actions.messageAdd(stubConsoleMessages.get("console.clear()")));
+    dispatch(actions.messageAdd(stubPreparedMessages.get("console.clear()")));
 
     const messages = getAllMessages(getState());
 
@@ -85,7 +85,7 @@ describe("Message reducer:", () => {
     const { dispatch, getState } = setupStore([]);
 
     const logLimit = 1000;
-    const baseMessage = stubConsoleMessages.get("console.log(undefined)");
+    const baseMessage = stubPreparedMessages.get("console.log(undefined)");
     for (let i = 1; i <= logLimit + 1; i++) {
       const msg = baseMessage.set("parameters", [`message num ${i}`]);
       dispatch(actions.messageAdd(msg));
@@ -100,7 +100,7 @@ describe("Message reducer:", () => {
   it("does not add null messages to the store", () => {
     const { dispatch, getState } = setupStore([]);
 
-    const message = stubConsoleMessages.get("console.time('bar')");
+    const message = stubPreparedMessages.get("console.time('bar')");
     dispatch(actions.messageAdd(message));
 
     const messages = getAllMessages(getState());

@@ -9,11 +9,11 @@
 
 const { ConsoleMessage } = require("devtools/client/webconsole/new-console-output/types");
 
-let stubConsoleMessages = new Map();
+let stubPreparedMessages = new Map();
 let stubPackets = new Map();
 
 
-stubConsoleMessages.set("console.log('foobar', 'test')", new ConsoleMessage({
+stubPreparedMessages.set("console.log('foobar', 'test')", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -34,7 +34,7 @@ stubConsoleMessages.set("console.log('foobar', 'test')", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.log(undefined)", new ConsoleMessage({
+stubPreparedMessages.set("console.log(undefined)", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -56,7 +56,7 @@ stubConsoleMessages.set("console.log(undefined)", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.warn('danger, will robinson!')", new ConsoleMessage({
+stubPreparedMessages.set("console.warn('danger, will robinson!')", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -76,7 +76,7 @@ stubConsoleMessages.set("console.warn('danger, will robinson!')", new ConsoleMes
 	}
 }));
 
-stubConsoleMessages.set("console.log(NaN)", new ConsoleMessage({
+stubPreparedMessages.set("console.log(NaN)", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -98,7 +98,7 @@ stubConsoleMessages.set("console.log(NaN)", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.log(null)", new ConsoleMessage({
+stubPreparedMessages.set("console.log(null)", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -120,7 +120,7 @@ stubConsoleMessages.set("console.log(null)", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.clear()", new ConsoleMessage({
+stubPreparedMessages.set("console.clear()", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -140,7 +140,7 @@ stubConsoleMessages.set("console.clear()", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.count('bar')", new ConsoleMessage({
+stubPreparedMessages.set("console.count('bar')", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -158,7 +158,7 @@ stubConsoleMessages.set("console.count('bar')", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.trace()", new ConsoleMessage({
+stubPreparedMessages.set("console.trace()", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -198,7 +198,7 @@ stubConsoleMessages.set("console.trace()", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.time('bar')", new ConsoleMessage({
+stubPreparedMessages.set("console.time('bar')", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -216,7 +216,7 @@ stubConsoleMessages.set("console.time('bar')", new ConsoleMessage({
 	}
 }));
 
-stubConsoleMessages.set("console.timeEnd('bar')", new ConsoleMessage({
+stubPreparedMessages.set("console.timeEnd('bar')", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -582,6 +582,6 @@ stubPackets.set("console.timeEnd('bar')", {
 
 
 module.exports = {
-  stubConsoleMessages,
+  stubPreparedMessages,
   stubPackets,
 }
