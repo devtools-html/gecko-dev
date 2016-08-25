@@ -3351,6 +3351,10 @@ WebConsoleConnectionProxy.prototype = {
    */
   _onNetworkEvent: function (type, networkInfo) {
     if (this.webConsoleFrame) {
+      if (this.webConsoleFrame.NEW_CONSOLE_OUTPUT_ENABLED) {
+        this.dispatchMessageAdd(networkInfo);
+        return;
+      }
       this.webConsoleFrame.handleNetworkEvent(networkInfo);
     }
   },
