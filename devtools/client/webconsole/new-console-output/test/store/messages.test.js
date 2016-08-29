@@ -122,5 +122,18 @@ describe("Message reducer:", () => {
       expect(messagesUi.size).toBe(1);
       expect(messagesUi.first()).toBe(messages.first().id);
     });
+
+    it("clears the store in response to console.clear()", () => {
+      const { dispatch, getState } = setupStore([]);
+
+      const traceMessage = stubPackets.get("console.trace()");
+      dispatch(actions.messageAdd(traceMessage));
+
+      const clearMessage = stubPackets.get("console.clear()");
+      dispatch(actions.messageAdd(clearMessage));
+
+      const messagesUi = getAllMessagesUiById(getState());
+      expect(messagesUi.size).toBe(0);
+    });
   });
 });
