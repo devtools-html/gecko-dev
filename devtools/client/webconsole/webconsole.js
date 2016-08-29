@@ -1931,8 +1931,6 @@ WebConsoleFrame.prototype = {
     if (event == "will-navigate") {
       if (this.persistLog) {
         if (this.NEW_CONSOLE_OUTPUT_ENABLED) {
-          // Add a _type to hit convertCachedPacket.
-          packet._type = true;
           this.newConsoleOutput.dispatchMessageAdd(packet);
         } else {
           let marker = new Messages.NavigationMarker(packet, Date.now());
