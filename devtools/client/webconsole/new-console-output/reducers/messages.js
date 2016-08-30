@@ -25,13 +25,6 @@ function messages(state = new MessageState(), action) {
         return state;
       }
 
-      if (newMessage.type === constants.MESSAGE_TYPE.CLEAR) {
-        return state.withMutations(function (record) {
-          record.set("messagesById", Immutable.List([newMessage]));
-          record.set("messagesUiById", Immutable.List());
-        });
-      }
-
       if (newMessage.allowRepeating && messagesById.size > 0) {
         let lastMessage = messagesById.last();
         if (lastMessage.repeatId === newMessage.repeatId) {
