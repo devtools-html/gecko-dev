@@ -69,7 +69,7 @@ describe("Message reducer:", () => {
       expect(messages.last().repeat).toBe(1);
     });
 
-    it("clears the store in response to console.clear()", () => {
+    it("clears the store and add a message in response to console.clear()", () => {
       const { dispatch, getState } = setupStore([
         "console.log('foobar', 'test')",
         "console.log(undefined)"
@@ -81,6 +81,18 @@ describe("Message reducer:", () => {
 
       expect(messages.size).toBe(1);
       expect(messages.first().parameters[0]).toBe("Console was cleared.");
+    });
+
+    it("clears the store in response to MESSAGES_CLEAR action", () => {
+      const { dispatch, getState } = setupStore([
+        "console.log('foobar', 'test')",
+        "console.log(undefined)"
+      ]);
+
+      dispatch(actions.messagesClear());
+
+      const messages = getAllMessages(getState());
+      expect(messages.size).toBe(0);
     });
 
     it("limits the number of messages displayed", () => {
@@ -131,6 +143,21 @@ describe("Message reducer:", () => {
 
       const clearMessage = stubPackets.get("console.clear()");
       dispatch(actions.messageAdd(clearMessage));
+
+      const messagesUi = getAllMessagesUiById(getState());
+      expect(messagesUi.size).toBe(0);
+    });
+
+    it("clears the store in response to MESSAGES_CLEAR action", () => {
+      const { dispatch, getState } = setupStore([
+        "console.log('foobar', 'test')",
+        "console.log(undefined)"
+      ]);
+
+      const traceMessage = stubPackets.get("console.trace()");
+      dispatch(actions.messageAdd(traceMessage));
+
+      dispatch(actions.messagesClear());
 
       const messagesUi = getAllMessagesUiById(getState());
       expect(messagesUi.size).toBe(0);
