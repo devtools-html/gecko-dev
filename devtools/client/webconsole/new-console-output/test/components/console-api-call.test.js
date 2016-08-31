@@ -17,7 +17,11 @@ describe("ConsoleAPICall component:", () => {
   describe("console.log", () => {
     it("renders string grips", () => {
       const message = stubPreparedMessages.get("console.log('foobar', 'test')");
-      const rendered = renderComponent(ConsoleApiCall, {message, onViewSourceInDebugger});
+      const rendered = renderComponent(ConsoleApiCall, {
+        message,
+        onViewSourceInDebugger,
+        open: true
+      });
 
       const messageBody = getMessageBody(rendered);
       // @TODO should output: foobar test
@@ -30,7 +34,11 @@ describe("ConsoleAPICall component:", () => {
       const message =
         stubPreparedMessages.get("console.log('foobar', 'test')")
         .set("repeat", 107);
-      const rendered = renderComponent(ConsoleApiCall, {message, onViewSourceInDebugger});
+      const rendered = renderComponent(ConsoleApiCall, {
+        message,
+        onViewSourceInDebugger,
+        open: true
+      });
 
       const repeatNode = getRepeatNode(rendered);
       expect(repeatNode[0].textContent).toBe("107");
@@ -40,7 +48,11 @@ describe("ConsoleAPICall component:", () => {
   describe("console.count", () => {
     it("renders", () => {
       const message = stubPreparedMessages.get("console.count('bar')");
-      const rendered = renderComponent(ConsoleApiCall, {message, onViewSourceInDebugger});
+      const rendered = renderComponent(ConsoleApiCall, {
+        message,
+        onViewSourceInDebugger,
+        open: true
+      });
 
       const messageBody = getMessageBody(rendered);
       expect(messageBody.textContent).toBe(message.messageText);
@@ -50,7 +62,11 @@ describe("ConsoleAPICall component:", () => {
   describe("console.time", () => {
     it("does not show anything", () => {
       const message = stubPreparedMessages.get("console.time('bar')");
-      const rendered = renderComponent(ConsoleApiCall, {message, onViewSourceInDebugger});
+      const rendered = renderComponent(ConsoleApiCall, {
+        message,
+        onViewSourceInDebugger,
+        open: true
+      });
 
       const messageBody = getMessageBody(rendered);
       expect(messageBody.textContent).toBe("");
@@ -60,11 +76,29 @@ describe("ConsoleAPICall component:", () => {
   describe("console.timeEnd", () => {
     it("renders as expected", () => {
       const message = stubPreparedMessages.get("console.timeEnd('bar')");
-      const rendered = renderComponent(ConsoleApiCall, {message, onViewSourceInDebugger});
+      const rendered = renderComponent(ConsoleApiCall, {
+        message,
+        onViewSourceInDebugger,
+        open: true
+      });
 
       const messageBody = getMessageBody(rendered);
       expect(messageBody.textContent).toBe(message.messageText);
       expect(messageBody.textContent).toMatch(/^bar: \d+(\.\d+)?ms$/);
+    });
+  });
+
+  describe("console.assert", () => {
+    it("renders as expected", () => {
+      const message = stubPreparedMessages.get("console.assert()");
+      const rendered = renderComponent(ConsoleApiCall, {
+        message,
+        onViewSourceInDebugger,
+        open: true
+      });
+
+      const messageBody = getMessageBody(rendered);
+      expect(messageBody.textContent).toMatch(/^Assertion failed: .+/);
     });
   });
 });

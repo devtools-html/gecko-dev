@@ -14,6 +14,16 @@ class L10n {
     }
     return str;
   }
+
+  getFormatStr(str) {
+    switch (str) {
+      case "level.error":
+        return "Error";
+      case "consoleCleared":
+        return "Console was cleared.";
+    }
+    return str;
+  }
 }
 
 module.exports = L10n;
