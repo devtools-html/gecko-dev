@@ -90,4 +90,14 @@ describe("ConsoleAPICall component:", () => {
       expect(frameLinks.eq(2).find(".frame-link-filename").text()).toBe(tempfilePath);
     });
   });
+
+  describe("tab navigation", () => {
+    it("renders", () => {
+      const message = stubPreparedMessages.get("tabNavigated");
+      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+
+      expect(wrapper.find(".message-body").text())
+        .toBe("Navigated to http://example.com/");
+    });
+  });
 });

@@ -97,13 +97,12 @@ function transformPacket(packet) {
       });
     }
 
-    case "navigationMessage": {
-      let { message } = packet;
+    case "tabNavigated": {
       return new ConsoleMessage({
         source: MESSAGE_SOURCE.CONSOLE_API,
         type: MESSAGE_TYPE.LOG,
         level: MESSAGE_LEVEL.LOG,
-        messageText: "Navigated to " + message.url,
+        messageText: "Navigated to " + packet.url,
       });
     }
 
@@ -163,8 +162,8 @@ function convertCachedPacket(packet) {
     convertPacket.pageError = packet;
     convertPacket.type = "pageError";
   } else if ("_navPayload" in packet) {
-    convertPacket.type = "navigationMessage";
-    convertPacket.message = packet;
+    convertPacket.type = "tabNavigated";
+    convertPacket = packet;
   } else {
     throw new Error("Unexpected packet type");
   }
