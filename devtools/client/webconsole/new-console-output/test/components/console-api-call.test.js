@@ -22,7 +22,11 @@ describe("ConsoleAPICall component:", () => {
   describe("console.log", () => {
     it("renders string grips", () => {
       const message = stubPreparedMessages.get("console.log('foobar', 'test')");
-      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+      const wrapper = render(ConsoleApiCall({
+        message,
+        onViewSourceInDebugger,
+        open: true
+      }));
 
       // @TODO should output: foobar test
       expect(wrapper.find(".message-body").text()).toBe("\"foobar\"\"test\"");
@@ -34,7 +38,11 @@ describe("ConsoleAPICall component:", () => {
       const message =
         stubPreparedMessages.get("console.log('foobar', 'test')")
         .set("repeat", 107);
-      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+      const wrapper = render(ConsoleApiCall({
+        message,
+        onViewSourceInDebugger,
+        open: true
+      }));
 
       expect(wrapper.find(".message-repeats").text()).toBe("107");
 
@@ -45,7 +53,11 @@ describe("ConsoleAPICall component:", () => {
   describe("console.count", () => {
     it("renders", () => {
       const message = stubPreparedMessages.get("console.count('bar')");
-      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+      const wrapper = render(ConsoleApiCall({
+        message,
+        onViewSourceInDebugger,
+        open: true
+      }));
 
       expect(wrapper.find(".message-body").text()).toBe("bar: 1");
     });
@@ -54,7 +66,11 @@ describe("ConsoleAPICall component:", () => {
   describe("console.time", () => {
     it("does not show anything", () => {
       const message = stubPreparedMessages.get("console.time('bar')");
-      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+      const wrapper = render(ConsoleApiCall({
+        message,
+        onViewSourceInDebugger,
+        open: true
+      }));
 
       expect(wrapper.find(".message-body").text()).toBe("");
     });
@@ -63,17 +79,38 @@ describe("ConsoleAPICall component:", () => {
   describe("console.timeEnd", () => {
     it("renders as expected", () => {
       const message = stubPreparedMessages.get("console.timeEnd('bar')");
-      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+      const wrapper = render(ConsoleApiCall({
+        message,
+        onViewSourceInDebugger,
+        open: true
+      }));
 
       expect(wrapper.find(".message-body").text()).toBe(message.messageText);
       expect(wrapper.find(".message-body").text()).toMatch(/^bar: \d+(\.\d+)?ms$/);
     });
   });
 
+  describe("console.assert", () => {
+    it("renders as expected", () => {
+      const message = stubPreparedMessages.get("console.assert()");
+      const wrapper = render(ConsoleApiCall({
+        message,
+        onViewSourceInDebugger,
+        open: true
+      }));
+
+      expect(wrapper.find(".message-body").text()).toMatch(/^Assertion failed: .+/);
+    });
+  });
+
   describe("console.trace", () => {
     it("renders", () => {
       const message = stubPreparedMessages.get("console.trace()");
-      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+      const wrapper = render(ConsoleApiCall({
+        message,
+        onViewSourceInDebugger,
+        open: true
+      }));
 
       expect(wrapper.find(".message-body").text()).toBe("console.trace()");
 

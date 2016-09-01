@@ -222,15 +222,83 @@ stubPreparedMessages.set("console.timeEnd('bar')", new ConsoleMessage({
 	"source": "console-api",
 	"type": "timeEnd",
 	"level": "log",
-	"messageText": "bar: 2.01ms",
+	"messageText": "bar: 6.81ms",
 	"parameters": null,
 	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"timeEnd\",\"level\":\"log\",\"messageText\":\"bar: 2.01ms\",\"parameters\":null,\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js\",\"line\":3,\"column\":1}}",
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"timeEnd\",\"level\":\"log\",\"messageText\":\"bar: 6.81ms\",\"parameters\":null,\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js\",\"line\":3,\"column\":1}}",
 	"stacktrace": null,
 	"frame": {
 		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
 		"line": 3,
 		"column": 1
+	}
+}));
+
+stubPreparedMessages.set("console.assert()", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "assert",
+	"level": "error",
+	"messageText": null,
+	"parameters": [
+		{
+			"type": "object",
+			"actor": "server1.conn9.child1/obj29",
+			"class": "Object",
+			"extensible": true,
+			"frozen": false,
+			"sealed": false,
+			"ownPropertyLength": 3,
+			"preview": {
+				"kind": "Object",
+				"ownProperties": {
+					"message": {
+						"configurable": true,
+						"enumerable": true,
+						"writable": true,
+						"value": "a is not greater than b"
+					},
+					"a": {
+						"configurable": true,
+						"enumerable": true,
+						"writable": true,
+						"value": 5
+					},
+					"b": {
+						"configurable": true,
+						"enumerable": true,
+						"writable": true,
+						"value": 6
+					}
+				},
+				"ownPropertiesLength": 3,
+				"safeGetterValues": {}
+			}
+		}
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"assert\",\"level\":\"error\",\"messageText\":null,\"parameters\":[{\"type\":\"object\",\"actor\":\"server1.conn9.child1/obj29\",\"class\":\"Object\",\"extensible\":true,\"frozen\":false,\"sealed\":false,\"ownPropertyLength\":3,\"preview\":{\"kind\":\"Object\",\"ownProperties\":{\"message\":{\"configurable\":true,\"enumerable\":true,\"writable\":true,\"value\":\"a is not greater than b\"},\"a\":{\"configurable\":true,\"enumerable\":true,\"writable\":true,\"value\":5},\"b\":{\"configurable\":true,\"enumerable\":true,\"writable\":true,\"value\":6}},\"ownPropertiesLength\":3,\"safeGetterValues\":{}}}],\"repeatId\":null,\"stacktrace\":[{\"columnNumber\":3,\"filename\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js\",\"functionName\":\"greaterThan\",\"language\":2,\"lineNumber\":3},{\"columnNumber\":1,\"filename\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js\",\"functionName\":\"triggerPacket\",\"language\":2,\"lineNumber\":6}],\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js\",\"line\":3,\"column\":3}}",
+	"stacktrace": [
+		{
+			"columnNumber": 3,
+			"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+			"functionName": "greaterThan",
+			"language": 2,
+			"lineNumber": 3
+		},
+		{
+			"columnNumber": 1,
+			"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+			"functionName": "triggerPacket",
+			"language": 2,
+			"lineNumber": 6
+		}
+	],
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+		"line": 3,
+		"column": 3
 	}
 }));
 
@@ -260,7 +328,7 @@ stubPackets.set("console.log('foobar', 'test')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1471885545204,
+		"timeStamp": 1472719504812,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -293,7 +361,7 @@ stubPackets.set("console.log(undefined)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1471885546075,
+		"timeStamp": 1472719505679,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -324,7 +392,7 @@ stubPackets.set("console.warn('danger, will robinson!')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1471885546795,
+		"timeStamp": 1472719506501,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -357,7 +425,7 @@ stubPackets.set("console.log(NaN)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1471885547605,
+		"timeStamp": 1472719507256,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -390,7 +458,7 @@ stubPackets.set("console.log(null)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1471885548414,
+		"timeStamp": 1472719508342,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -418,7 +486,7 @@ stubPackets.set("console.clear()", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1471885549077,
+		"timeStamp": 1472719509204,
 		"timer": null,
 		"workerType": "none",
 		"styles": [],
@@ -452,7 +520,7 @@ stubPackets.set("console.count('bar')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1471885549791,
+		"timeStamp": 1472719510229,
 		"timer": null,
 		"workerType": "none",
 		"styles": [],
@@ -481,7 +549,7 @@ stubPackets.set("console.trace()", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1471885551114,
+		"timeStamp": 1472719511376,
 		"timer": null,
 		"stacktrace": [
 			{
@@ -535,10 +603,10 @@ stubPackets.set("console.time('bar')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1471885552201,
+		"timeStamp": 1472719512532,
 		"timer": {
 			"name": "bar",
-			"started": 970.09
+			"started": 910.1750000000001
 		},
 		"workerType": "none",
 		"styles": [],
@@ -569,13 +637,93 @@ stubPackets.set("console.timeEnd('bar')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1471885552203,
+		"timeStamp": 1472719512539,
 		"timer": {
-			"duration": 2.0149999999999864,
+			"duration": 6.814999999999941,
 			"name": "bar"
 		},
 		"workerType": "none",
 		"styles": [],
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.assert()", {
+	"from": "server1.conn9.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			{
+				"type": "object",
+				"actor": "server1.conn9.child1/obj29",
+				"class": "Object",
+				"extensible": true,
+				"frozen": false,
+				"sealed": false,
+				"ownPropertyLength": 3,
+				"preview": {
+					"kind": "Object",
+					"ownProperties": {
+						"message": {
+							"configurable": true,
+							"enumerable": true,
+							"writable": true,
+							"value": "a is not greater than b"
+						},
+						"a": {
+							"configurable": true,
+							"enumerable": true,
+							"writable": true,
+							"value": 5
+						},
+						"b": {
+							"configurable": true,
+							"enumerable": true,
+							"writable": true,
+							"value": 6
+						}
+					},
+					"ownPropertiesLength": 3,
+					"safeGetterValues": {}
+				}
+			}
+		],
+		"columnNumber": 3,
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+		"functionName": "greaterThan",
+		"groupName": "",
+		"level": "assert",
+		"lineNumber": 3,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"styles": [],
+		"timeStamp": 1472719513466,
+		"timer": null,
+		"stacktrace": [
+			{
+				"columnNumber": 3,
+				"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+				"functionName": "greaterThan",
+				"language": 2,
+				"lineNumber": 3
+			},
+			{
+				"columnNumber": 1,
+				"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+				"functionName": "triggerPacket",
+				"language": 2,
+				"lineNumber": 6
+			}
+		],
+		"workerType": "none",
 		"category": "webdev"
 	}
 });

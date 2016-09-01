@@ -38,6 +38,16 @@ console.time("bar");
 console.timeEnd("bar");
 `});
 
+consoleApi.set("console.assert()", {
+  keys: ["console.assert()"],
+  code: `
+function greaterThan(a, b) {
+  console.assert(a > b, {"message":"a is not greater than b", "a": a, "b": b});
+}
+
+greaterThan(5, 6);
+`});
+
 // Evaluation Result
 
 const evaluationResultCommands = [
