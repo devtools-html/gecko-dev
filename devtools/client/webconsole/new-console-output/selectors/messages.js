@@ -31,7 +31,7 @@ function getAllMessagesUiById(state) {
 
 function filterLevel(messages, filters) {
   return messages.filter((message) => {
-    return filters[message.level] === true
+    return filters.has(message.level)
       || [MESSAGE_TYPE.COMMAND, MESSAGE_TYPE.RESULT].includes(message.type);
   });
 }

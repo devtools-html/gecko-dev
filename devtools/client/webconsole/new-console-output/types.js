@@ -35,3 +35,14 @@ exports.ConsoleMessage = Immutable.Record({
   stacktrace: null,
   frame: null,
 });
+
+exports.NetworkEventMessage = Immutable.Record({
+  id: null,
+  actor: null,
+  level: null,
+  isXHR: false,
+  request: null,
+  response: null,
+  source: null,
+  type: null,
+});
