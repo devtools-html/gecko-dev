@@ -66,6 +66,15 @@ describe("Filtering", () => {
       expect(messages.size).toEqual(3);
     });
 
+    it("matches unicode values", () => {
+      store.dispatch(messageAdd(stubPackets.get("console.log('鼬')")));
+      store.dispatch(actions.filterTextSet("鼬"));
+
+      let messages = getAllMessages(store.getState());
+      // This does not filter out Evaluation Results or console commands
+      expect(messages.size).toEqual(3);
+    });
+
     it("matches locations", () => {
       // Add a message with a different filename.
       let locationMsg =
