@@ -42,7 +42,7 @@ function search(messages, text = "") {
   }
 
   return messages.filter(function (message) {
-    // Evaluation Results are never filtered.
+    // Evaluation Results and Console Commands are never filtered.
     if ([ MESSAGE_TYPE.RESULT, MESSAGE_TYPE.COMMAND ].includes(message.type)) {
       return true;
     }
@@ -54,8 +54,7 @@ function search(messages, text = "") {
       // Look for a match in location.
       // @TODO Change this to Object.values once it's supported in Node's version of V8
       || Object.keys(message.frame)
-        .map(key => message
-        .frame[key])
+        .map(key => message.frame[key])
         .join(":")
         .includes(text)
       // Look for a match in messageText.
