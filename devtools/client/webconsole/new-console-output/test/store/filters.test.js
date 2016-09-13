@@ -29,7 +29,7 @@ describe("Filtering", () => {
       store.dispatch(actions.filterToggle(MESSAGE_LEVEL.LOG));
 
       let messages = getAllMessages(store.getState());
-      expect(messages.size).toEqual(numMessages - 2);
+      expect(messages.size).toEqual(numMessages - 3);
     });
 
     it("filters debug messages", () => {
@@ -67,7 +67,6 @@ describe("Filtering", () => {
     });
 
     it("matches unicode values", () => {
-      store.dispatch(messageAdd(stubPackets.get("console.log('鼬')")));
       store.dispatch(actions.filterTextSet("鼬"));
 
       let messages = getAllMessages(store.getState());
@@ -143,6 +142,7 @@ function prepareBaseStore() {
     "console.warn('danger, will robinson!')",
     "console.log(undefined)",
     "console.count('bar')",
+    "console.log('鼬')",
     // Evaluation Result - never filtered
     "new Date(0)",
     // PageError
