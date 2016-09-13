@@ -39,10 +39,10 @@ exports.ConsoleMessage = Immutable.Record({
 exports.NetworkEventMessage = Immutable.Record({
   id: null,
   actor: null,
-  level: null,
+  level: MESSAGE_LEVEL.LOG,
   isXHR: false,
   request: null,
   response: null,
-  source: null,
-  type: null,
+  source: MESSAGE_SOURCE.NETWORK,
+  type: MESSAGE_TYPE.LOG,
 });
