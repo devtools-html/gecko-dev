@@ -31,11 +31,17 @@ NetworkEventMessage.defaultProps = {
 
 function NetworkEventMessage(props) {
   const { message, serviceContainer, indent } = props;
-  const { actor, source, type, level, request, isXHR } = message;
+  const { actor, source, type, level, request, response, isXHR, totalTime } = message;
+  const { httpVersion, status, statusText } = response;
 
   const topLevelClasses = [ "cm-s-mozilla" ];
+  let statusInfo;
 
-  function onUrlClick() {
+  if (httpVersion && status && statusText && totalTime !== undefined) {
+    statusInfo = `[${httpVersion} ${status} ${statusText} ${totalTime}ms]`;
+  }
+
+  function openNetworkMonitor() {
     serviceContainer.openNetworkPanel(actor);
   }
 
@@ -43,10 +49,13 @@ function NetworkEventMessage(props) {
   const xhr = isXHR
     ? dom.span({ className: "xhr" }, l10n.getStr("webConsoleXhrIndicator"))
     : null;
-  const url = dom.a({ className: "url", title: request.url, onClick: onUrlClick },
-        request.url.replace(/\?.+/, ""));
+  const url = dom.a({ className: "url", title: request.url, onClick: openNetworkMonitor },
+    request.url.replace(/\?.+/, ""));
+  const statusBody = statusInfo
+    ? dom.a({ className: "status", onClick: openNetworkMonitor }, statusInfo)
+    : null;
 
-  const messageBody = dom.span({}, method, xhr, url);
+  const messageBody = [method, xhr, url, statusBody];
 
   const childProps = {
     source,

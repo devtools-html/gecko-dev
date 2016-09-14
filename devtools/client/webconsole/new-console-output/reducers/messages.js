@@ -98,6 +98,16 @@ function messages(state = new MessageState(), action) {
     case constants.MESSAGE_TABLE_RECEIVE:
       const {id, data} = action;
       return state.set("messagesTableDataById", messagesTableDataById.set(id, data));
+    case constants.NETWORK_MESSAGE_UPDATE:
+      let updateMessage = action.message;
+      return state.withMutations(function (record) {
+        record.set("messagesById", messagesById.map((message, key) => {
+          if (message.id === updateMessage.id) {
+            return updateMessage;
+          }
+          return message;
+        }));
+      });
   }
 
   return state;

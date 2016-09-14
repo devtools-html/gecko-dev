@@ -48,4 +48,5 @@ exports.NetworkEventMessage = Immutable.Record({
   source: MESSAGE_SOURCE.NETWORK,
   type: MESSAGE_TYPE.LOG,
   groupId: null,
+  totalTime: null,
 });
