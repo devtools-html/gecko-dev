@@ -22,6 +22,20 @@ const { prepareMessage } = require("devtools/client/webconsole/new-console-outpu
 const BASE_PATH = "../../../../devtools/client/webconsole/new-console-output/test/fixtures";
 const TEMP_FILE_PATH = OS.Path.join(`${BASE_PATH}/stub-generators`, "test-tempfile.js");
 
+/**
+ * Close a tab and if necessary, the toolbox that belongs to it
+ * @param {Tab} tab The tab to close.
+ * @return {Promise} Resolves when the toolbox and tab have been destroyed and
+ * closed.
+ */
+var closeTabAndToolbox = Task.async(function* (tab = gBrowser.selectedTab) {
+  let target = TargetFactory.forTab(gBrowser.selectedTab);
+  if (target) {
+    yield gDevTools.closeToolbox(target);
+  }
+
+  yield removeTab(gBrowser.selectedTab);
+});
 
 function formatPacket(key, packet) {
   return `

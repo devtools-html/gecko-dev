@@ -17,7 +17,15 @@ let stubs = {
 
 add_task(function* () {
   for (var [key, {keys, code}] of snippets) {
-    OS.File.writeAtomic(TEMP_FILE_PATH, `function triggerPacket() {${code}}`);
+    const writeFile = OS.File.writeAtomic(TEMP_FILE_PATH, `function triggerPacket() {${code}}`);
+
+    yield writeFile;
+
+    let decoder = new TextDecoder();        // This decoder can be reused for several reads
+    let file = yield OS.File.read(TEMP_FILE_PATH); // Read the complete file as an array
+    info("print files " + key);
+    ok(false, decoder.decode(file));
+
     let toolbox = yield openNewTabAndToolbox(TEST_URI, "webconsole");
     let hud = toolbox.getCurrentPanel().hud;
     let {ui} = hud;
@@ -27,13 +35,17 @@ add_task(function* () {
 
     let received = new Promise(resolve => {
       let i = 0;
-      toolbox.target.client.addListener("consoleAPICall", (type, res) => {
+      let listener = (type, res) => {
+        info(keys);
+        info(JSON.stringify(res));
         stubs.packets.push(formatPacket(keys[i], res));
         stubs.preparedMessages.push(formatStub(keys[i], res));
         if(++i === keys.length ){
+          toolbox.target.client.removeListener("consoleAPICall", listener);
           resolve();
         }
-      });
+      };
+      toolbox.target.client.addListener("consoleAPICall", listener);
     });
 
     yield ContentTask.spawn(gBrowser.selectedBrowser, {}, function() {
@@ -41,6 +53,8 @@ add_task(function* () {
     });
 
     yield received;
+
+    yield closeTabAndToolbox();
   }
   let filePath = OS.Path.join(`${BASE_PATH}/stubs`, "consoleApi.js");
   OS.File.writeAtomic(filePath, formatFile(stubs));

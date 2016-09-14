@@ -61,22 +61,22 @@ registerCleanupFunction(function () {
 /**
  * Watch console messages for failed propType definitions in React components.
  */
-const ConsoleObserver = {
-  QueryInterface: XPCOMUtils.generateQI([Ci.nsIObserver]),
+// const ConsoleObserver = {
+//   QueryInterface: XPCOMUtils.generateQI([Ci.nsIObserver]),
 
-  observe: function (subject, topic, data) {
-    let message = subject.wrappedJSObject.arguments[0];
+//   observe: function (subject, topic, data) {
+//     let message = subject.wrappedJSObject.arguments[0];
 
-    if (/Failed propType/.test(message)) {
-      ok(false, message);
-    }
-  }
-};
+//     if (/Failed propType/.test(message)) {
+//       ok(false, message);
+//     }
+//   }
+// };
 
-Services.obs.addObserver(ConsoleObserver, "console-api-log-event", false);
-registerCleanupFunction(() => {
-  Services.obs.removeObserver(ConsoleObserver, "console-api-log-event");
-});
+// Services.obs.addObserver(ConsoleObserver, "console-api-log-event", false);
+// registerCleanupFunction(() => {
+//   Services.obs.removeObserver(ConsoleObserver, "console-api-log-event");
+// });
 
 var waitForTime = DevToolsUtils.waitForTime;
 
