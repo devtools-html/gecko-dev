@@ -3,6 +3,10 @@
 
 "use strict";
 
+var {DebuggerServer} = require("devtools/server/main");
+var longString = (new Array(DebuggerServer.LONG_STRING_LENGTH + 4)).join("a");
+var initialString = longString.substring(0, DebuggerServer.LONG_STRING_INITIAL_LENGTH);
+
 // Console API
 
 const consoleApiCommands = [
@@ -14,31 +18,38 @@ const consoleApiCommands = [
   "console.log('\u9f2c')",
   "console.clear()",
   "console.count('bar')",
-  "console.assert(false, {message: 'foobar'})"
+  "console.assert(false, {message: 'foobar'})",
+  "console.log('hello \\nfrom \\rthe \\\"string world!')",
+  "console.log('\xFA\u1E47\u0129\xE7\xF6d\xEA \u021B\u0115\u0219\u0165')",
+  //`console.log('${longString}')`,
+  "console.count('a')",
+  "console.count('b')",
+  "console.count('barasdf')",
+  "console.count('barista')",
 ];
 
 let consoleApi = new Map(consoleApiCommands.map(
   cmd => [cmd, {keys: [cmd], code: cmd}]));
 
-consoleApi.set("console.trace()", {
-  keys: ["console.trace()"],
-  code: `
-function bar() {
-  console.trace()
-}
-function foo() {
-  bar()
-}
+// consoleApi.set("console.trace()", {
+//   keys: ["console.trace()"],
+//   code: `
+// function bar() {
+//   console.trace()
+// }
+// function foo() {
+//   bar()
+// }
 
-foo()
-`});
+// foo()
+// `});
 
-consoleApi.set("console.time('bar')", {
-  keys: ["console.time('bar')", "console.timeEnd('bar')"],
-  code: `
-console.time("bar");
-console.timeEnd("bar");
-`});
+// consoleApi.set("console.time('bar')", {
+//   keys: ["console.time('bar')", "console.timeEnd('bar')"],
+//   code: `
+// console.time("bar");
+// console.timeEnd("bar");
+// `});
 
 // Evaluation Result
 
