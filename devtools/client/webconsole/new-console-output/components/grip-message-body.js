@@ -37,6 +37,7 @@ function GripMessageBody(props) {
   const { grip } = props;
 
   return (
+    // @TODO once there is a longString rep, also turn off quotes for those.
     typeof grip === "string"
       ? StringRep({
         object: grip,
