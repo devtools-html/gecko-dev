@@ -98,4 +98,51 @@ describe("ConsoleAPICall component:", () => {
       expect(frameLinks.eq(2).find(".frame-link-filename").text()).toBe(filepath);
     });
   });
+
+  describe("console.log (handling tricky values)", () => {
+    it("renders escaped values", () => {
+      const message = stubs.get("console.log('hello \nfrom \rthe \"string world!')");
+      const wrapper = render(ConsoleApiCall(Object.assign({}, props, { message })));
+
+      expect(wrapper.find(".message-body").text())
+        .toBe("hello \\nfrom \\rthe \"string world!");
+    });
+
+    it("renders unicode values", () => {
+      const message = stubs.get("console.log('\xFA\u1E47\u0129\xE7\xF6d\xEA \u021B\u0115\u0219\u0165')");
+      const wrapper = render(ConsoleApiCall(Object.assign({}, props, { message })));
+
+      expect(wrapper.find(".message-body").text()).toBe("úṇĩçödê țĕșť");
+    });
+
+    // @TODO fill this in once https://github.com/devtools-html/gecko-dev/issues/277 is fixed.
+    // const message = stubs.get("console.log(longString)");
+    it("renders longString values");
+
+    it("renders number 0", () => {
+      const message = stubs.get("console.log(0)");
+      const wrapper = render(ConsoleApiCall(Object.assign({}, props, { message })));
+
+      expect(wrapper.find(".message-body").text()).toBe("0");
+    });
+
+    it("renders string '0'", () => {
+      const message = stubs.get("console.log('0')");
+      const wrapper = render(ConsoleApiCall(Object.assign({}, props, { message })));
+
+      expect(wrapper.find(".message-body").text()).toBe("0");
+    });
+
+    it("renders a regex", () => {
+      const message = stubs.get("console.log(/foobar/)");
+      const wrapper = render(ConsoleApiCall(Object.assign({}, props, { message })));
+
+      // Ensure that it is linked to variables view.
+      expect(wrapper.find(".message-body .objectBox-regexp a.cm-variable").text())
+        .toBe("/foobar/");
+    });
+
+    // @TODO add a test for Symbols when Bug 1303126 is complete
+    it("renders a Symbol()");
+  });
 });
