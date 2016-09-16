@@ -23,6 +23,11 @@ describe("PageError component:", () => {
     // The stacktrace should be closed by default.
     const frameLinks = wrapper.find(`.stack-trace`);
     expect(frameLinks.length).toBe(0);
+
+    // There should be the location
+    const locationLink = wrapper.find(`.message-location`);
+    expect(locationLink.length).toBe(1);
+    expect(locationLink.text()).toBe("test-tempfile.js:3:5");
   });
 
   it("has a stacktrace which can be openned", () => {
