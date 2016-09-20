@@ -6,52 +6,37 @@
 "use strict";
 
 const TEST_URI = "data:text/html;charset=utf-8,<p>Web Console test for " +
-                 "notifications";
+                 "obeserver notifications";
+
+let created = false;
+let destroyed = false;
 
 add_task(function* () {
-  let gotEvents = waitForEvents();
-  let hud = yield openNewTabAndConsole(TEST_URI);
-  yield gotEvents;
+  setupObserver();
+  yield openNewTabAndConsole(TEST_URI);
+  yield waitFor(() => created);
+
+  yield closeTabAndToolbox(gBrowser.selectedTab);
+  yield waitFor(() => destroyed);
 });
 
-function waitForEvents(onConsoleOpened) {
-  function webConsoleCreated(id) {
-    Services.obs.removeObserver(observer, "web-console-created");
-    ok(HUDService.getHudReferenceById(id), "We have a hud reference");
-    content.wrappedJSObject.console.log("adding a log message");
-  }
-
-  function webConsoleDestroyed(id) {
-    Services.obs.removeObserver(observer, "web-console-destroyed");
-    ok(!HUDService.getHudReferenceById(id), "We do not have a hud reference");
-    executeSoon(deferred.resolve);
-  }
-
-  function webConsoleMessage(id, nodeID) {
-    Services.obs.removeObserver(observer, "web-console-message-created");
-    ok(id, "we have a console ID");
-    is(typeof nodeID, "string", "message node id is a string");
-    onConsoleOpened.then(closeConsole);
-  }
-
-  let observer = {
-
+function setupObserver() {
+  const observer = {
     QueryInterface: XPCOMUtils.generateQI([Ci.nsIObserver]),
 
-    observe: function observe(subject, topic, data) {
+    observe: function observe(subject, topic) {
       subject = subject.QueryInterface(Ci.nsISupportsString);
 
       switch (topic) {
         case "web-console-created":
-          webConsoleCreated(subject.data);
+          ok(HUDService.getHudReferenceById(subject.data), "We have a hud reference");
+          Services.obs.removeObserver(observer, "web-console-created");
+          created = true;
           break;
         case "web-console-destroyed":
-          webConsoleDestroyed(subject.data);
-          break;
-        case "web-console-message-created":
-          webConsoleMessage(subject, data);
-          break;
-        default:
+          ok(!HUDService.getHudReferenceById(subject.data), "We do not have a hud reference");
+          Services.obs.removeObserver(observer, "web-console-destroyed");
+          destroyed = true;
           break;
       }
     },
@@ -59,7 +44,6 @@ function waitForEvents(onConsoleOpened) {
     init: function init() {
       Services.obs.addObserver(this, "web-console-created", false);
       Services.obs.addObserver(this, "web-console-destroyed", false);
-      Services.obs.addObserver(this, "web-console-message-created", false);
     }
   };
 
