@@ -13,8 +13,16 @@ Services.scriptloader.loadSubScript(
   this);
 
 Services.prefs.setBoolPref("devtools.webconsole.new-frontend-enabled", true);
-registerCleanupFunction(() => {
+registerCleanupFunction(function* () {
   Services.prefs.clearUserPref("devtools.webconsole.new-frontend-enabled");
+
+  let browserConsole = HUDService.getBrowserConsole();
+  if (browserConsole) {
+    if (browserConsole.jsterm) {
+      browserConsole.jsterm.clearOutput(true);
+    }
+    yield HUDService.toggleBrowserConsole();
+  }
 });
 
 function loadTab(url) {
@@ -30,21 +38,6 @@ function loadTab(url) {
 
   return deferred.promise;
 }
-
-var finishTest = Task.async(function* () {
-  let browserConsole = HUDService.getBrowserConsole();
-  if (browserConsole) {
-    if (browserConsole.jsterm) {
-      browserConsole.jsterm.clearOutput(true);
-    }
-    yield HUDService.toggleBrowserConsole();
-  }
-
-  let target = TargetFactory.forTab(gBrowser.selectedTab);
-  yield gDevTools.closeToolbox(target);
-
-  finish();
-});
 
 /**
  * Open the Web Console for the given tab.
