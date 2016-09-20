@@ -105,21 +105,21 @@ function waitForMessages({ hud, messages }) {
 /**
  * Wait for a predicate to return a result.
  *
- * @param function predicate
- *        Invoked once in a while until it returns true.
+ * @param function condition
+ *        Invoked once in a while until it returns a truthy value. This should be an
+ *        idempotent function, since we have to run it a second time after it returns
+ *        true in order to return the value.
+ * @param string message [optional]
+ *        A message to output if the condition failes.
  * @param number interval [optional]
  *        How often the predicate is invoked, in milliseconds.
+ * @return object
+ *         A promise that is resolved with the result of the condition.
  */
-function* waitFor(predicate, interval = 10) {
+function* waitFor(condition, message = "waitFor", interval = 100, maxTries = 50) {
   return new Promise(resolve => {
-    let intervalHandler = setInterval(() => {
-      let result = predicate();
-      if (result) {
-        clearInterval(intervalHandler);
-        resolve(result);
-        return;
-      }
-    }, interval);
+    BrowserTestUtils.waitForCondition(condition, message, interval, maxTries)
+      .then(resolve(condition()));
   });
 }
 
