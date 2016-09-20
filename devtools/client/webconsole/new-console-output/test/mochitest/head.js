@@ -25,42 +25,21 @@ registerCleanupFunction(function* () {
   }
 });
 
-function loadTab(url) {
-  let deferred = promise.defer();
-
-  let tab = gBrowser.selectedTab = gBrowser.addTab(url);
-  let browser = gBrowser.getBrowserForTab(tab);
-
-  browser.addEventListener("load", function onLoad() {
-    browser.removeEventListener("load", onLoad, true);
-    deferred.resolve({tab: tab, browser: browser});
-  }, true);
-
-  return deferred.promise;
-}
-
 /**
- * Open the Web Console for the given tab.
+ * Add a new tab and open the toolbox in it, and select the webconsole.
  *
- * @param nsIDOMElement [tab]
- *        Optional tab element for which you want open the Web Console. The
- *        default tab is taken from the global variable |tab|.
- * @param function [callback]
- *        Optional function to invoke after the Web Console completes
- *        initialization (web-console-created).
- * @return object
- *         A promise that is resolved once the web console is open.
+ * @param string url
+ *        The URL for the tab to be opened.
+ * @return Promise
+ *         Resolves when the tab has been added, loaded and the toolbox has been opened.
+ *         Resolves to the toolbox.
  */
-var openConsole = function (tab) {
-  let webconsoleOpened = promise.defer();
-  let target = TargetFactory.forTab(tab || gBrowser.selectedTab);
-  gDevTools.showToolbox(target, "webconsole").then(toolbox => {
-    let hud = toolbox.getCurrentPanel().hud;
-    hud.jsterm._lazyVariablesView = false;
-    webconsoleOpened.resolve(hud);
-  });
-  return webconsoleOpened.promise;
-};
+var openNewTabAndConsole = Task.async(function* (url) {
+  let toolbox = yield openNewTabAndToolbox(TEST_URI, "webconsole");
+  let hud = toolbox.getCurrentPanel().hud;
+  hud.jsterm._lazyVariablesView = false;
+  return hud;
+});
 
 /**
  * Wait for messages in the web console output, resolving once they are receieved.

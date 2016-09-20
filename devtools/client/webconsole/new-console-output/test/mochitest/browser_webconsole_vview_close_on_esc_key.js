@@ -14,8 +14,7 @@ const TEST_URI =
 add_task(function* () {
   let hud;
 
-  let {tab} = yield loadTab(TEST_URI);
-  hud = yield openConsole(tab);
+  hud = yield openNewTabAndConsole(TEST_URI);
   let jsterm = hud.jsterm;
   let vview;
 
