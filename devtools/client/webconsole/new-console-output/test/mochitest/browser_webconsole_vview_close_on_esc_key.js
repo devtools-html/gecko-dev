@@ -11,43 +11,39 @@
 const TEST_URI =
   "data:text/html;charset=utf8,<script>let fooObj = {testProp: 'testValue'}</script>";
 
-function test() {
+add_task(function* () {
   let hud;
 
-  Task.spawn(runner).then(finishTest);
+  let {tab} = yield loadTab(TEST_URI);
+  hud = yield openConsole(tab);
+  let jsterm = hud.jsterm;
+  let vview;
 
-  function* runner() {
-    let {tab} = yield loadTab(TEST_URI);
-    hud = yield openConsole(tab);
-    let jsterm = hud.jsterm;
-    let vview;
+  yield openSidebar("fooObj", 'testProp: "testValue"');
+  vview.window.focus();
 
-    yield openSidebar("fooObj", 'testProp: "testValue"');
-    vview.window.focus();
+  let sidebarClosed = jsterm.once("sidebar-closed");
+  EventUtils.synthesizeKey("VK_ESCAPE", {});
+  yield sidebarClosed;
 
-    let sidebarClosed = jsterm.once("sidebar-closed");
-    EventUtils.synthesizeKey("VK_ESCAPE", {});
-    yield sidebarClosed;
+  function* openSidebar(objName, expectedText) {
+    yield jsterm.execute(objName);
+    info("JSTerm executed");
 
-    function* openSidebar(objName, expectedText) {
-      yield jsterm.execute(objName);
-      info("JSTerm executed");
+    let msg = yield waitFor(() => findMessage(hud, "Object"));
+    ok(msg, "Message found");
 
-      let msg = yield waitFor(() => findMessage(hud, "Object"));
-      ok(msg, "Message found");
+    let anchor = msg.querySelector("a");
+    let body = msg.querySelector(".message-body");
+    ok(anchor, "object anchor");
+    ok(body, "message body");
+    ok(body.textContent.includes(expectedText), "message text check");
 
-      let anchor = msg.querySelector("a");
-      let body = msg.querySelector(".message-body");
-      ok(anchor, "object anchor");
-      ok(body, "message body");
-      ok(body.textContent.includes(expectedText), "message text check");
+    msg.scrollIntoView();
+    yield EventUtils.synthesizeMouse(anchor, 2, 2, {}, hud.iframeWindow);
 
-      msg.scrollIntoView();
-      yield EventUtils.synthesizeMouse(anchor, 2, 2, {}, hud.iframeWindow);
-
-      let vviewVar = yield jsterm.once("variablesview-fetched");
-      vview = vviewVar._variablesView;
-      ok(vview, "variables view object exists");
-    }
+    let vviewVar = yield jsterm.once("variablesview-fetched");
+    vview = vviewVar._variablesView;
+    ok(vview, "variables view object exists");
   }
-}
+});
