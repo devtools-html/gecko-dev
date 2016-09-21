@@ -12,9 +12,7 @@ const TEST_URI =
   "data:text/html;charset=utf8,<script>let fooObj = {testProp: 'testValue'}</script>";
 
 add_task(function* () {
-  let hud;
-
-  hud = yield openNewTabAndConsole(TEST_URI);
+  let hud = yield openNewTabAndConsole(TEST_URI);
   let jsterm = hud.jsterm;
   let vview;
 
