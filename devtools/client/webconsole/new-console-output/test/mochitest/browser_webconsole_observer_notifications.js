@@ -40,12 +40,8 @@ function setupObserver() {
           break;
       }
     },
-
-    init: function init() {
-      Services.obs.addObserver(this, "web-console-created", false);
-      Services.obs.addObserver(this, "web-console-destroyed", false);
-    }
   };
 
-  observer.init();
+  Services.obs.addObserver(observer, "web-console-created", false);
+  Services.obs.addObserver(observer, "web-console-destroyed", false);
 }
