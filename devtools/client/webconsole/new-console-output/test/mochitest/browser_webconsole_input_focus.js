@@ -7,8 +7,7 @@
 
 "use strict";
 
-const TEST_URI = "http://example.com/browser/devtools/client/webconsole/" +
-                 "test/test-console.html";
+const TEST_URI = "data:text/html;charset=utf-8,Test input focus";
 
 add_task(function* () {
   let hud = yield openNewTabAndConsole(TEST_URI);
