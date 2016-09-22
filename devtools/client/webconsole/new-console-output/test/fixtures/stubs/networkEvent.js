@@ -24,7 +24,6 @@ stubPreparedMessages.set("GET request", new NetworkEventMessage({
 	},
 	"response": {},
 	"source": "network",
-	"type": "log"
 }));
 
 stubPreparedMessages.set("XHR GET request", new NetworkEventMessage({
@@ -38,7 +37,6 @@ stubPreparedMessages.set("XHR GET request", new NetworkEventMessage({
 	},
 	"response": {},
 	"source": "network",
-	"type": "log"
 }));
 
 stubPreparedMessages.set("XHR POST request", new NetworkEventMessage({
@@ -52,7 +50,7 @@ stubPreparedMessages.set("XHR POST request", new NetworkEventMessage({
 	},
 	"response": {},
 	"source": "network",
-	"type": "log"
+	"type": "networkEvent"
 }));
 
 
@@ -61,8 +59,8 @@ stubPackets.set("GET request", {
 	"type": "networkEvent",
 	"eventActor": {
 		"actor": "server1.conn0.child1/netEvent29",
-		"startedDateTime": "2016-09-14T02:38:18.046Z",
-		"timeStamp": 1473820698046,
+		"startedDateTime": "2016-09-22T05:52:47.967Z",
+		"timeStamp": 1474523567967,
 		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
 		"method": "GET",
 		"isXHR": false,
@@ -102,8 +100,8 @@ stubPackets.set("XHR GET request", {
 	"type": "networkEvent",
 	"eventActor": {
 		"actor": "server1.conn1.child1/netEvent29",
-		"startedDateTime": "2016-09-14T02:38:18.812Z",
-		"timeStamp": 1473820698812,
+		"startedDateTime": "2016-09-22T05:52:50.588Z",
+		"timeStamp": 1474523570588,
 		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
 		"method": "GET",
 		"isXHR": true,
@@ -143,8 +141,8 @@ stubPackets.set("XHR POST request", {
 	"type": "networkEvent",
 	"eventActor": {
 		"actor": "server1.conn2.child1/netEvent29",
-		"startedDateTime": "2016-09-14T02:38:19.483Z",
-		"timeStamp": 1473820699483,
+		"startedDateTime": "2016-09-22T05:52:52.097Z",
+		"timeStamp": 1474523572097,
 		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
 		"method": "POST",
 		"isXHR": true,

@@ -331,10 +331,10 @@ stubPreparedMessages.set("console.timeEnd('bar')", new ConsoleMessage({
 	"source": "console-api",
 	"type": "timeEnd",
 	"level": "log",
-	"messageText": "bar: 1.63ms",
+	"messageText": "bar: 1.65ms",
 	"parameters": null,
 	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"timeEnd\",\"level\":\"log\",\"messageText\":\"bar: 1.63ms\",\"parameters\":null,\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.time(%27bar%27)\",\"line\":3,\"column\":1}}",
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"timeEnd\",\"level\":\"log\",\"messageText\":\"bar: 1.65ms\",\"parameters\":null,\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.time(%27bar%27)\",\"line\":3,\"column\":1}}",
 	"stacktrace": null,
 	"frame": {
 		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.time(%27bar%27)",
@@ -370,7 +370,7 @@ stubPackets.set("console.log('foobar', 'test')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329261562,
+		"timeStamp": 1474572748928,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -404,7 +404,7 @@ stubPackets.set("console.log(undefined)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329262588,
+		"timeStamp": 1474572751274,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -436,7 +436,7 @@ stubPackets.set("console.warn('danger, will robinson!')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329263650,
+		"timeStamp": 1474572753315,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -470,7 +470,7 @@ stubPackets.set("console.log(NaN)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329264822,
+		"timeStamp": 1474572755104,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -504,7 +504,7 @@ stubPackets.set("console.log(null)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329265855,
+		"timeStamp": 1474572756794,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -536,7 +536,7 @@ stubPackets.set("console.log('鼬')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329266922,
+		"timeStamp": 1474572758502,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -565,7 +565,7 @@ stubPackets.set("console.clear()", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1474329267971,
+		"timeStamp": 1474572760296,
 		"timer": null,
 		"workerType": "none",
 		"styles": [],
@@ -600,7 +600,7 @@ stubPackets.set("console.count('bar')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1474329269084,
+		"timeStamp": 1474572762158,
 		"timer": null,
 		"workerType": "none",
 		"styles": [],
@@ -654,7 +654,7 @@ stubPackets.set("console.assert(false, {message: 'foobar'})", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329270125,
+		"timeStamp": 1474572764156,
 		"timer": null,
 		"stacktrace": [
 			{
@@ -695,7 +695,7 @@ stubPackets.set("console.log('hello \nfrom \rthe \"string world!')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329271256,
+		"timeStamp": 1474572765984,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -727,7 +727,7 @@ stubPackets.set("console.log('úṇĩçödê țĕșť')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329272298,
+		"timeStamp": 1474572767825,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -756,7 +756,7 @@ stubPackets.set("console.trace()", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1474329273375,
+		"timeStamp": 1474572770002,
 		"timer": null,
 		"stacktrace": [
 			{
@@ -811,10 +811,10 @@ stubPackets.set("console.time('bar')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1474329274410,
+		"timeStamp": 1474572772142,
 		"timer": {
 			"name": "bar",
-			"started": 618.57
+			"started": 1157.78
 		},
 		"workerType": "none",
 		"styles": [],
@@ -846,9 +846,9 @@ stubPackets.set("console.timeEnd('bar')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1474329274411,
+		"timeStamp": 1474572772143,
 		"timer": {
-			"duration": 1.3249999999999318,
+			"duration": 1.6549999999999727,
 			"name": "bar"
 		},
 		"workerType": "none",
