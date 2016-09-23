@@ -12,6 +12,7 @@ const {
 const { IdGenerator } = require("devtools/client/webconsole/new-console-output/utils/id-generator");
 
 const {
+  BATCH_ACTIONS,
   MESSAGE_ADD,
   MESSAGES_CLEAR,
   MESSAGE_OPEN,
@@ -23,7 +24,7 @@ const defaultIdGenerator = new IdGenerator();
 
 function batchActions(batchedActions) {
   return {
-    type: "BATCH_ACTIONS",
+    type: BATCH_ACTIONS,
     actions: batchedActions,
   };
 }
