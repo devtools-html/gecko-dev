@@ -12,13 +12,6 @@ const actionModules = [
   "ui",
 ].map(filename => require(`./${filename}`));
 
-const actions = Object.assign({
-  batchActions: batchedActions => {
-    return {
-      type: "BATCH_ACTIONS",
-      actions: batchedActions,
-    };
-  },
-}, ...actionModules);
+const actions = Object.assign({}, ...actionModules);
 
 module.exports = actions;

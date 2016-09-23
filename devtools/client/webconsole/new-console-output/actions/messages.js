@@ -21,22 +21,30 @@ const {
 
 const defaultIdGenerator = new IdGenerator();
 
-function messageAdd(packet, idGenerator = null) {
-  return (dispatch) => {
-    if (idGenerator == null) {
-      idGenerator = defaultIdGenerator;
-    }
-    let message = prepareMessage(packet, idGenerator);
-
-    if (message.type === MESSAGE_TYPE.CLEAR) {
-      dispatch(messagesClear());
-    }
-
-    dispatch({
-      type: MESSAGE_ADD,
-      message
-    });
+function batchActions(batchedActions) {
+  return {
+    type: "BATCH_ACTIONS",
+    actions: batchedActions,
   };
+}
+
+function messageAdd(packet, idGenerator = null) {
+  if (idGenerator == null) {
+    idGenerator = defaultIdGenerator;
+  }
+  let message = prepareMessage(packet, idGenerator);
+  const addMessageAction = {
+    type: MESSAGE_ADD,
+    message
+  };
+
+  if (message.type === MESSAGE_TYPE.CLEAR) {
+    return batchActions([
+      messagesClear(),
+      addMessageAction,
+    ]);
+  }
+  return addMessageAction;
 }
 
 function messagesClear() {
@@ -59,7 +67,10 @@ function messageClose(id) {
   };
 }
 
-exports.messageAdd = messageAdd;
-exports.messagesClear = messagesClear;
-exports.messageOpen = messageOpen;
-exports.messageClose = messageClose;
+module.exports = {
+  batchActions,
+  messageAdd,
+  messagesClear,
+  messageOpen,
+  messageClose,
+};

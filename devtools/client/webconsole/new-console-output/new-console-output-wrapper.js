@@ -52,8 +52,8 @@ NewConsoleOutputWrapper.prototype = {
     store.dispatch(actions.messageAdd(message));
   },
   dispatchMessagesAdd: (messages) => {
-    const actions = messages.map(message => actions.messageAdd(message));
-    store.dispatch(actions.messageAdd(message));
+    const batchedActions = messages.map(message => actions.messageAdd(message));
+    store.dispatch(actions.batchActions(batchedActions));
   },
   dispatchMessagesClear: () => {
     store.dispatch(actions.messagesClear());

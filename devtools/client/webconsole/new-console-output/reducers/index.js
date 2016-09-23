@@ -10,9 +10,20 @@ const { messages } = require("./messages");
 const { prefs } = require("./prefs");
 const { ui } = require("./ui");
 
+function enableBatching(reducer) {
+  return function batchingReducer(state, action) {
+    switch (action.type) {
+      case "BATCH_ACTIONS":
+        return action.actions.reduce(batchingReducer, state);
+      default:
+        return reducer(state, action);
+    }
+  };
+}
+
 exports.reducers = {
   filters,
-  messages,
+  messages: enableBatching(messages),
   prefs,
   ui,
 };
