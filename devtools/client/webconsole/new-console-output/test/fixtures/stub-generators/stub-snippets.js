@@ -5,27 +5,47 @@
 
 var {DebuggerServer} = require("devtools/server/main");
 var longString = (new Array(DebuggerServer.LONG_STRING_LENGTH + 4)).join("a");
-var initialString = longString.substring(0, DebuggerServer.LONG_STRING_INITIAL_LENGTH);
 
 // Console API
 
 const consoleApiCommands = [
+  // Log
   "console.log('foobar', 'test')",
   "console.log(undefined)",
-  "console.warn('danger, will robinson!')",
   "console.log(NaN)",
   "console.log(null)",
   "console.log('\u9f2c')",
-  "console.clear()",
-  "console.count('bar')",
-  "console.assert(false, {message: 'foobar'})",
   "console.log('hello \\nfrom \\rthe \\\"string world!')",
   "console.log('\xFA\u1E47\u0129\xE7\xF6d\xEA \u021B\u0115\u0219\u0165')",
+  "console.log('')",
+  "console.log(0)",
+  "console.log('0')",
+  "console.log(/foobar/)",
+  "console.log(Symbol('foo'))",
+
+  // Warn
+  "console.warn('danger, will robinson!')",
+
+  // Assert
+  "console.assert(false, {message: 'foobar'})",
+
+  // Clear
+  "console.clear()",
+
+  // Count
+  "console.count('bar')",
 ];
 
 let consoleApi = new Map(consoleApiCommands.map(
   cmd => [cmd, {keys: [cmd], code: cmd}]));
 
+// console.log a long string. It's handled this way so the key can be shorter.
+consoleApi.set("console.log(longString)", {
+  keys: [`console.log(longString)`],
+  code: `console.log('${longString}')`
+});
+
+// Trace
 consoleApi.set("console.trace()", {
   keys: ["console.trace()"],
   code: `
@@ -39,6 +59,7 @@ function foo() {
 foo()
 `});
 
+// Time
 consoleApi.set("console.time('bar')", {
   keys: ["console.time('bar')", "console.timeEnd('bar')"],
   code: `

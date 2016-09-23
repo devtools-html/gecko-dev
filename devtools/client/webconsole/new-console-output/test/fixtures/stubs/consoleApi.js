@@ -56,26 +56,6 @@ stubPreparedMessages.set("console.log(undefined)", new ConsoleMessage({
 	}
 }));
 
-stubPreparedMessages.set("console.warn('danger, will robinson!')", new ConsoleMessage({
-	"id": "1",
-	"allowRepeating": true,
-	"source": "console-api",
-	"type": "warn",
-	"level": "warn",
-	"messageText": null,
-	"parameters": [
-		"danger, will robinson!"
-	],
-	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"warn\",\"level\":\"warn\",\"messageText\":null,\"parameters\":[\"danger, will robinson!\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.warn(%27danger%2C%20will%20robinson!%27)\",\"line\":1,\"column\":27}}",
-	"stacktrace": null,
-	"frame": {
-		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.warn(%27danger%2C%20will%20robinson!%27)",
-		"line": 1,
-		"column": 27
-	}
-}));
-
 stubPreparedMessages.set("console.log(NaN)", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
@@ -140,6 +120,227 @@ stubPreparedMessages.set("console.log('鼬')", new ConsoleMessage({
 	}
 }));
 
+stubPreparedMessages.set("console.log('hello \nfrom \rthe \"string world!')", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "log",
+	"level": "log",
+	"messageText": null,
+	"parameters": [
+		"hello \nfrom \rthe \"string world!"
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[\"hello \\nfrom \\rthe \\\"string world!\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27hello%20%5Cnfrom%20%5Crthe%20%5C%22string%20world!%27)\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27hello%20%5Cnfrom%20%5Crthe%20%5C%22string%20world!%27)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.log('úṇĩçödê țĕșť')", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "log",
+	"level": "log",
+	"messageText": null,
+	"parameters": [
+		"úṇĩçödê țĕșť"
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[\"úṇĩçödê țĕșť\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%C3%BA%E1%B9%87%C4%A9%C3%A7%C3%B6d%C3%AA%20%C8%9B%C4%95%C8%99%C5%A5%27)\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%C3%BA%E1%B9%87%C4%A9%C3%A7%C3%B6d%C3%AA%20%C8%9B%C4%95%C8%99%C5%A5%27)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.log('')", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "log",
+	"level": "log",
+	"messageText": null,
+	"parameters": [
+		""
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[\"\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%27)\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%27)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.log(0)", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "log",
+	"level": "log",
+	"messageText": null,
+	"parameters": [
+		0
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[0],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(0)\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(0)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.log('0')", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "log",
+	"level": "log",
+	"messageText": null,
+	"parameters": [
+		"0"
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[\"0\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%270%27)\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%270%27)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.log(/foobar/)", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "log",
+	"level": "log",
+	"messageText": null,
+	"parameters": [
+		{
+			"type": "object",
+			"actor": "server1.conn10.child1/obj31",
+			"class": "RegExp",
+			"extensible": true,
+			"frozen": false,
+			"sealed": false,
+			"ownPropertyLength": 1,
+			"displayString": "/foobar/"
+		}
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[{\"type\":\"object\",\"actor\":\"server1.conn10.child1/obj31\",\"class\":\"RegExp\",\"extensible\":true,\"frozen\":false,\"sealed\":false,\"ownPropertyLength\":1,\"displayString\":\"/foobar/\"}],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%2Ffoobar%2F)\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%2Ffoobar%2F)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.log(Symbol('foo'))", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "log",
+	"level": "log",
+	"messageText": null,
+	"parameters": [
+		{
+			"type": "symbol",
+			"name": "foo"
+		}
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[{\"type\":\"symbol\",\"name\":\"foo\"}],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(Symbol(%27foo%27))\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(Symbol(%27foo%27))",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.warn('danger, will robinson!')", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "warn",
+	"level": "warn",
+	"messageText": null,
+	"parameters": [
+		"danger, will robinson!"
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"warn\",\"level\":\"warn\",\"messageText\":null,\"parameters\":[\"danger, will robinson!\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.warn(%27danger%2C%20will%20robinson!%27)\",\"line\":1,\"column\":27}}",
+	"stacktrace": null,
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.warn(%27danger%2C%20will%20robinson!%27)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
+stubPreparedMessages.set("console.assert(false, {message: 'foobar'})", new ConsoleMessage({
+	"id": "1",
+	"allowRepeating": true,
+	"source": "console-api",
+	"type": "assert",
+	"level": "error",
+	"messageText": null,
+	"parameters": [
+		{
+			"type": "object",
+			"actor": "server1.conn13.child1/obj31",
+			"class": "Object",
+			"extensible": true,
+			"frozen": false,
+			"sealed": false,
+			"ownPropertyLength": 1,
+			"preview": {
+				"kind": "Object",
+				"ownProperties": {
+					"message": {
+						"configurable": true,
+						"enumerable": true,
+						"writable": true,
+						"value": "foobar"
+					}
+				},
+				"ownPropertiesLength": 1,
+				"safeGetterValues": {}
+			}
+		}
+	],
+	"repeat": 1,
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"assert\",\"level\":\"error\",\"messageText\":null,\"parameters\":[{\"type\":\"object\",\"actor\":\"server1.conn13.child1/obj31\",\"class\":\"Object\",\"extensible\":true,\"frozen\":false,\"sealed\":false,\"ownPropertyLength\":1,\"preview\":{\"kind\":\"Object\",\"ownProperties\":{\"message\":{\"configurable\":true,\"enumerable\":true,\"writable\":true,\"value\":\"foobar\"}},\"ownPropertiesLength\":1,\"safeGetterValues\":{}}}],\"repeatId\":null,\"stacktrace\":[{\"columnNumber\":27,\"filename\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)\",\"functionName\":\"triggerPacket\",\"language\":2,\"lineNumber\":1}],\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)\",\"line\":1,\"column\":27}}",
+	"stacktrace": [
+		{
+			"columnNumber": 27,
+			"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)",
+			"functionName": "triggerPacket",
+			"language": 2,
+			"lineNumber": 1
+		}
+	],
+	"frame": {
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)",
+		"line": 1,
+		"column": 27
+	}
+}));
+
 stubPreparedMessages.set("console.clear()", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
@@ -178,56 +379,7 @@ stubPreparedMessages.set("console.count('bar')", new ConsoleMessage({
 	}
 }));
 
-stubPreparedMessages.set("console.assert(false, {message: 'foobar'})", new ConsoleMessage({
-	"id": "1",
-	"allowRepeating": true,
-	"source": "console-api",
-	"type": "assert",
-	"level": "error",
-	"messageText": null,
-	"parameters": [
-		{
-			"type": "object",
-			"actor": "server1.conn8.child1/obj31",
-			"class": "Object",
-			"extensible": true,
-			"frozen": false,
-			"sealed": false,
-			"ownPropertyLength": 1,
-			"preview": {
-				"kind": "Object",
-				"ownProperties": {
-					"message": {
-						"configurable": true,
-						"enumerable": true,
-						"writable": true,
-						"value": "foobar"
-					}
-				},
-				"ownPropertiesLength": 1,
-				"safeGetterValues": {}
-			}
-		}
-	],
-	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"assert\",\"level\":\"error\",\"messageText\":null,\"parameters\":[{\"type\":\"object\",\"actor\":\"server1.conn8.child1/obj31\",\"class\":\"Object\",\"extensible\":true,\"frozen\":false,\"sealed\":false,\"ownPropertyLength\":1,\"preview\":{\"kind\":\"Object\",\"ownProperties\":{\"message\":{\"configurable\":true,\"enumerable\":true,\"writable\":true,\"value\":\"foobar\"}},\"ownPropertiesLength\":1,\"safeGetterValues\":{}}}],\"repeatId\":null,\"stacktrace\":[{\"columnNumber\":27,\"filename\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)\",\"functionName\":\"triggerPacket\",\"language\":2,\"lineNumber\":1}],\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)\",\"line\":1,\"column\":27}}",
-	"stacktrace": [
-		{
-			"columnNumber": 27,
-			"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)",
-			"functionName": "triggerPacket",
-			"language": 2,
-			"lineNumber": 1
-		}
-	],
-	"frame": {
-		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.assert(false%2C%20%7Bmessage%3A%20%27foobar%27%7D)",
-		"line": 1,
-		"column": 27
-	}
-}));
-
-stubPreparedMessages.set("console.log('hello \nfrom \rthe \"string world!')", new ConsoleMessage({
+stubPreparedMessages.set("console.log(longString)", new ConsoleMessage({
 	"id": "1",
 	"allowRepeating": true,
 	"source": "console-api",
@@ -235,33 +387,18 @@ stubPreparedMessages.set("console.log('hello \nfrom \rthe \"string world!')", ne
 	"level": "log",
 	"messageText": null,
 	"parameters": [
-		"hello \nfrom \rthe \"string world!"
+		{
+			"type": "longString",
+			"initial": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+			"length": 10003,
+			"actor": "server1.conn16.child1/longString31"
+		}
 	],
 	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[\"hello \\nfrom \\rthe \\\"string world!\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27hello%20%5Cnfrom%20%5Crthe%20%5C%22string%20world!%27)\",\"line\":1,\"column\":27}}",
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[{\"type\":\"longString\",\"initial\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"length\":10003,\"actor\":\"server1.conn16.child1/longString31\"}],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(longString)\",\"line\":1,\"column\":27}}",
 	"stacktrace": null,
 	"frame": {
-		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27hello%20%5Cnfrom%20%5Crthe%20%5C%22string%20world!%27)",
-		"line": 1,
-		"column": 27
-	}
-}));
-
-stubPreparedMessages.set("console.log('úṇĩçödê țĕșť')", new ConsoleMessage({
-	"id": "1",
-	"allowRepeating": true,
-	"source": "console-api",
-	"type": "log",
-	"level": "log",
-	"messageText": null,
-	"parameters": [
-		"úṇĩçödê țĕșť"
-	],
-	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"log\",\"level\":\"log\",\"messageText\":null,\"parameters\":[\"úṇĩçödê țĕșť\"],\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%C3%BA%E1%B9%87%C4%A9%C3%A7%C3%B6d%C3%AA%20%C8%9B%C4%95%C8%99%C5%A5%27)\",\"line\":1,\"column\":27}}",
-	"stacktrace": null,
-	"frame": {
-		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%C3%BA%E1%B9%87%C4%A9%C3%A7%C3%B6d%C3%AA%20%C8%9B%C4%95%C8%99%C5%A5%27)",
+		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(longString)",
 		"line": 1,
 		"column": 27
 	}
@@ -331,10 +468,10 @@ stubPreparedMessages.set("console.timeEnd('bar')", new ConsoleMessage({
 	"source": "console-api",
 	"type": "timeEnd",
 	"level": "log",
-	"messageText": "bar: 1.63ms",
+	"messageText": "bar: 3.44ms",
 	"parameters": null,
 	"repeat": 1,
-	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"timeEnd\",\"level\":\"log\",\"messageText\":\"bar: 1.63ms\",\"parameters\":null,\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.time(%27bar%27)\",\"line\":3,\"column\":1}}",
+	"repeatId": "{\"id\":null,\"allowRepeating\":true,\"source\":\"console-api\",\"type\":\"timeEnd\",\"level\":\"log\",\"messageText\":\"bar: 3.44ms\",\"parameters\":null,\"repeatId\":null,\"stacktrace\":null,\"frame\":{\"source\":\"http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.time(%27bar%27)\",\"line\":3,\"column\":1}}",
 	"stacktrace": null,
 	"frame": {
 		"source": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.time(%27bar%27)",
@@ -404,39 +541,7 @@ stubPackets.set("console.log(undefined)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329262588,
-		"timer": null,
-		"workerType": "none",
-		"category": "webdev"
-	}
-});
-
-stubPackets.set("console.warn('danger, will robinson!')", {
-	"from": "server1.conn2.child1/consoleActor2",
-	"type": "consoleAPICall",
-	"message": {
-		"arguments": [
-			"danger, will robinson!"
-		],
-		"columnNumber": 27,
-		"counter": null,
-		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.warn(%27danger%2C%20will%20robinson!%27)",
-		"functionName": "triggerPacket",
-		"groupName": "",
-		"level": "warn",
-		"lineNumber": 1,
-		"originAttributes": {
-			"addonId": "",
-			"appId": 0,
-			"firstPartyDomain": "",
-			"inIsolatedMozBrowser": false,
-			"privateBrowsingId": 0,
-			"signedPkg": "",
-			"userContextId": 0
-		},
-		"private": false,
-		"styles": [],
-		"timeStamp": 1474329263650,
+		"timeStamp": 1474660251421,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -444,7 +549,7 @@ stubPackets.set("console.warn('danger, will robinson!')", {
 });
 
 stubPackets.set("console.log(NaN)", {
-	"from": "server1.conn3.child1/consoleActor2",
+	"from": "server1.conn2.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
 		"arguments": [
@@ -470,7 +575,7 @@ stubPackets.set("console.log(NaN)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329264822,
+		"timeStamp": 1474660252543,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -478,7 +583,7 @@ stubPackets.set("console.log(NaN)", {
 });
 
 stubPackets.set("console.log(null)", {
-	"from": "server1.conn4.child1/consoleActor2",
+	"from": "server1.conn3.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
 		"arguments": [
@@ -504,7 +609,7 @@ stubPackets.set("console.log(null)", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329265855,
+		"timeStamp": 1474660253658,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
@@ -512,7 +617,7 @@ stubPackets.set("console.log(null)", {
 });
 
 stubPackets.set("console.log('鼬')", {
-	"from": "server1.conn5.child1/consoleActor2",
+	"from": "server1.conn4.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
 		"arguments": [
@@ -536,24 +641,26 @@ stubPackets.set("console.log('鼬')", {
 		},
 		"private": false,
 		"styles": [],
-		"timeStamp": 1474329266922,
+		"timeStamp": 1474660254747,
 		"timer": null,
 		"workerType": "none",
 		"category": "webdev"
 	}
 });
 
-stubPackets.set("console.clear()", {
-	"from": "server1.conn6.child1/consoleActor2",
+stubPackets.set("console.log('hello \nfrom \rthe \"string world!')", {
+	"from": "server1.conn5.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
-		"arguments": [],
+		"arguments": [
+			"hello \nfrom \rthe \"string world!"
+		],
 		"columnNumber": 27,
 		"counter": null,
-		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.clear()",
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27hello%20%5Cnfrom%20%5Crthe%20%5C%22string%20world!%27)",
 		"functionName": "triggerPacket",
 		"groupName": "",
-		"level": "clear",
+		"level": "log",
 		"lineNumber": 1,
 		"originAttributes": {
 			"addonId": "",
@@ -565,30 +672,59 @@ stubPackets.set("console.clear()", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1474329267971,
+		"styles": [],
+		"timeStamp": 1474660255901,
 		"timer": null,
 		"workerType": "none",
-		"styles": [],
 		"category": "webdev"
 	}
 });
 
-stubPackets.set("console.count('bar')", {
+stubPackets.set("console.log('úṇĩçödê țĕșť')", {
+	"from": "server1.conn6.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			"úṇĩçödê țĕșť"
+		],
+		"columnNumber": 27,
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%C3%BA%E1%B9%87%C4%A9%C3%A7%C3%B6d%C3%AA%20%C8%9B%C4%95%C8%99%C5%A5%27)",
+		"functionName": "triggerPacket",
+		"groupName": "",
+		"level": "log",
+		"lineNumber": 1,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"firstPartyDomain": "",
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"styles": [],
+		"timeStamp": 1474660257061,
+		"timer": null,
+		"workerType": "none",
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.log('')", {
 	"from": "server1.conn7.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
 		"arguments": [
-			"bar"
+			""
 		],
 		"columnNumber": 27,
-		"counter": {
-			"count": 1,
-			"label": "bar"
-		},
-		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.count(%27bar%27)",
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%27)",
 		"functionName": "triggerPacket",
 		"groupName": "",
-		"level": "count",
+		"level": "log",
 		"lineNumber": 1,
 		"originAttributes": {
 			"addonId": "",
@@ -600,22 +736,194 @@ stubPackets.set("console.count('bar')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"timeStamp": 1474329269084,
+		"styles": [],
+		"timeStamp": 1474660258230,
 		"timer": null,
 		"workerType": "none",
-		"styles": [],
 		"category": "webdev"
 	}
 });
 
-stubPackets.set("console.assert(false, {message: 'foobar'})", {
+stubPackets.set("console.log(0)", {
 	"from": "server1.conn8.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			0
+		],
+		"columnNumber": 27,
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(0)",
+		"functionName": "triggerPacket",
+		"groupName": "",
+		"level": "log",
+		"lineNumber": 1,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"firstPartyDomain": "",
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"styles": [],
+		"timeStamp": 1474660259236,
+		"timer": null,
+		"workerType": "none",
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.log('0')", {
+	"from": "server1.conn9.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			"0"
+		],
+		"columnNumber": 27,
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%270%27)",
+		"functionName": "triggerPacket",
+		"groupName": "",
+		"level": "log",
+		"lineNumber": 1,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"firstPartyDomain": "",
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"styles": [],
+		"timeStamp": 1474660260312,
+		"timer": null,
+		"workerType": "none",
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.log(/foobar/)", {
+	"from": "server1.conn10.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
 		"arguments": [
 			{
 				"type": "object",
-				"actor": "server1.conn8.child1/obj31",
+				"actor": "server1.conn10.child1/obj31",
+				"class": "RegExp",
+				"extensible": true,
+				"frozen": false,
+				"sealed": false,
+				"ownPropertyLength": 1,
+				"displayString": "/foobar/"
+			}
+		],
+		"columnNumber": 27,
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%2Ffoobar%2F)",
+		"functionName": "triggerPacket",
+		"groupName": "",
+		"level": "log",
+		"lineNumber": 1,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"firstPartyDomain": "",
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"styles": [],
+		"timeStamp": 1474660261326,
+		"timer": null,
+		"workerType": "none",
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.log(Symbol('foo'))", {
+	"from": "server1.conn11.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			{
+				"type": "symbol",
+				"name": "foo"
+			}
+		],
+		"columnNumber": 27,
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(Symbol(%27foo%27))",
+		"functionName": "triggerPacket",
+		"groupName": "",
+		"level": "log",
+		"lineNumber": 1,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"firstPartyDomain": "",
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"styles": [],
+		"timeStamp": 1474660262342,
+		"timer": null,
+		"workerType": "none",
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.warn('danger, will robinson!')", {
+	"from": "server1.conn12.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			"danger, will robinson!"
+		],
+		"columnNumber": 27,
+		"counter": null,
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.warn(%27danger%2C%20will%20robinson!%27)",
+		"functionName": "triggerPacket",
+		"groupName": "",
+		"level": "warn",
+		"lineNumber": 1,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"firstPartyDomain": "",
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"styles": [],
+		"timeStamp": 1474660263440,
+		"timer": null,
+		"workerType": "none",
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.assert(false, {message: 'foobar'})", {
+	"from": "server1.conn13.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			{
+				"type": "object",
+				"actor": "server1.conn13.child1/obj31",
 				"class": "Object",
 				"extensible": true,
 				"frozen": false,
@@ -670,19 +978,17 @@ stubPackets.set("console.assert(false, {message: 'foobar'})", {
 	}
 });
 
-stubPackets.set("console.log('hello \nfrom \rthe \"string world!')", {
-	"from": "server1.conn9.child1/consoleActor2",
+stubPackets.set("console.clear()", {
+	"from": "server1.conn14.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
-		"arguments": [
-			"hello \nfrom \rthe \"string world!"
-		],
+		"arguments": [],
 		"columnNumber": 27,
 		"counter": null,
-		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27hello%20%5Cnfrom%20%5Crthe%20%5C%22string%20world!%27)",
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.clear()",
 		"functionName": "triggerPacket",
 		"groupName": "",
-		"level": "log",
+		"level": "clear",
 		"lineNumber": 1,
 		"originAttributes": {
 			"addonId": "",
@@ -694,24 +1000,64 @@ stubPackets.set("console.log('hello \nfrom \rthe \"string world!')", {
 			"userContextId": 0
 		},
 		"private": false,
-		"styles": [],
-		"timeStamp": 1474329271256,
+		"timeStamp": 1474660265618,
 		"timer": null,
 		"workerType": "none",
+		"styles": [],
 		"category": "webdev"
 	}
 });
 
-stubPackets.set("console.log('úṇĩçödê țĕșť')", {
-	"from": "server1.conn10.child1/consoleActor2",
+stubPackets.set("console.count('bar')", {
+	"from": "server1.conn15.child1/consoleActor2",
 	"type": "consoleAPICall",
 	"message": {
 		"arguments": [
-			"úṇĩçödê țĕșť"
+			"bar"
+		],
+		"columnNumber": 27,
+		"counter": {
+			"count": 1,
+			"label": "bar"
+		},
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.count(%27bar%27)",
+		"functionName": "triggerPacket",
+		"groupName": "",
+		"level": "count",
+		"lineNumber": 1,
+		"originAttributes": {
+			"addonId": "",
+			"appId": 0,
+			"firstPartyDomain": "",
+			"inIsolatedMozBrowser": false,
+			"privateBrowsingId": 0,
+			"signedPkg": "",
+			"userContextId": 0
+		},
+		"private": false,
+		"timeStamp": 1474660266714,
+		"timer": null,
+		"workerType": "none",
+		"styles": [],
+		"category": "webdev"
+	}
+});
+
+stubPackets.set("console.log(longString)", {
+	"from": "server1.conn16.child1/consoleActor2",
+	"type": "consoleAPICall",
+	"message": {
+		"arguments": [
+			{
+				"type": "longString",
+				"initial": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+				"length": 10003,
+				"actor": "server1.conn16.child1/longString31"
+			}
 		],
 		"columnNumber": 27,
 		"counter": null,
-		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(%27%C3%BA%E1%B9%87%C4%A9%C3%A7%C3%B6d%C3%AA%20%C8%9B%C4%95%C8%99%C5%A5%27)",
+		"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js?key=console.log(longString)",
 		"functionName": "triggerPacket",
 		"groupName": "",
 		"level": "log",
