@@ -6,13 +6,15 @@
 
 "use strict";
 
-const actionModules = [
-  "enhancers",
-  "filters",
-  "messages",
-  "ui",
-].map(filename => require(`./${filename}`));
+const { BATCH_ACTIONS } = require("../constants");
 
-const actions = Object.assign({}, ...actionModules);
+function batchActions(batchedActions) {
+  return {
+    type: BATCH_ACTIONS,
+    actions: batchedActions,
+  };
+}
 
-module.exports = actions;
+module.exports = {
+  batchActions
+};

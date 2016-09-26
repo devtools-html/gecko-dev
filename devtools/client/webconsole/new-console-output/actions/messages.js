@@ -10,9 +10,8 @@ const {
   prepareMessage
 } = require("devtools/client/webconsole/new-console-output/utils/messages");
 const { IdGenerator } = require("devtools/client/webconsole/new-console-output/utils/id-generator");
-
+const { batchActions } = require("devtools/client/webconsole/new-console-output/actions/enhancers");
 const {
-  BATCH_ACTIONS,
   MESSAGE_ADD,
   MESSAGES_CLEAR,
   MESSAGE_OPEN,
@@ -21,13 +20,6 @@ const {
 } = require("../constants");
 
 const defaultIdGenerator = new IdGenerator();
-
-function batchActions(batchedActions) {
-  return {
-    type: BATCH_ACTIONS,
-    actions: batchedActions,
-  };
-}
 
 function messageAdd(packet, idGenerator = null) {
   if (idGenerator == null) {
@@ -69,7 +61,6 @@ function messageClose(id) {
 }
 
 module.exports = {
-  batchActions,
   messageAdd,
   messagesClear,
   messageOpen,
