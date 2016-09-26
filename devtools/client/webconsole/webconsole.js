@@ -3276,7 +3276,6 @@ WebConsoleConnectionProxy.prototype = {
    * Batched dispatch of messages.
    */
   dispatchMessagesAdd: function(packets) {
-    debugger
     this.webConsoleFrame.newConsoleOutput.dispatchMessagesAdd(packets);
   },
 
