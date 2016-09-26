@@ -37,6 +37,8 @@ const MessageContainer = createClass({
     openNetworkPanel: PropTypes.func.isRequired,
     openLink: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
+    tableData: PropTypes.array,
+    hudProxyClient: PropTypes.object.isRequired,
   },
 
   getDefaultProps: function () {
@@ -46,8 +48,10 @@ const MessageContainer = createClass({
   },
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.message.repeat !== nextProps.message.repeat
-      || this.props.open !== nextProps.open;
+    const repeatChanged = this.props.message.repeat !== nextProps.message.repeat;
+    const openChanged = this.props.open !== nextProps.open;
+    const tableDataChanged = this.props.tableData !== nextProps.tableData;
+    return repeatChanged || openChanged || tableDataChanged;
   },
 
   render() {
@@ -59,6 +63,8 @@ const MessageContainer = createClass({
       openNetworkPanel,
       openLink,
       open,
+      tableData,
+      hudProxyClient,
     } = this.props;
 
     let MessageComponent = createFactory(getMessageComponent(message));
@@ -70,6 +76,8 @@ const MessageContainer = createClass({
       openNetworkPanel,
       openLink,
       open,
+      tableData,
+      hudProxyClient,
     });
   }
 });
