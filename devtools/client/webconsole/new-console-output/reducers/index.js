@@ -9,11 +9,12 @@ const { filters } = require("./filters");
 const { messages } = require("./messages");
 const { prefs } = require("./prefs");
 const { ui } = require("./ui");
+const constants = require("devtools/client/webconsole/new-console-output/constants");
 
 function enableBatching(reducer) {
   return function batchingReducer(state, action) {
     switch (action.type) {
-      case "BATCH_ACTIONS":
+      case constants.BATCH_ACTIONS:
         return action.actions.reduce(batchingReducer, state);
       default:
         return reducer(state, action);
