@@ -5,6 +5,7 @@
 
 const {FilterState} = require("devtools/client/webconsole/new-console-output/reducers/filters");
 const {PrefState} = require("devtools/client/webconsole/new-console-output/reducers/prefs");
+const {UiState} = require("devtools/client/webconsole/new-console-output/reducers/ui");
 const {
   applyMiddleware,
   combineReducers,
@@ -31,6 +32,9 @@ function configureStore() {
       log: Services.prefs.getBoolPref(PREFS.FILTER.LOG),
       net: Services.prefs.getBoolPref(PREFS.FILTER.NET),
       netxhr: Services.prefs.getBoolPref(PREFS.FILTER.NETXHR),
+    }),
+    ui: new UiState({
+      filterBarVisible: Services.prefs.getBoolPref("devtools.webconsole.ui.filterbar"),
     })
   };
 

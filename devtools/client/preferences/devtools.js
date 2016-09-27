@@ -232,7 +232,7 @@ sticky_pref("devtools.theme", "dark");
 sticky_pref("devtools.theme", "light");
 #endif
 
-// Remember the Web Console filters
+// Web console filters
 pref("devtools.webconsole.filter.error", true);
 pref("devtools.webconsole.filter.warn", true);
 pref("devtools.webconsole.filter.info", true);
@@ -284,6 +284,9 @@ pref("devtools.browserconsole.filter.servererror", false);
 pref("devtools.browserconsole.filter.serverwarn", false);
 pref("devtools.browserconsole.filter.serverinfo", false);
 pref("devtools.browserconsole.filter.serverlog", false);
+
+// Web console filter settings bar
+pref("devtools.webconsole.ui.filterbar", false);
 
 // Max number of inputs to store in web console history.
 pref("devtools.webconsole.inputHistoryCount", 50);

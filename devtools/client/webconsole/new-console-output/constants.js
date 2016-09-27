@@ -28,6 +28,9 @@ const prefs = {
       DEBUG: "devtools.webconsole.filter.debug",
       NET: "devtools.webconsole.filter.net",
       NETXHR: "devtools.webconsole.filter.netxhr",
+    },
+    UI: {
+      FILTERBAR: "devtools.webconsole.ui.filterbar"
     }
   }
 };
