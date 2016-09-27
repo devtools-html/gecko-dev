@@ -12,7 +12,10 @@ const {
   createStore
 } = require("devtools/client/shared/vendor/redux");
 const { thunk } = require("devtools/client/shared/redux/middleware/thunk");
-const constants = require("devtools/client/webconsole/new-console-output/constants");
+const {
+  BATCH_ACTIONS,
+  PREFS,
+} = require("devtools/client/webconsole/new-console-output/constants");
 const { reducers } = require("./reducers/index");
 const Services = require("Services");
 
@@ -22,12 +25,12 @@ function configureStore() {
       logLimit: Math.max(Services.prefs.getIntPref("devtools.hud.loglimit"), 1),
     }),
     filters: new FilterState({
-      error: Services.prefs.getBoolPref("devtools.webconsole.filter.error"),
-      warn: Services.prefs.getBoolPref("devtools.webconsole.filter.warn"),
-      info: Services.prefs.getBoolPref("devtools.webconsole.filter.info"),
-      log: Services.prefs.getBoolPref("devtools.webconsole.filter.log"),
-      network: Services.prefs.getBoolPref("devtools.webconsole.filter.network"),
-      netxhr: Services.prefs.getBoolPref("devtools.webconsole.filter.netxhr"),
+      error: Services.prefs.getBoolPref(PREFS.FILTER.ERROR),
+      warn: Services.prefs.getBoolPref(PREFS.FILTER.WARN),
+      info: Services.prefs.getBoolPref(PREFS.FILTER.INFO),
+      log: Services.prefs.getBoolPref(PREFS.FILTER.LOG),
+      network: Services.prefs.getBoolPref(PREFS.FILTER.NETWORK),
+      netxhr: Services.prefs.getBoolPref(PREFS.FILTER.NETXHR),
     })
   };
 
@@ -45,7 +48,7 @@ function enableBatching() {
   return next => (reducer, initialState, enhancer) => {
     function batchingReducer(state, action) {
       switch (action.type) {
-        case constants.BATCH_ACTIONS:
+        case BATCH_ACTIONS:
           return action.actions.reduce(batchingReducer, state);
         default:
           return reducer(state, action);
