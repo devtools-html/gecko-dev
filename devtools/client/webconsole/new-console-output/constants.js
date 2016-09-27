@@ -26,7 +26,7 @@ const prefs = {
       INFO: "devtools.webconsole.filter.info",
       LOG: "devtools.webconsole.filter.log",
       DEBUG: "devtools.webconsole.filter.debug",
-      NETWORK: "devtools.webconsole.filter.network",
+      NET: "devtools.webconsole.filter.net",
       NETXHR: "devtools.webconsole.filter.netxhr",
     }
   }

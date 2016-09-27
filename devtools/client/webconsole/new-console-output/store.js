@@ -29,7 +29,7 @@ function configureStore() {
       warn: Services.prefs.getBoolPref(PREFS.FILTER.WARN),
       info: Services.prefs.getBoolPref(PREFS.FILTER.INFO),
       log: Services.prefs.getBoolPref(PREFS.FILTER.LOG),
-      network: Services.prefs.getBoolPref(PREFS.FILTER.NETWORK),
+      net: Services.prefs.getBoolPref(PREFS.FILTER.NET),
       netxhr: Services.prefs.getBoolPref(PREFS.FILTER.NETXHR),
     })
   };

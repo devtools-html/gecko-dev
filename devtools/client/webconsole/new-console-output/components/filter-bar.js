@@ -114,9 +114,9 @@ const FilterBar = createClass({
             dispatch
           }),
           FilterButton({
-            active: filter.network,
+            active: filter.net,
             label: "Requests",
-            filterKey: "network",
+            filterKey: "net",
             dispatch
           })
         )
