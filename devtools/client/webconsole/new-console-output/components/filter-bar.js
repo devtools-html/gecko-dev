@@ -73,7 +73,7 @@ const FilterBar = createClass({
 
     if (filterBarVisible) {
       children.push(
-        dom.div({className: "devtools-toolbar"},
+        dom.div({className: "devtools-toolbar webconsole-filterbar-secondary"},
           FilterButton({
             active: filter.error,
             label: "Errors",
