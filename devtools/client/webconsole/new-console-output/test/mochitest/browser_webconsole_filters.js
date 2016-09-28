@@ -13,28 +13,27 @@ const TEST_URI = "http://example.com/browser/devtools/client/webconsole/new-cons
 
 add_task(function* () {
   let hud = yield openNewTabAndConsole(TEST_URI);
-  const outputNode1 = hud.ui.experimentalOutputNode;
+  const outputNode = hud.ui.experimentalOutputNode;
 
-  const toolbar1 = yield waitFor(() => {
-    return outputNode1.querySelector(".webconsole-filterbar-primary");
+  const toolbar = yield waitFor(() => {
+    return outputNode.querySelector(".webconsole-filterbar-primary");
   });
   info("Toolbar found");
 
   // Show the filter bar
-  EventUtils.sendMouseEvent({type: "click"},
-    toolbar1.querySelector(".devtools-filter-icon"));
-  const filterBar1 = yield waitFor(() => {
-    return outputNode1.querySelector(".webconsole-filterbar-secondary");
+  toolbar.querySelector(".devtools-filter-icon").click();
+  const filterBar = yield waitFor(() => {
+    return outputNode.querySelector(".webconsole-filterbar-secondary");
   });
-  ok(filterBar1, "Filter bar is shown when filter icon is clicked.");
+  ok(filterBar, "Filter bar is shown when filter icon is clicked.");
 
   // Check defaults.
   Object.values(MESSAGE_LEVEL).forEach(level => {
-    ok(filterIsEnabled(filterBar1.querySelector(`.${level}`)),
+    ok(filterIsEnabled(filterBar.querySelector(`.${level}`)),
       `Filter button for ${level} is on by default`);
   });
   ["net", "netxhr"].forEach(category => {
-    ok(!filterIsEnabled(filterBar1.querySelector(`.${category}`)),
+    ok(!filterIsEnabled(filterBar.querySelector(`.${category}`)),
       `Filter button for ${category} is off by default`);
   });
 
@@ -44,26 +43,30 @@ add_task(function* () {
     "Messages of all levels shown when filters are on.");
 
   // Check that messages are not shown when their filter is turned off.
-  EventUtils.sendMouseEvent({type: "click"}, filterBar1.querySelector(".error"));
+  filterBar.querySelector(".error").click();
   yield waitFor(() => findMessages(hud, "").length == 4);
   ok(true, "When a filter is turned off, its messages are not shown.");
 
   // Check that the ui settings were persisted.
-  yield closeToolbox;
-  hud = yield openNewTabAndConsole(TEST_URI);
-  const outputNode2 = hud.ui.experimentalOutputNode;
-  const filterBar2 = yield waitFor(() => {
-    return outputNode2.querySelector(".webconsole-filterbar-secondary");
-  });
-  ok(filterBar2, "Filter bar ui setting is persisted.");
-
-  // Check that the filter settings were persisted.
-  ok(!filterIsEnabled(filterBar2.querySelector(".error")),
-    "Filter button setting is persisted");
-  ok(findMessages(hud, "").length == 4,
-    "Messages of all levels shown when filters are on.");
+  yield closeTabAndToolbox();
+  yield testFilterPersistence();
 });
 
 function filterIsEnabled(button) {
   return button.classList.contains("checked");
+}
+
+function* testFilterPersistence() {
+  let hud = yield openNewTabAndConsole(TEST_URI);
+  const outputNode = hud.ui.experimentalOutputNode;
+  const filterBar = yield waitFor(() => {
+    return outputNode.querySelector(".webconsole-filterbar-secondary");
+  });
+  ok(filterBar, "Filter bar ui setting is persisted.");
+
+  // Check that the filter settings were persisted.
+  ok(!filterIsEnabled(filterBar.querySelector(".error")),
+    "Filter button setting is persisted");
+  ok(findMessages(hud, "").length == 4,
+    "Messages of all levels shown when filters are on.");
 }

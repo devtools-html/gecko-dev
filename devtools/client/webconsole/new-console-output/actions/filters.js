@@ -43,8 +43,7 @@ function filtersClear() {
 
     const filterState = getAllFilters(getState());
     for (let filter in filterState) {
-      Services.prefs.setBoolPref(PREFS.FILTER[filter.toUpperCase()],
-        filterState.get(filter));
+      Services.prefs.clearUserPref(PREFS.FILTER[filter.toUpperCase()]);
     }
   };
 }
