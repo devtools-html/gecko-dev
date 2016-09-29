@@ -57,4 +57,4 @@ function PageError(props) {
   return Message(childProps);
 }
 
-module.exports.PageError = PageError;
+module.exports = PageError;

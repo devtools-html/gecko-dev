@@ -13,9 +13,9 @@ const {
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 const actions = require("devtools/client/webconsole/new-console-output/actions/index");
-const CollapseButton = createFactory(require("devtools/client/webconsole/new-console-output/components/collapse-button").CollapseButton);
-const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon").MessageIcon);
-const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat").MessageRepeat);
+const CollapseButton = createFactory(require("devtools/client/webconsole/new-console-output/components/collapse-button"));
+const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon"));
+const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat"));
 const FrameView = createFactory(require("devtools/client/shared/components/frame"));
 const StackTrace = createFactory(require("devtools/client/shared/components/stack-trace"));
 

@@ -12,8 +12,8 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-const GripMessageBody = createFactory(require("devtools/client/webconsole/new-console-output/components/grip-message-body").GripMessageBody);
-const ConsoleTable = createFactory(require("devtools/client/webconsole/new-console-output/components/console-table").ConsoleTable);
+const GripMessageBody = createFactory(require("devtools/client/webconsole/new-console-output/components/grip-message-body"));
+const ConsoleTable = createFactory(require("devtools/client/webconsole/new-console-output/components/console-table"));
 
 const Message = createFactory(require("devtools/client/webconsole/new-console-output/components/message"));
 
@@ -111,4 +111,4 @@ function formatReps(parameters) {
   );
 }
 
-module.exports.ConsoleApiCall = ConsoleApiCall;
+module.exports = ConsoleApiCall;

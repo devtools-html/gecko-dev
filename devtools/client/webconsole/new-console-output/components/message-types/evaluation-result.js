@@ -12,7 +12,7 @@ const {
   PropTypes
 } = require("devtools/client/shared/vendor/react");
 const Message = createFactory(require("devtools/client/webconsole/new-console-output/components/message"));
-const GripMessageBody = createFactory(require("devtools/client/webconsole/new-console-output/components/grip-message-body").GripMessageBody);
+const GripMessageBody = createFactory(require("devtools/client/webconsole/new-console-output/components/grip-message-body"));
 
 EvaluationResult.displayName = "EvaluationResult";
 
@@ -47,4 +47,4 @@ function EvaluationResult(props) {
   return Message(childProps);
 }
 
-module.exports.EvaluationResult = EvaluationResult;
+module.exports = EvaluationResult;

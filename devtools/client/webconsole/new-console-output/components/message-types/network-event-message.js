@@ -51,4 +51,4 @@ function NetworkEventMessage(props) {
   return Message(childProps);
 }
 
-module.exports.NetworkEventMessage = NetworkEventMessage;
+module.exports = NetworkEventMessage;

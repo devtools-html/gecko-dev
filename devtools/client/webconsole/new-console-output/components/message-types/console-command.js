@@ -39,4 +39,4 @@ function ConsoleCommand(props) {
   return Message(childProps);
 }
 
-module.exports.ConsoleCommand = ConsoleCommand;
+module.exports = ConsoleCommand;
