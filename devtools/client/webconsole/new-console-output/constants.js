@@ -30,7 +30,7 @@ const prefs = {
       NETXHR: "devtools.webconsole.filter.netxhr",
     },
     UI: {
-      FILTERBAR: "devtools.webconsole.ui.filterbar"
+      FILTER_BAR: "devtools.webconsole.ui.filterbar"
     }
   }
 };

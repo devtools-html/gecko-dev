@@ -34,7 +34,7 @@ function configureStore() {
       netxhr: Services.prefs.getBoolPref(PREFS.FILTER.NETXHR),
     }),
     ui: new UiState({
-      filterBarVisible: Services.prefs.getBoolPref("devtools.webconsole.ui.filterbar"),
+      filterBarVisible: Services.prefs.getBoolPref(PREFS.UI.FILTER_BAR),
     })
   };
 

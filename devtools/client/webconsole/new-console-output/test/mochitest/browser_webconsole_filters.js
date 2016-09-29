@@ -18,7 +18,7 @@ add_task(function* () {
   const toolbar = yield waitFor(() => {
     return outputNode.querySelector(".webconsole-filterbar-primary");
   });
-  info("Toolbar found");
+  ok(toolbar, "Toolbar found");
 
   // Show the filter bar
   toolbar.querySelector(".devtools-filter-icon").click();
