@@ -20,7 +20,12 @@ Message.propTypes = {
   source: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   level: PropTypes.string.isRequired,
+  topLevelClasses: PropTypes.array,
   messageBody: PropTypes.any.isRequired,
+};
+
+Message.defaultProps = {
+  topLevelClasses: [],
 };
 
 function Message(props) {
@@ -28,13 +33,13 @@ function Message(props) {
     source,
     type,
     level,
+    topLevelClasses: classes,
     messageBody,
   } = props;
 
   const icon = MessageIcon({level});
 
-  const classes = ["message"];
-
+  classes.push("message");
   classes.push(source);
   classes.push(type);
   classes.push(level);
