@@ -42,7 +42,7 @@ const Message = createClass({
 
   componentDidMount() {
     if (this.messageNode && this.props.emitNewMessage) {
-      this.props.emitNewMessage({}, this.messageNode);
+      this.props.emitNewMessage(this.messageNode);
       if (this.props.scrollToMessage) {
         this.messageNode.scrollIntoView();
       }

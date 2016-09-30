@@ -16,13 +16,11 @@ const FilterBar = React.createFactory(require("devtools/client/webconsole/new-co
 
 const store = configureStore();
 
-function NewConsoleOutputWrapper(parentNode, jsterm, toolbox, owner, emitNewMessage) {
-  this.parentNode = parentNode;
+function NewConsoleOutputWrapper(parentNode, jsterm, toolbox, owner) {
   this.parentNode = parentNode;
   this.jsterm = jsterm;
   this.toolbox = toolbox;
   this.owner = owner;
-  this.emitNewMessage = emitNewMessage;
 
   this.init = this.init.bind(this);
 }
@@ -47,7 +45,11 @@ NewConsoleOutputWrapper.prototype = {
       openLink: (url) => {
         this.owner.openLink(url);
       },
-      emitNewMessage: this.emitNewMessage,
+      emitNewMessage: (node) => {
+        this.jsterm.hud.emit("new-messages", new Set([{
+          node
+        }]));
+      },
     });
     let filterBar = FilterBar({});
     let provider = React.createElement(
@@ -70,12 +72,6 @@ NewConsoleOutputWrapper.prototype = {
   },
   dispatchMessagesClear: () => {
     store.dispatch(actions.messagesClear());
-  },
-  getLastMessage: function() {
-    // Return the last message in the DOM as the message that was just dispatched. This may not
-    // always be correct in the case of filtered messages, but it's close enough for our tests.
-    let messageNodes = this.parentNode.querySelectorAll(".message");
-    return messageNodes[messageNodes.length - 1]
   },
 };
 

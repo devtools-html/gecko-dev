@@ -592,14 +592,8 @@ WebConsoleFrame.prototype = {
       // @TODO Once the toolbox has been converted to React, see if passing
       // in JSTerm is still necessary.
 
-      const emitNewMessage = (packet, node) => {
-        this.emit("new-messages", new Set([{
-          response: packet,
-          node
-        }]));
-      };
       this.newConsoleOutput = new this.window.NewConsoleOutput(
-        this.experimentalOutputNode, this.jsterm, toolbox, this.owner, emitNewMessage);
+        this.experimentalOutputNode, this.jsterm, toolbox, this.owner);
       console.log("Created newConsoleOutput", this.newConsoleOutput);
 
       let filterToolbar = doc.querySelector(".hud-console-filter-toolbar");
