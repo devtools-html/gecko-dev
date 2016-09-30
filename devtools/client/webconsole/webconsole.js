@@ -591,8 +591,15 @@ WebConsoleFrame.prototype = {
       this.outputNode.parentNode.appendChild(this.experimentalOutputNode);
       // @TODO Once the toolbox has been converted to React, see if passing
       // in JSTerm is still necessary.
+
+      const emitNewMessage = (packet, node) => {
+        this.emit("new-messages", new Set([{
+          response: packet,
+          node
+        }]));
+      };
       this.newConsoleOutput = new this.window.NewConsoleOutput(
-        this.experimentalOutputNode, this.jsterm, toolbox, this.owner);
+        this.experimentalOutputNode, this.jsterm, toolbox, this.owner, emitNewMessage);
       console.log("Created newConsoleOutput", this.newConsoleOutput);
 
       let filterToolbar = doc.querySelector(".hud-console-filter-toolbar");
@@ -3266,10 +3273,6 @@ WebConsoleConnectionProxy.prototype = {
    */
   dispatchMessageAdd: function(packet) {
     this.webConsoleFrame.newConsoleOutput.dispatchMessageAdd(packet);
-    this.webConsoleFrame.emit("new-messages", new Set([{
-      response: packet,
-      node: this.webConsoleFrame.newConsoleOutput.getLastMessage(),
-    }]));
   },
 
   /**

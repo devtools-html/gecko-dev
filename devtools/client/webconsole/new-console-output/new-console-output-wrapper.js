@@ -16,12 +16,13 @@ const FilterBar = React.createFactory(require("devtools/client/webconsole/new-co
 
 const store = configureStore();
 
-function NewConsoleOutputWrapper(parentNode, jsterm, toolbox, owner) {
+function NewConsoleOutputWrapper(parentNode, jsterm, toolbox, owner, emitNewMessage) {
   this.parentNode = parentNode;
   this.parentNode = parentNode;
   this.jsterm = jsterm;
   this.toolbox = toolbox;
   this.owner = owner;
+  this.emitNewMessage = emitNewMessage;
 
   this.init = this.init.bind(this);
 }
@@ -46,6 +47,7 @@ NewConsoleOutputWrapper.prototype = {
       openLink: (url) => {
         this.owner.openLink(url);
       },
+      emitNewMessage: this.emitNewMessage,
     });
     let filterBar = FilterBar({});
     let provider = React.createElement(
