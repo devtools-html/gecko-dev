@@ -28,7 +28,7 @@ const ConsoleOutput = createClass({
     onViewSourceInDebugger: PropTypes.func.isRequired,
     openNetworkPanel: PropTypes.func.isRequired,
     openLink: PropTypes.func.isRequired,
-    autoscroll: PropTypes.object.isRequired,
+    autoscroll: PropTypes.bool.isRequired,
   },
 
   componentDidMount() {
@@ -36,6 +36,10 @@ const ConsoleOutput = createClass({
   },
 
   componentWillUpdate(nextProps, nextState) {
+    if (!this.outputNode) {
+      return;
+    }
+
     const outputNode = this.outputNode;
 
     // Figure out if we are at the bottom. If so, then any new message should be scrolled
@@ -86,9 +90,7 @@ const ConsoleOutput = createClass({
       dom.div({
         className: "webconsole-output",
         ref: node => {
-          if (node !== null) {
-            this.outputNode = node;
-          }
+          this.outputNode = node;
         },
       }, messageNodes
       )

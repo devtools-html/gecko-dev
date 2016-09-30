@@ -118,9 +118,7 @@ const Message = createClass({
     return dom.div({
       className: topLevelClasses.join(" "),
       ref: node => {
-        if (node) {
-          this.messageNode = node;
-        }
+        this.messageNode = node;
       }
     },
       // @TODO add timestamp
