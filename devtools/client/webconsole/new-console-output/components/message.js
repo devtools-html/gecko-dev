@@ -41,7 +41,6 @@ const Message = createClass({
   },
 
   componentDidMount() {
-    debugger
     if (this.messageNode && this.props.emitNewMessage) {
       this.props.emitNewMessage({}, this.messageNode);
       if (this.props.scrollToMessage) {
