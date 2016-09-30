@@ -48,7 +48,7 @@ function Message(props) {
     source,
     type,
     level,
-    topLevelClasses: classes,
+    topLevelClasses,
     messageBody,
     frame,
     stacktrace,
@@ -57,12 +57,9 @@ function Message(props) {
     dispatch,
   } = props;
 
-  classes.push("message");
-  classes.push(source);
-  classes.push(type);
-  classes.push(level);
+  topLevelClasses.push("message", source, type, level);
   if (open) {
-    classes.push("open");
+    topLevelClasses.push("open");
   }
 
   const icon = MessageIcon({level});
@@ -110,7 +107,7 @@ function Message(props) {
     }) : null
   );
 
-  return dom.div({ className: classes.join(" ") },
+  return dom.div({ className: topLevelClasses.join(" ") },
     // @TODO add timestamp
     // @TODO add indent if necessary
     icon,
