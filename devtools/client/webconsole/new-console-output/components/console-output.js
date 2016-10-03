@@ -12,7 +12,12 @@ const {
 const ReactDOM = require("devtools/client/shared/vendor/react-dom");
 const { connect } = require("devtools/client/shared/vendor/react-redux");
 
-const { getAllMessages, getAllMessagesUiById, getAllMessagesTableDataById } = require("devtools/client/webconsole/new-console-output/selectors/messages");
+const {
+  getAllMessages,
+  getAllMessagesUiById,
+  getAllMessagesTableDataById,
+  getAllGroupsById,
+} = require("devtools/client/webconsole/new-console-output/selectors/messages");
 const { getScrollSetting } = require("devtools/client/webconsole/new-console-output/selectors/ui");
 const MessageContainer = createFactory(require("devtools/client/webconsole/new-console-output/components/message-container").MessageContainer);
 
@@ -26,6 +31,7 @@ const ConsoleOutput = createClass({
     serviceContainer: PropTypes.shape({
       attachRefToHud: PropTypes.func.isRequired,
     }),
+    messagesTableData: PropTypes.object.isRequired,
     autoscroll: PropTypes.bool.isRequired,
   },
 
@@ -62,9 +68,15 @@ const ConsoleOutput = createClass({
       messagesUi,
       messagesTableData,
       serviceContainer,
+      groups,
     } = this.props;
 
     let messageNodes = messages.map((message) => {
+      const parentGroups = message.groupId ? (
+        (groups.get(message.groupId) || [])
+          .concat([message.groupId])
+      ) : [];
+
       return (
         MessageContainer({
           dispatch,
@@ -74,6 +86,7 @@ const ConsoleOutput = createClass({
           open: messagesUi.includes(message.id),
           tableData: messagesTableData.get(message.id),
           autoscroll,
+          indent: parentGroups.length,
         })
       );
     });
@@ -100,12 +113,13 @@ function isScrolledToBottom(outputNode, scrollNode) {
          scrollNode.scrollHeight - lastNodeHeight / 2;
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return {
     messages: getAllMessages(state),
     messagesUi: getAllMessagesUiById(state),
     messagesTableData: getAllMessagesTableDataById(state),
     autoscroll: getScrollSetting(state),
+    groups: getAllGroupsById(state),
   };
 }
 
