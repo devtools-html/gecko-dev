@@ -105,4 +105,31 @@ describe("ConsoleAPICall component:", () => {
       expect(frameLinks.eq(2).find(".frame-link-filename").text()).toBe(filepath);
     });
   });
+
+  describe("console.group", () => {
+    it("renders", () => {
+      const message = stubPreparedMessages.get("console.group('bar')");
+      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+
+      expect(wrapper.find(".message-body").text()).toBe(message.messageText);
+    });
+  });
+
+  describe("console.groupEnd", () => {
+    it("does not show anything", () => {
+      const message = stubPreparedMessages.get("console.groupEnd('bar')");
+      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+
+      expect(wrapper.find(".message-body").text()).toBe("");
+    });
+  });
+
+  describe("console.groupCollapsed", () => {
+    it("renders", () => {
+      const message = stubPreparedMessages.get("console.groupCollapsed('foo')");
+      const wrapper = render(ConsoleApiCall({ message, onViewSourceInDebugger }));
+
+      expect(wrapper.find(".message-body").text()).toBe(message.messageText);
+    });
+  });
 });
