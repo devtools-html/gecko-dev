@@ -23,7 +23,12 @@ const MessageIndent = createClass({
 
   render: function () {
     const { indent } = this.props;
-    return dom.span({ className: "indent", style: {"--indent": indent} });
+    return dom.span({
+      className: "indent",
+      style: {"--indent": indent},
+      // For testing purpose
+      "data-indent": indent,
+    });
   }
 });
 
