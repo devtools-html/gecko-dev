@@ -715,6 +715,11 @@ a.learn-more-link.webconsole-learn-more-link {
   font-weight: bold;
 }
 
+.webconsole-output-wrapper .message > .icon {
+  margin: 3px 0 0 0;
+  padding: 0 2px;
+}
+
 .message.error > .icon::before {
   background-position: -12px -36px;
 }
@@ -734,10 +739,10 @@ a.learn-more-link.webconsole-learn-more-link {
 .webconsole-output-wrapper .message .indent {
   --indent: 0;
   --single-indent-width: 12;
-  --indent-border-width: 2px;
+  --indent-border-width: 1px;
   display: inline-block;
   width: calc(var(--single-indent-width) * var(--indent));
-  border-inline-end: solid #B2B2B2 var(--indent-border-width);
+  border-inline-end: solid var(--indent-border-width) var(--theme-splitter-color);
 }
 
 .message.startGroup .indent,
