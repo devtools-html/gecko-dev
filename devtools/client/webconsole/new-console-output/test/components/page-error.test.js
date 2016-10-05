@@ -40,4 +40,13 @@ describe("PageError component:", () => {
     const frameLinks = wrapper.find(`.stack-trace span.frame-link`);
     expect(frameLinks.length).toBe(3);
   });
+
+  it("has the expected indent", () => {
+    const message = stubPreparedMessages.get("ReferenceError: asdf is not defined");
+    let wrapper = render(PageError({ message, serviceContainer, indent: 10 }));
+    expect(wrapper.find(".indent").prop("data-indent")).toBe("10");
+
+    wrapper = render(PageError({ message, serviceContainer}));
+    expect(wrapper.find(".indent").prop("data-indent")).toBe("0");
+  });
 });

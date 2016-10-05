@@ -34,4 +34,14 @@ describe("EvaluationResult component:", () => {
 
     expect(wrapper.find(".message.error").length).toBe(1);
   });
+
+  it("has the expected indent", () => {
+    const message = stubPreparedMessages.get("new Date(0)");
+
+    let wrapper = render(EvaluationResult({ message, indent: 10 }));
+    expect(wrapper.find(".indent").prop("data-indent")).toBe("10");
+
+    wrapper = render(EvaluationResult({ message}));
+    expect(wrapper.find(".indent").prop("data-indent")).toBe("0");
+  });
 });

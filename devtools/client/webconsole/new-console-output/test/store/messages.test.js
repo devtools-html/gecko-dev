@@ -158,7 +158,7 @@ describe("Message reducer:", () => {
       expect(messages.last().groupId).toBe(messages.first().id);
     });
 
-    it("does not add console.groupEnd messages to the store", () => {
+    it("does not display console.groupEnd messages to the store", () => {
       const { dispatch, getState } = setupStore([]);
 
       const message = stubPackets.get("console.groupEnd('bar')");

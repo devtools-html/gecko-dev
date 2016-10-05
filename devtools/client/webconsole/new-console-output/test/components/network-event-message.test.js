@@ -30,6 +30,16 @@ describe("NetworkEventMessage component:", () => {
       expect(wrapper.find(".message-body .url").text()).toBe(EXPECTED_URL);
       expect(wrapper.find("div.message.cm-s-mozilla span.message-body.devtools-monospace").length).toBe(1);
     });
+
+    it("has the expected indent", () => {
+      const message = stubPreparedMessages.get("GET request");
+
+      let wrapper = render(NetworkEventMessage({ message, serviceContainer, indent: 3 }));
+      expect(wrapper.find(".indent").prop("data-indent")).toBe("3");
+
+      wrapper = render(NetworkEventMessage({ message, serviceContainer }));
+      expect(wrapper.find(".indent").prop("data-indent")).toBe("0");
+    });
   });
 
   describe("XHR GET request", () => {
