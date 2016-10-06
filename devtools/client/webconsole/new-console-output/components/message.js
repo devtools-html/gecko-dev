@@ -15,7 +15,7 @@ const {
 } = require("devtools/client/shared/vendor/react");
 const actions = require("devtools/client/webconsole/new-console-output/actions/index");
 const CollapseButton = createFactory(require("devtools/client/webconsole/new-console-output/components/collapse-button"));
-const MessageIndent = createFactory(require("devtools/client/webconsole/new-console-output/components/message-indent"));
+const MessageIndent = createFactory(require("devtools/client/webconsole/new-console-output/components/message-indent").MessageIndent);
 const MessageIcon = createFactory(require("devtools/client/webconsole/new-console-output/components/message-icon"));
 const MessageRepeat = createFactory(require("devtools/client/webconsole/new-console-output/components/message-repeat"));
 const FrameView = createFactory(require("devtools/client/shared/components/frame"));

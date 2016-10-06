@@ -717,7 +717,7 @@ a.learn-more-link.webconsole-learn-more-link {
 
 .webconsole-output-wrapper .message > .icon {
   margin: 3px 0 0 0;
-  padding: 0 2px;
+  padding: 0 0 0 6px;
 }
 
 .message.error > .icon::before {
@@ -737,18 +737,14 @@ a.learn-more-link.webconsole-learn-more-link {
 }
 
 .webconsole-output-wrapper .message .indent {
-  --indent: 0;
-  --single-indent-width: 12;
-  --indent-border-width: 1px;
   display: inline-block;
-  width: calc(var(--single-indent-width) * var(--indent));
-  border-inline-end: solid var(--indent-border-width) var(--theme-splitter-color);
+  border-inline-end: solid 1px var(--theme-splitter-color);
 }
 
 .message.startGroup .indent,
 .message.startGroupCollapsed .indent {
   border-inline-end-color: transparent;
-  margin-inline-end: calc(var(--single-indent-width) * 1px - 8px);
+  margin-inline-end: 5px;
 }
 
 .message.startGroup .icon,

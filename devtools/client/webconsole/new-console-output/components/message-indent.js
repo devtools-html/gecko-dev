@@ -13,6 +13,7 @@ const {
   PropTypes,
 } = require("devtools/client/shared/vendor/react");
 
+const INDENT_WIDTH = 12;
 const MessageIndent = createClass({
 
   displayName: "MessageIndent",
@@ -25,11 +26,12 @@ const MessageIndent = createClass({
     const { indent } = this.props;
     return dom.span({
       className: "indent",
-      style: {"--indent": indent},
-      // For testing purpose
-      "data-indent": indent,
+      style: {"width": indent * INDENT_WIDTH}
     });
   }
 });
 
-module.exports = MessageIndent;
+module.exports.MessageIndent = MessageIndent;
+
+// Exported so we can test it with unit tests.
+module.exports.INDENT_WIDTH = INDENT_WIDTH;
