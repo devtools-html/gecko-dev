@@ -9,119 +9,62 @@
 // behave as expected.
 
 const TEST_URI = "http://example.com/browser/devtools/client/webconsole/new-console-output/test/mochitest/test-console-group.html";
+const { INDENT_WIDTH } = require("devtools/client/webconsole/new-console-output/components/message-indent");
 
 add_task(function* () {
   let toolbox = yield openNewTabAndToolbox(TEST_URI, "webconsole");
   let hud = toolbox.getCurrentPanel().hud;
 
-  const testCases = [{
-    info: "Add a group at root level",
-    fn: "doConsoleGroup",
-    input: "foo",
-    expectedText: "foo",
-    expectedIndent: 0
-  }, {
-    info: "Add a message in 1 level deep group",
-    fn: "doConsoleLog",
-    input: "foo",
-    expectedText: "foo",
-    expectedIndent: 1
-  }, {
-    info: "Add a group in another group",
-    fn: "doConsoleGroup",
-    input: "bar",
-    expectedText: "bar",
-    expectedIndent: 1
-  }, {
-    info: "Add a message in a 2 level deep group",
-    fn: "doConsoleLog",
-    input: "bar",
-    expectedText: "bar",
-    expectedIndent: 2
-  }, {
-    fn: "doConsoleGroupEnd",
-    input: "bar",
-    expectedText: null
-  }, {
-    info: "Add a message in 1 level deep group, after closing a 2 level deep group",
-    fn: "doConsoleLog",
-    input: "foobar",
-    expectedText: "foobar",
-    expectedIndent: 1
-  }, {
-    fn: "doConsoleGroupEnd",
-    input: "foo",
-    expectedText: null
-  }, {
-    info: "Add a message at root level, after closing all the groups",
-    fn: "doConsoleLog",
-    input: "foar",
-    expectedText: "foar",
-    expectedIndent: 0
-  }, {
-    info: "Add a collapsed group at root level",
-    fn: "doConsoleGroupCollapsed",
-    input: "collapsed",
-    expectedText: "collapsed",
-    expectedIndent: 0
-  }, {
-    fn: "doConsoleLog",
-    input: "in-collapsed",
-    expectedText: null
-  }, {
-    fn: "doConsoleGroupEnd",
-    input: "collapsed",
-    expectedText: null
-  }, {
-    info: "Add a message at root level, after closing a collapsed group",
-    fn: "doConsoleLog",
-    input: "out-collapsed",
-    expectedText: "out-collapsed",
-    expectedIndent: 0
-  }];
+  info("Test a group at root level");
+  let node = yield waitFor(() => findMessage(hud, "group-1"));
+  testClass(node, "startGroup");
+  testIndent(node, 0);
 
-  let classes = {
-    "doConsoleLog": "log",
-    "doConsoleGroup": "startGroup",
-    "doConsoleGroupCollapsed": "startGroupCollapsed",
-  };
+  info("Test a message in a 1 level deep group");
+  node = yield waitFor(() => findMessage(hud, "log-1"));
+  testClass(node, "log");
+  testIndent(node, 1);
 
-  yield ContentTask.spawn(gBrowser.selectedBrowser, testCases, function (tests) {
-    tests.forEach((test) => {
-      content.wrappedJSObject[test.fn](test.input);
-    });
-  });
+  info("Test a group in a 1 level deep group");
+  node = yield waitFor(() => findMessage(hud, "group-2"));
+  testClass(node, "startGroup");
+  testIndent(node, 1);
 
-  let messageCreatorTestCases = testCases.filter(test => test.expectedText);
+  info("Test a message in a 2 level deep group");
+  node = yield waitFor(() => findMessage(hud, "log-2"));
+  testClass(node, "log");
+  testIndent(node, 2);
 
-  let nodes = [];
-  for (let testCase of messageCreatorTestCases) {
-    const {expectedIndent} = testCase;
-    let node = yield waitFor(() => findConsoleMessage(
-      hud.ui.experimentalOutputNode, expectedIndent, nodes.length)
-    );
-    nodes.push(node);
-  }
+  info("Test a message in a 1 level deep group, after closing a 2 level deep group");
+  node = yield waitFor(() => findMessage(hud, "log-3"));
+  testClass(node, "log");
+  testIndent(node, 1);
 
-  let messageNodes = hud.ui.experimentalOutputNode.querySelectorAll(".message");
-  is(messageNodes.length, messageCreatorTestCases.length,
-    "console has the expected number of message");
+  info("Test a message at root level, after closing all the groups");
+  node = yield waitFor(() => findMessage(hud, "log-4"));
+  testClass(node, "log");
+  testIndent(node, 0);
 
-  messageCreatorTestCases.forEach((testCase, index) => {
-    info(testCase.info);
-    const {expectedIndent, expectedText, fn} = testCase;
-    let node = messageNodes[index];
+  info("Test a collapsed group at root level");
+  node = yield waitFor(() => findMessage(hud, "group-3"));
+  testClass(node, "startGroupCollapsed");
+  testIndent(node, 0);
 
-    ok(node.classList.contains(classes[fn]), "message has the expected class");
-    is(node.querySelector(".message-body").textContent, expectedText,
-      "message has the expected text");
-    is(node.querySelector(".indent").getAttribute("data-indent"), expectedIndent,
-      "message has the expected level of indentation");
-  });
+  info("Test a message at root level, after closing a collapsed group");
+  node = yield waitFor(() => findMessage(hud, "log-6"));
+  testClass(node, "log");
+  testIndent(node, 0);
+
+  let nodes = hud.ui.experimentalOutputNode.querySelectorAll(".message");
+  is(nodes.length, 8, "expected number of messages are displayed");
 });
 
-function findConsoleMessage(node, indent = 0, index) {
-  let condition = node.querySelector(
-    `.message:nth-of-type(${index + 1}) .indent[data-indent="${indent}"]`);
-  return condition.closest(".message");
+function testClass(node, className) {
+  ok(node.classList.contains(className, "message has the expected class"));
+}
+
+function testIndent(node, indent) {
+  indent = `${indent * INDENT_WIDTH}px`;
+  is(node.querySelector(".indent").style.width, indent,
+    "message has the expected level of indentation");
 }

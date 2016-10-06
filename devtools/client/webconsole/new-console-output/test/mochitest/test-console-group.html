@@ -7,19 +7,20 @@
   <body>
     <p>console.group() & console.groupCollapsed() test page</p>
     <script>
-      function doConsoleLog(text) {
-        console.log(text);
-      }
+    "use strict";
 
-      function doConsoleGroup(groupName) {
-        console.group(groupName);
-      }
-      function doConsoleGroupCollapsed(groupName) {
-        console.groupCollapsed(groupName);
-      }
-      function doConsoleGroupEnd(groupName) {
-        console.groupEnd(groupName);
-      }
+    console.group("group-1");
+    console.log("log-1");
+    console.group("group-2");
+    console.log("log-2");
+    console.groupEnd("group-2");
+    console.log("log-3");
+    console.groupEnd("group-1");
+    console.log("log-4");
+    console.groupCollapsed("group-3");
+    console.log("log-5");
+    console.groupEnd("group-3");
+    console.log("log-6");
     </script>
   </body>
 </html>
