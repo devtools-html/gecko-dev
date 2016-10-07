@@ -91,7 +91,7 @@ function matchLevelFilters(message, filters) {
 function matchNetworkFilters(message, filters) {
   return (
     message.source !== MESSAGE_SOURCE.NETWORK
-    || (filters.get("network") === true && message.isXHR === false)
+    || (filters.get("net") === true && message.isXHR === false)
     || (filters.get("netxhr") === true && message.isXHR === true)
   );
 }
