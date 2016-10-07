@@ -12,7 +12,6 @@ const {
   DOM: dom,
   PropTypes
 } = require("devtools/client/shared/vendor/react");
-
 const GripMessageBody = createFactory(require("devtools/client/webconsole/new-console-output/components/grip-message-body"));
 const ConsoleTable = createFactory(require("devtools/client/webconsole/new-console-output/components/console-table"));
 const {isGroupType, l10n} = require("devtools/client/webconsole/new-console-output/utils/messages");
@@ -25,7 +24,6 @@ ConsoleApiCall.propTypes = {
   message: PropTypes.object.isRequired,
   open: PropTypes.bool,
   serviceContainer: PropTypes.object.isRequired,
-  tableData: PropTypes.array,
   indent: PropTypes.number.isRequired,
 };
 

@@ -31,7 +31,6 @@ const ConsoleOutput = createClass({
     serviceContainer: PropTypes.shape({
       attachRefToHud: PropTypes.func.isRequired,
     }),
-    messagesTableData: PropTypes.object.isRequired,
     autoscroll: PropTypes.bool.isRequired,
   },
 
