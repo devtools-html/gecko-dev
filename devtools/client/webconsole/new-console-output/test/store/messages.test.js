@@ -168,7 +168,7 @@ describe("Message reducer:", () => {
       expect(messages.size).toBe(0);
     });
 
-    it("does not add message after a console.groupCollapsed message", () => {
+    it("filters out message added after a console.groupCollapsed message", () => {
       const { dispatch, getState } = setupStore([]);
 
       const message = stubPackets.get("console.groupCollapsed('foo')");
@@ -181,7 +181,7 @@ describe("Message reducer:", () => {
       expect(messages.size).toBe(1);
     });
 
-    it("shows the group message of the first message displayed", () => {
+    it("shows the group of the first displayed message when messages are pruned", () => {
       const { dispatch, getState } = setupStore([]);
 
       const logLimit = 1000;
