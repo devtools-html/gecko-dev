@@ -9,6 +9,9 @@ Cu.import("resource://gre/modules/osfile.jsm");
 const TARGET = "networkEvent";
 const { [TARGET]: snippets } = require("devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/stub-snippets.js");
 const TEST_URI = "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html";
+// A typical network event request will follow by 8 types of different network
+// event update packets
+const NETWORK_EVENT_UPDATE_COUNT = 8;
 
 let stubs = {
   preparedMessages: [],
@@ -24,12 +27,23 @@ add_task(function* () {
     ok(ui.jsterm, "jsterm exists");
     ok(ui.newConsoleOutput, "newConsoleOutput exists");
 
-    let received = new Promise(resolve => {
+    let networkEvent = new Promise(resolve => {
       let i = 0;
-      toolbox.target.client.addListener(TARGET, (type, res) => {
+      toolbox.target.activeConsole.on(TARGET, (type, res) => {
         stubs.packets.push(formatPacket(keys[i], res));
-        stubs.preparedMessages.push(formatNetworkStub(keys[i], res));
-        if(++i === keys.length ){
+        stubs.preparedMessages.push(formatNetworkEventStub(keys[i], res));
+        if(++i === keys.length) {
+          resolve();
+        }
+      });
+    });
+
+    let networkEventUpdate = new Promise(resolve => {
+      let i = 0;
+      toolbox.target.activeConsole.on(`${TARGET}Update` , (type, res) => {
+        stubs.packets.push(formatPacket(`${keys[0]} ${res.packet.updateType}`, res));
+        stubs.preparedMessages.push(formatNetworkEventStub(`${keys[0]} ${res.packet.updateType}`, res));
+        if(++i === NETWORK_EVENT_UPDATE_COUNT) {
           resolve();
         }
       });
@@ -39,7 +53,7 @@ add_task(function* () {
       content.wrappedJSObject.triggerPacket();
     });
 
-    yield received;
+    yield Promise.all([networkEvent, networkEventUpdate]);
   }
   let filePath = OS.Path.join(`${BASE_PATH}/stubs/${TARGET}.js`);
   OS.File.writeAtomic(filePath, formatFile(stubs));

@@ -14,7 +14,7 @@ let stubPackets = new Map();
 
 
 stubPreparedMessages.set("GET request", new NetworkEventMessage({
-	"id": "1",
+	"id": "server1.conn0.child1/netEvent29",
 	"actor": "server1.conn0.child1/netEvent29",
 	"level": "log",
 	"isXHR": false,
@@ -27,8 +27,177 @@ stubPreparedMessages.set("GET request", new NetworkEventMessage({
 	"type": "log"
 }));
 
+stubPreparedMessages.set("GET request requestHeaders", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("GET request requestCookies", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("GET request responseStart", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("GET request securityInfo", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("GET request responseHeaders", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("GET request responseCookies", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("GET request eventTimings", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log",
+	"totalTime": 9
+}));
+
+stubPreparedMessages.set("GET request responseContent", new NetworkEventMessage({
+	"id": "server1.conn0.child1/netEvent29",
+	"actor": "server1.conn0.child1/netEvent29",
+	"level": "log",
+	"isXHR": false,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888,
+		"content": {
+			"mimeType": "text/html; charset=utf-8"
+		},
+		"bodySize": 904,
+		"transferredSize": 904
+	},
+	"source": "network",
+	"type": "log",
+	"totalTime": 9
+}));
+
 stubPreparedMessages.set("XHR GET request", new NetworkEventMessage({
-	"id": "1",
+	"id": "server1.conn1.child1/netEvent29",
 	"actor": "server1.conn1.child1/netEvent29",
 	"level": "log",
 	"isXHR": true,
@@ -41,8 +210,177 @@ stubPreparedMessages.set("XHR GET request", new NetworkEventMessage({
 	"type": "log"
 }));
 
+stubPreparedMessages.set("XHR GET request requestHeaders", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR GET request requestCookies", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR GET request responseStart", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR GET request securityInfo", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR GET request responseHeaders", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR GET request responseCookies", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR GET request eventTimings", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log",
+	"totalTime": 12
+}));
+
+stubPreparedMessages.set("XHR GET request responseContent", new NetworkEventMessage({
+	"id": "server1.conn1.child1/netEvent29",
+	"actor": "server1.conn1.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "GET",
+		"headersSize": 489
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888,
+		"content": {
+			"mimeType": "text/html; charset=utf-8"
+		},
+		"bodySize": 904,
+		"transferredSize": 904
+	},
+	"source": "network",
+	"type": "log",
+	"totalTime": 12
+}));
+
 stubPreparedMessages.set("XHR POST request", new NetworkEventMessage({
-	"id": "1",
+	"id": "server1.conn2.child1/netEvent29",
 	"actor": "server1.conn2.child1/netEvent29",
 	"level": "log",
 	"isXHR": true,
@@ -55,16 +393,243 @@ stubPreparedMessages.set("XHR POST request", new NetworkEventMessage({
 	"type": "log"
 }));
 
+stubPreparedMessages.set("XHR POST request requestHeaders", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR POST request requestCookies", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR POST request responseStart", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR POST request securityInfo", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR POST request responseHeaders", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR POST request responseCookies", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log"
+}));
+
+stubPreparedMessages.set("XHR POST request eventTimings", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888
+	},
+	"source": "network",
+	"type": "log",
+	"totalTime": 10
+}));
+
+stubPreparedMessages.set("XHR POST request responseContent", new NetworkEventMessage({
+	"id": "server1.conn2.child1/netEvent29",
+	"actor": "server1.conn2.child1/netEvent29",
+	"level": "log",
+	"isXHR": true,
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST",
+		"headersSize": 509
+	},
+	"response": {
+		"httpVersion": "HTTP/1.1",
+		"status": "404",
+		"statusText": "Not Found",
+		"headersSize": 160,
+		"remoteAddress": "127.0.0.1",
+		"remotePort": 8888,
+		"content": {
+			"mimeType": "text/html; charset=utf-8"
+		},
+		"bodySize": 904,
+		"transferredSize": 904
+	},
+	"source": "network",
+	"type": "log",
+	"totalTime": 10
+}));
+
 
 stubPackets.set("GET request", {
-	"from": "server1.conn0.child1/consoleActor2",
-	"type": "networkEvent",
-	"eventActor": {
-		"actor": "server1.conn0.child1/netEvent29",
-		"startedDateTime": "2016-09-14T02:38:18.046Z",
-		"timeStamp": 1473820698046,
+	"_type": "NetworkEvent",
+	"timeStamp": 1475814287668,
+	"node": null,
+	"actor": "server1.conn0.child1/netEvent29",
+	"discardRequestBody": true,
+	"discardResponseBody": true,
+	"startedDateTime": "2016-10-07T04:24:47.668Z",
+	"request": {
 		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
-		"method": "GET",
+		"method": "GET"
+	},
+	"isXHR": false,
+	"cause": {
+		"type": 3,
+		"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+		"stacktrace": [
+			{
+				"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+				"lineNumber": 3,
+				"columnNumber": 1,
+				"functionName": "triggerPacket",
+				"asyncCause": null
+			},
+			{
+				"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+				"lineNumber": 4,
+				"columnNumber": 7,
+				"functionName": null,
+				"asyncCause": null
+			},
+			{
+				"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+				"lineNumber": 53,
+				"columnNumber": 20,
+				"functionName": null,
+				"asyncCause": null
+			}
+		]
+	},
+	"response": {},
+	"timings": {},
+	"updates": [],
+	"private": false
+});
+
+stubPackets.set("GET request requestHeaders", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "requestHeaders",
+		"headers": 7,
+		"headersSize": 489
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": true,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
 		"isXHR": false,
 		"cause": {
 			"type": 3,
@@ -93,19 +658,575 @@ stubPackets.set("GET request", {
 				}
 			]
 		},
+		"response": {},
+		"timings": {},
+		"updates": [
+			"requestHeaders"
+		],
 		"private": false
+	}
+});
+
+stubPackets.set("GET request requestCookies", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "requestCookies",
+		"cookies": 0
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": true,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": false,
+		"cause": {
+			"type": 3,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 3,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies"
+		],
+		"private": false
+	}
+});
+
+stubPackets.set("GET request responseStart", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseStart",
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888,
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"discardResponseBody": false
+		}
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": false,
+		"cause": {
+			"type": 3,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 3,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart"
+		],
+		"private": false
+	}
+});
+
+stubPackets.set("GET request securityInfo", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "securityInfo",
+		"state": "insecure"
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": false,
+		"cause": {
+			"type": 3,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 3,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("GET request responseHeaders", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseHeaders",
+		"headers": 5,
+		"headersSize": 160
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": false,
+		"cause": {
+			"type": 3,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 3,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("GET request responseCookies", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseCookies",
+		"cookies": 0
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": false,
+		"cause": {
+			"type": 3,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 3,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("GET request eventTimings", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "eventTimings",
+		"totalTime": 9
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": false,
+		"cause": {
+			"type": 3,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 3,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies",
+			"eventTimings"
+		],
+		"private": false,
+		"securityInfo": "insecure",
+		"totalTime": 9
+	}
+});
+
+stubPackets.set("GET request responseContent", {
+	"packet": {
+		"from": "server1.conn0.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseContent",
+		"mimeType": "text/html; charset=utf-8",
+		"contentSize": 904,
+		"transferredSize": 904,
+		"discardResponseBody": false
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814287668,
+		"node": null,
+		"actor": "server1.conn0.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:47.668Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": false,
+		"cause": {
+			"type": 3,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 3,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888,
+			"content": {
+				"mimeType": "text/html; charset=utf-8"
+			},
+			"bodySize": 904,
+			"transferredSize": 904
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies",
+			"eventTimings",
+			"responseContent"
+		],
+		"private": false,
+		"securityInfo": "insecure",
+		"totalTime": 9
 	}
 });
 
 stubPackets.set("XHR GET request", {
-	"from": "server1.conn1.child1/consoleActor2",
-	"type": "networkEvent",
-	"eventActor": {
-		"actor": "server1.conn1.child1/netEvent29",
-		"startedDateTime": "2016-09-14T02:38:18.812Z",
-		"timeStamp": 1473820698812,
+	"_type": "NetworkEvent",
+	"timeStamp": 1475814288479,
+	"node": null,
+	"actor": "server1.conn1.child1/netEvent29",
+	"discardRequestBody": true,
+	"discardResponseBody": true,
+	"startedDateTime": "2016-10-07T04:24:48.479Z",
+	"request": {
 		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
-		"method": "GET",
+		"method": "GET"
+	},
+	"isXHR": true,
+	"cause": {
+		"type": 11,
+		"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+		"stacktrace": [
+			{
+				"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+				"lineNumber": 4,
+				"columnNumber": 1,
+				"functionName": "triggerPacket",
+				"asyncCause": null
+			},
+			{
+				"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+				"lineNumber": 4,
+				"columnNumber": 7,
+				"functionName": null,
+				"asyncCause": null
+			},
+			{
+				"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+				"lineNumber": 53,
+				"columnNumber": 20,
+				"functionName": null,
+				"asyncCause": null
+			}
+		]
+	},
+	"response": {},
+	"timings": {},
+	"updates": [],
+	"private": false
+});
+
+stubPackets.set("XHR GET request requestHeaders", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "requestHeaders",
+		"headers": 7,
+		"headersSize": 489
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": true,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
 		"isXHR": true,
 		"cause": {
 			"type": 11,
@@ -134,19 +1255,35 @@ stubPackets.set("XHR GET request", {
 				}
 			]
 		},
+		"response": {},
+		"timings": {},
+		"updates": [
+			"requestHeaders"
+		],
 		"private": false
 	}
 });
 
-stubPackets.set("XHR POST request", {
-	"from": "server1.conn2.child1/consoleActor2",
-	"type": "networkEvent",
-	"eventActor": {
-		"actor": "server1.conn2.child1/netEvent29",
-		"startedDateTime": "2016-09-14T02:38:19.483Z",
-		"timeStamp": 1473820699483,
-		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
-		"method": "POST",
+stubPackets.set("XHR GET request requestCookies", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "requestCookies",
+		"cookies": 0
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": true,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
 		"isXHR": true,
 		"cause": {
 			"type": 11,
@@ -175,7 +1312,1045 @@ stubPackets.set("XHR POST request", {
 				}
 			]
 		},
+		"response": {},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies"
+		],
 		"private": false
+	}
+});
+
+stubPackets.set("XHR GET request responseStart", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseStart",
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888,
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"discardResponseBody": false
+		}
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart"
+		],
+		"private": false
+	}
+});
+
+stubPackets.set("XHR GET request securityInfo", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "securityInfo",
+		"state": "insecure"
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("XHR GET request responseHeaders", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseHeaders",
+		"headers": 5,
+		"headersSize": 160
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("XHR GET request responseCookies", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseCookies",
+		"cookies": 0
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("XHR GET request eventTimings", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "eventTimings",
+		"totalTime": 12
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies",
+			"eventTimings"
+		],
+		"private": false,
+		"securityInfo": "insecure",
+		"totalTime": 12
+	}
+});
+
+stubPackets.set("XHR GET request responseContent", {
+	"packet": {
+		"from": "server1.conn1.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseContent",
+		"mimeType": "text/html; charset=utf-8",
+		"contentSize": 904,
+		"transferredSize": 904,
+		"discardResponseBody": false
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814288479,
+		"node": null,
+		"actor": "server1.conn1.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:48.479Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "GET",
+			"headersSize": 489
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888,
+			"content": {
+				"mimeType": "text/html; charset=utf-8"
+			},
+			"bodySize": 904,
+			"transferredSize": 904
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies",
+			"eventTimings",
+			"responseContent"
+		],
+		"private": false,
+		"securityInfo": "insecure",
+		"totalTime": 12
+	}
+});
+
+stubPackets.set("XHR POST request", {
+	"_type": "NetworkEvent",
+	"timeStamp": 1475814289297,
+	"node": null,
+	"actor": "server1.conn2.child1/netEvent29",
+	"discardRequestBody": true,
+	"discardResponseBody": true,
+	"startedDateTime": "2016-10-07T04:24:49.297Z",
+	"request": {
+		"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+		"method": "POST"
+	},
+	"isXHR": true,
+	"cause": {
+		"type": 11,
+		"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+		"stacktrace": [
+			{
+				"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+				"lineNumber": 4,
+				"columnNumber": 1,
+				"functionName": "triggerPacket",
+				"asyncCause": null
+			},
+			{
+				"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+				"lineNumber": 4,
+				"columnNumber": 7,
+				"functionName": null,
+				"asyncCause": null
+			},
+			{
+				"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+				"lineNumber": 53,
+				"columnNumber": 20,
+				"functionName": null,
+				"asyncCause": null
+			}
+		]
+	},
+	"response": {},
+	"timings": {},
+	"updates": [],
+	"private": false
+});
+
+stubPackets.set("XHR POST request requestHeaders", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "requestHeaders",
+		"headers": 8,
+		"headersSize": 509
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": true,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {},
+		"timings": {},
+		"updates": [
+			"requestHeaders"
+		],
+		"private": false
+	}
+});
+
+stubPackets.set("XHR POST request requestCookies", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "requestCookies",
+		"cookies": 0
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": true,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies"
+		],
+		"private": false
+	}
+});
+
+stubPackets.set("XHR POST request responseStart", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseStart",
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888,
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"discardResponseBody": false
+		}
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart"
+		],
+		"private": false
+	}
+});
+
+stubPackets.set("XHR POST request securityInfo", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "securityInfo",
+		"state": "insecure"
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("XHR POST request responseHeaders", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseHeaders",
+		"headers": 5,
+		"headersSize": 160
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("XHR POST request responseCookies", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseCookies",
+		"cookies": 0
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies"
+		],
+		"private": false,
+		"securityInfo": "insecure"
+	}
+});
+
+stubPackets.set("XHR POST request eventTimings", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "eventTimings",
+		"totalTime": 10
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies",
+			"eventTimings"
+		],
+		"private": false,
+		"securityInfo": "insecure",
+		"totalTime": 10
+	}
+});
+
+stubPackets.set("XHR POST request responseContent", {
+	"packet": {
+		"from": "server1.conn2.child1/netEvent29",
+		"type": "networkEventUpdate",
+		"updateType": "responseContent",
+		"mimeType": "text/html; charset=utf-8",
+		"contentSize": 904,
+		"transferredSize": 904,
+		"discardResponseBody": false
+	},
+	"networkInfo": {
+		"_type": "NetworkEvent",
+		"timeStamp": 1475814289297,
+		"node": null,
+		"actor": "server1.conn2.child1/netEvent29",
+		"discardRequestBody": true,
+		"discardResponseBody": false,
+		"startedDateTime": "2016-10-07T04:24:49.297Z",
+		"request": {
+			"url": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/inexistent.html",
+			"method": "POST",
+			"headersSize": 509
+		},
+		"isXHR": true,
+		"cause": {
+			"type": 11,
+			"loadingDocumentUri": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-network-event.html",
+			"stacktrace": [
+				{
+					"filename": "http://example.com/browser/devtools/client/webconsole/new-console-output/test/fixtures/stub-generators/test-tempfile.js",
+					"lineNumber": 4,
+					"columnNumber": 1,
+					"functionName": "triggerPacket",
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js line 52 > eval",
+					"lineNumber": 4,
+					"columnNumber": 7,
+					"functionName": null,
+					"asyncCause": null
+				},
+				{
+					"filename": "chrome://mochikit/content/tests/BrowserTestUtils/content-task.js",
+					"lineNumber": 53,
+					"columnNumber": 20,
+					"functionName": null,
+					"asyncCause": null
+				}
+			]
+		},
+		"response": {
+			"httpVersion": "HTTP/1.1",
+			"status": "404",
+			"statusText": "Not Found",
+			"headersSize": 160,
+			"remoteAddress": "127.0.0.1",
+			"remotePort": 8888,
+			"content": {
+				"mimeType": "text/html; charset=utf-8"
+			},
+			"bodySize": 904,
+			"transferredSize": 904
+		},
+		"timings": {},
+		"updates": [
+			"requestHeaders",
+			"requestCookies",
+			"responseStart",
+			"securityInfo",
+			"responseHeaders",
+			"responseCookies",
+			"eventTimings",
+			"responseContent"
+		],
+		"private": false,
+		"securityInfo": "insecure",
+		"totalTime": 10
 	}
 });
 
